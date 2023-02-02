@@ -18,7 +18,10 @@ import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactPropGroup;
 import com.viafourasdk.src.fragments.previewcomments.VFPreviewCommentsFragment;
+import com.viafourasdk.src.interfaces.VFActionsInterface;
 import com.viafourasdk.src.interfaces.VFLoginInterface;
+import com.viafourasdk.src.model.local.VFActionData;
+import com.viafourasdk.src.model.local.VFActionType;
 import com.viafourasdk.src.model.local.VFArticleMetadata;
 import com.viafourasdk.src.model.local.VFColors;
 import com.viafourasdk.src.model.local.VFSettings;
@@ -107,10 +110,20 @@ public class RCTPreviewCommentsViewManager extends ViewGroupManager<FrameLayout>
             VFColors colors = new VFColors(ContextCompat.getColor(reactContext, R.color.colorVfDark), ContextCompat.getColor(reactContext, R.color.colorVf), Color.WHITE);
             VFSettings settings = new VFSettings(colors);
             FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
-            final VFPreviewCommentsFragment myFragment = VFPreviewCommentsFragment.newInstance(activity.getApplication(), "", articleMetadata, this, settings, 10, VFSortType.mostLiked);
+            final VFPreviewCommentsFragment previewCommentsFragment = VFPreviewCommentsFragment.newInstance(activity.getApplication(), "", articleMetadata, this, settings, 10, VFSortType.mostLiked);
+            previewCommentsFragment.setActionCallback(new VFActionsInterface() {
+                @Override
+                public void onNewAction(VFActionType actionType, VFActionData action) {
+                    if(actionType == VFActionType.writeNewCommentPressed){
+
+                    } else if(actionType == VFActionType.openProfilePressed){
+
+                    }
+                }
+            });
             activity.getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(reactNativeViewId, myFragment, String.valueOf(reactNativeViewId))
+                    .replace(reactNativeViewId, previewCommentsFragment, String.valueOf(reactNativeViewId))
                     .commit();
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);

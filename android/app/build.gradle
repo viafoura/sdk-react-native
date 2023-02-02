@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.viafourademo"
+    namespace "com.sdk"
     defaultConfig {
-        applicationId "com.viafourademo"
+        applicationId "com.sdk"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

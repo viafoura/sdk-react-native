@@ -2,15 +2,16 @@ import Foundation
 import AVFoundation
 import ViafouraSDK
 
-class RNPreviewComments: UIView, VFLoginDelegate {
+class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
   weak var previewCommentsViewController: VFPreviewCommentsViewController?
 
   override init(frame: CGRect) {
     super.init(frame: frame)
   }
+  
   required init?(coder aDecoder: NSCoder) { fatalError("nope") }
 
-  var containerId = ""
+  @objc var containerId = ""
   var settings: VFSettings?
   var articleMetadata: VFArticleMetadata?
 
@@ -32,8 +33,10 @@ class RNPreviewComments: UIView, VFLoginDelegate {
   }
 
   private func embed() {
-    ViafouraSDK.initialize(siteUUID: "00000000-0000-4000-8000-c8cddfd7b365", siteDomain: "viafoura-mobile-demo.vercel.app")
-
+    if previewCommentsViewController == nil {
+      ViafouraSDK.initialize(siteUUID: "00000000-0000-4000-8000-c8cddfd7b365", siteDomain: "viafoura-mobile-demo.vercel.app")
+    }
+    
     guard let parentVC = parentViewController, let settings = settings, let articleMetadata = articleMetadata else {
       return
     }
@@ -59,6 +62,8 @@ class RNPreviewComments: UIView, VFLoginDelegate {
     
     
     vc.setActionCallbacks(callbacks: callbacks)
+    vc.setLayoutDelegate(layoutDelegate: self)
+    
     parentVC.addChild(vc)
     addSubview(vc.view)
     vc.view.frame = bounds
@@ -113,8 +118,12 @@ class RNPreviewComments: UIView, VFLoginDelegate {
       parentViewController.present(newCommentViewController, animated: true)
   }
 
+  func containerHeightUpdated(viewController: VFUIViewController, height: CGFloat) {
+      RTEEventEmitter.shared?.emitEvent(withName: "onHeightChanged", body: ["newHeight": height])
+  }
+  
   func startLogin() {
-
+      RTEEventEmitter.shared?.emitEvent(withName: "onAuthNeeded", body: [:])
   }
 }
 

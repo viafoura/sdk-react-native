@@ -7,16 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* ViafouraDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ViafouraDemoTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-ViafouraDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-ViafouraDemo.a */; };
+		00E356F31AD99517003FC87E /* sdkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* sdkTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		47707D16298B038C00B28A2C /* RNPreviewComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47707D13298B038B00B28A2C /* RNPreviewComments.swift */; };
-		47707D17298B038C00B28A2C /* RNPreviewCommentsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47707D14298B038B00B28A2C /* RNPreviewCommentsManager.m */; };
-		47707D18298B038C00B28A2C /* RNPreviewCommentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47707D15298B038C00B28A2C /* RNPreviewCommentsManager.swift */; };
-		7699B88040F8A987B510C191 /* libPods-ViafouraDemo-ViafouraDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-ViafouraDemo-ViafouraDemoTests.a */; };
+		217C01480F376FD29512895A /* libPods-ViafouraDemo-ViafouraDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 132429C67C1B5E847384ADB8 /* libPods-ViafouraDemo-ViafouraDemoTests.a */; };
+		47707D2E298B218400B28A2C /* RNPreviewComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47707D2B298B218300B28A2C /* RNPreviewComments.swift */; };
+		47707D2F298B218400B28A2C /* RNPreviewCommentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47707D2C298B218400B28A2C /* RNPreviewCommentsManager.swift */; };
+		47707D30298B218400B28A2C /* RNPreviewCommentsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47707D2D298B218400B28A2C /* RNPreviewCommentsManager.m */; };
+		47707D38298B2E6C00B28A2C /* RTEEventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 47707D37298B2E6C00B28A2C /* RTEEventEmitter.m */; };
+		47707D3A298B2E8D00B28A2C /* RTEEventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47707D39298B2E8D00B28A2C /* RTEEventEmitter.swift */; };
+		47F3B8E9298B4375005DDFBA /* RCTAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F3B8E8298B4375005DDFBA /* RCTAuthService.swift */; };
+		47F3B914298B4B46005DDFBA /* RCTAuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F3B913298B4B46005DDFBA /* RCTAuthService.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		97FADD133AC4D341212B6DD6 /* libPods-ViafouraDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFCBC97BDC74A448C553AF6E /* libPods-ViafouraDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,32 +29,53 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = ViafouraDemo;
+			remoteInfo = sdk;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		47F3B90D298B457B005DDFBA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00E356EE1AD99517003FC87E /* ViafouraDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViafouraDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* ViafouraDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViafouraDemoTests.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* sdkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = sdkTests.m; sourceTree = "<group>"; };
+		0323A54D38F65F02E2C69AAC /* Pods-ViafouraDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViafouraDemo.release.xcconfig"; path = "Target Support Files/Pods-ViafouraDemo/Pods-ViafouraDemo.release.xcconfig"; sourceTree = "<group>"; };
+		132429C67C1B5E847384ADB8 /* libPods-ViafouraDemo-ViafouraDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ViafouraDemo-ViafouraDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* ViafouraDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViafouraDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ViafouraDemo/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = ViafouraDemo/AppDelegate.mm; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ViafouraDemo/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ViafouraDemo/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ViafouraDemo/main.m; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-ViafouraDemo-ViafouraDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ViafouraDemo-ViafouraDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B4392A12AC88292D35C810B /* Pods-ViafouraDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViafouraDemo.debug.xcconfig"; path = "Target Support Files/Pods-ViafouraDemo/Pods-ViafouraDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		47707D12298B038B00B28A2C /* ViafouraDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViafouraDemo-Bridging-Header.h"; sourceTree = "<group>"; };
-		47707D13298B038B00B28A2C /* RNPreviewComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RNPreviewComments.swift; path = ViafouraDemo/RNPreviewComments.swift; sourceTree = "<group>"; };
-		47707D14298B038B00B28A2C /* RNPreviewCommentsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNPreviewCommentsManager.m; path = ViafouraDemo/RNPreviewCommentsManager.m; sourceTree = "<group>"; };
-		47707D15298B038C00B28A2C /* RNPreviewCommentsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RNPreviewCommentsManager.swift; path = ViafouraDemo/RNPreviewCommentsManager.swift; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-ViafouraDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViafouraDemo.release.xcconfig"; path = "Target Support Files/Pods-ViafouraDemo/Pods-ViafouraDemo.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-ViafouraDemo-ViafouraDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViafouraDemo-ViafouraDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-ViafouraDemo-ViafouraDemoTests/Pods-ViafouraDemo-ViafouraDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-ViafouraDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ViafouraDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ViafouraDemo/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-ViafouraDemo-ViafouraDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViafouraDemo-ViafouraDemoTests.release.xcconfig"; path = "Target Support Files/Pods-ViafouraDemo-ViafouraDemoTests/Pods-ViafouraDemo-ViafouraDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = sdk/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = sdk/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = sdk/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = sdk/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = sdk/main.m; sourceTree = "<group>"; };
+		3B4392A12AC88292D35C810B /* Pods-sdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sdk.debug.xcconfig"; path = "Target Support Files/Pods-sdk/Pods-sdk.debug.xcconfig"; sourceTree = "<group>"; };
+		47707D2A298B218200B28A2C /* ViafouraDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViafouraDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		47707D2B298B218300B28A2C /* RNPreviewComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RNPreviewComments.swift; path = sdk/RNPreviewComments.swift; sourceTree = "<group>"; };
+		47707D2C298B218400B28A2C /* RNPreviewCommentsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RNPreviewCommentsManager.swift; path = sdk/RNPreviewCommentsManager.swift; sourceTree = "<group>"; };
+		47707D2D298B218400B28A2C /* RNPreviewCommentsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNPreviewCommentsManager.m; path = sdk/RNPreviewCommentsManager.m; sourceTree = "<group>"; };
+		47707D37298B2E6C00B28A2C /* RTEEventEmitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RTEEventEmitter.m; path = sdk/RTEEventEmitter.m; sourceTree = "<group>"; };
+		47707D39298B2E8D00B28A2C /* RTEEventEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RTEEventEmitter.swift; path = sdk/RTEEventEmitter.swift; sourceTree = "<group>"; };
+		47F3B8E8298B4375005DDFBA /* RCTAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RCTAuthService.swift; path = sdk/RCTAuthService.swift; sourceTree = "<group>"; };
+		47F3B913298B4B46005DDFBA /* RCTAuthService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTAuthService.m; path = sdk/RCTAuthService.m; sourceTree = "<group>"; };
+		5709B34CF0A7D63546082F79 /* Pods-sdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sdk.release.xcconfig"; path = "Target Support Files/Pods-sdk/Pods-sdk.release.xcconfig"; sourceTree = "<group>"; };
+		5B7EB9410499542E8C5724F5 /* Pods-sdk-sdkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sdk-sdkTests.debug.xcconfig"; path = "Target Support Files/Pods-sdk-sdkTests/Pods-sdk-sdkTests.debug.xcconfig"; sourceTree = "<group>"; };
+		72E9E49946448177E65D3823 /* Pods-ViafouraDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViafouraDemo.debug.xcconfig"; path = "Target Support Files/Pods-ViafouraDemo/Pods-ViafouraDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = sdk/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		86B7C99A3EF1E15CAAEC0054 /* Pods-ViafouraDemo-ViafouraDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViafouraDemo-ViafouraDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-ViafouraDemo-ViafouraDemoTests/Pods-ViafouraDemo-ViafouraDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		89C6BE57DB24E9ADA2F236DE /* Pods-sdk-sdkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sdk-sdkTests.release.xcconfig"; path = "Target Support Files/Pods-sdk-sdkTests/Pods-sdk-sdkTests.release.xcconfig"; sourceTree = "<group>"; };
+		BA9598D53005A2014D4F6691 /* Pods-ViafouraDemo-ViafouraDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViafouraDemo-ViafouraDemoTests.release.xcconfig"; path = "Target Support Files/Pods-ViafouraDemo-ViafouraDemoTests/Pods-ViafouraDemo-ViafouraDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		EFCBC97BDC74A448C553AF6E /* libPods-ViafouraDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ViafouraDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-ViafouraDemo-ViafouraDemoTests.a in Frameworks */,
+				217C01480F376FD29512895A /* libPods-ViafouraDemo-ViafouraDemoTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,20 +91,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-ViafouraDemo.a in Frameworks */,
+				97FADD133AC4D341212B6DD6 /* libPods-ViafouraDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* ViafouraDemoTests */ = {
+		00E356EF1AD99517003FC87E /* sdkTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* ViafouraDemoTests.m */,
+				00E356F21AD99517003FC87E /* sdkTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = ViafouraDemoTests;
+			path = sdkTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -93,9 +118,12 @@
 		13B07FAE1A68108700A75B9A /* ViafouraDemo */ = {
 			isa = PBXGroup;
 			children = (
-				47707D11298B037000B28A2C /* CameraManager */,
+				47F3B8E7298B430B005DDFBA /* AuthService */,
+				47707D34298B2E2C00B28A2C /* EventEmitter */,
+				47707D29298B216E00B28A2C /* PreviewComments */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
+				47707D2A298B218200B28A2C /* ViafouraDemo-Bridging-Header.h */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
@@ -108,21 +136,38 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-ViafouraDemo.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-ViafouraDemo-ViafouraDemoTests.a */,
+				EFCBC97BDC74A448C553AF6E /* libPods-ViafouraDemo.a */,
+				132429C67C1B5E847384ADB8 /* libPods-ViafouraDemo-ViafouraDemoTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		47707D11298B037000B28A2C /* CameraManager */ = {
+		47707D29298B216E00B28A2C /* PreviewComments */ = {
 			isa = PBXGroup;
 			children = (
-				47707D13298B038B00B28A2C /* RNPreviewComments.swift */,
-				47707D14298B038B00B28A2C /* RNPreviewCommentsManager.m */,
-				47707D15298B038C00B28A2C /* RNPreviewCommentsManager.swift */,
-				47707D12298B038B00B28A2C /* ViafouraDemo-Bridging-Header.h */,
+				47707D2B298B218300B28A2C /* RNPreviewComments.swift */,
+				47707D2D298B218400B28A2C /* RNPreviewCommentsManager.m */,
+				47707D2C298B218400B28A2C /* RNPreviewCommentsManager.swift */,
 			);
-			name = CameraManager;
+			name = PreviewComments;
+			sourceTree = "<group>";
+		};
+		47707D34298B2E2C00B28A2C /* EventEmitter */ = {
+			isa = PBXGroup;
+			children = (
+				47707D37298B2E6C00B28A2C /* RTEEventEmitter.m */,
+				47707D39298B2E8D00B28A2C /* RTEEventEmitter.swift */,
+			);
+			name = EventEmitter;
+			sourceTree = "<group>";
+		};
+		47F3B8E7298B430B005DDFBA /* AuthService */ = {
+			isa = PBXGroup;
+			children = (
+				47F3B913298B4B46005DDFBA /* RCTAuthService.m */,
+				47F3B8E8298B4375005DDFBA /* RCTAuthService.swift */,
+			);
+			name = AuthService;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -137,7 +182,7 @@
 			children = (
 				13B07FAE1A68108700A75B9A /* ViafouraDemo */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* ViafouraDemoTests */,
+				00E356EF1AD99517003FC87E /* sdkTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
@@ -159,10 +204,14 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-ViafouraDemo.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-ViafouraDemo.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-ViafouraDemo-ViafouraDemoTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-ViafouraDemo-ViafouraDemoTests.release.xcconfig */,
+				3B4392A12AC88292D35C810B /* Pods-sdk.debug.xcconfig */,
+				5709B34CF0A7D63546082F79 /* Pods-sdk.release.xcconfig */,
+				5B7EB9410499542E8C5724F5 /* Pods-sdk-sdkTests.debug.xcconfig */,
+				89C6BE57DB24E9ADA2F236DE /* Pods-sdk-sdkTests.release.xcconfig */,
+				72E9E49946448177E65D3823 /* Pods-ViafouraDemo.debug.xcconfig */,
+				0323A54D38F65F02E2C69AAC /* Pods-ViafouraDemo.release.xcconfig */,
+				86B7C99A3EF1E15CAAEC0054 /* Pods-ViafouraDemo-ViafouraDemoTests.debug.xcconfig */,
+				BA9598D53005A2014D4F6691 /* Pods-ViafouraDemo-ViafouraDemoTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -187,7 +236,7 @@
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
 			name = ViafouraDemoTests;
-			productName = ViafouraDemoTests;
+			productName = sdkTests;
 			productReference = 00E356EE1AD99517003FC87E /* ViafouraDemoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -203,13 +252,14 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				47F3B90D298B457B005DDFBA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ViafouraDemo;
-			productName = ViafouraDemo;
+			productName = sdk;
 			productReference = 13B07F961A680F5B00A75B9A /* ViafouraDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -423,7 +473,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* ViafouraDemoTests.m in Sources */,
+				00E356F31AD99517003FC87E /* sdkTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,11 +481,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47707D17298B038C00B28A2C /* RNPreviewCommentsManager.m in Sources */,
+				47707D2F298B218400B28A2C /* RNPreviewCommentsManager.swift in Sources */,
+				47707D3A298B2E8D00B28A2C /* RTEEventEmitter.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
-				47707D16298B038C00B28A2C /* RNPreviewComments.swift in Sources */,
+				47F3B914298B4B46005DDFBA /* RCTAuthService.m in Sources */,
+				47707D30298B218400B28A2C /* RNPreviewCommentsManager.m in Sources */,
+				47707D38298B2E6C00B28A2C /* RTEEventEmitter.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				47707D18298B038C00B28A2C /* RNPreviewCommentsManager.swift in Sources */,
+				47707D2E298B218400B28A2C /* RNPreviewComments.swift in Sources */,
+				47F3B8E9298B4375005DDFBA /* RCTAuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,7 +506,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-ViafouraDemo-ViafouraDemoTests.debug.xcconfig */;
+			baseConfigurationReference = 86B7C99A3EF1E15CAAEC0054 /* Pods-ViafouraDemo-ViafouraDemoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -460,7 +514,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = ViafouraDemoTests/Info.plist;
+				INFOPLIST_FILE = sdkTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -480,12 +534,12 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-ViafouraDemo-ViafouraDemoTests.release.xcconfig */;
+			baseConfigurationReference = BA9598D53005A2014D4F6691 /* Pods-ViafouraDemo-ViafouraDemoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = ViafouraDemoTests/Info.plist;
+				INFOPLIST_FILE = sdkTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -505,13 +559,13 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-ViafouraDemo.debug.xcconfig */;
+			baseConfigurationReference = 72E9E49946448177E65D3823 /* Pods-ViafouraDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = ViafouraDemo/Info.plist;
+				INFOPLIST_FILE = sdk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -533,12 +587,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-ViafouraDemo.release.xcconfig */;
+			baseConfigurationReference = 0323A54D38F65F02E2C69AAC /* Pods-ViafouraDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = ViafouraDemo/Info.plist;
+				INFOPLIST_FILE = sdk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

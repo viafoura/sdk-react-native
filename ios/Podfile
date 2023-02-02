@@ -24,7 +24,6 @@ end
 target 'ViafouraDemo' do
   config = use_native_modules!
   
-  pod 'ViafouraCore'
   # Flags change depending on the env values.
   flags = get_default_flags()
 

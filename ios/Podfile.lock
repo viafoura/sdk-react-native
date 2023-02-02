@@ -416,7 +416,6 @@ PODS:
     - React-logger (= 0.71.2)
     - React-perflogger (= 0.71.2)
   - SocketRocket (0.6.0)
-  - ViafouraCore (0.0.10)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -481,7 +480,6 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - ViafouraCore
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -500,7 +498,6 @@ SPEC REPOS:
     - libevent
     - OpenSSL-Universal
     - SocketRocket
-    - ViafouraCore
     - YogaKit
 
 EXTERNAL SOURCES:
@@ -624,10 +621,9 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 4bf9a9086d27f74065fce1dddac274aa95216952
   ReactCommon: f697c0ac52e999aa818e43e2b6f277787c735e2d
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
-  ViafouraCore: 0b0586c425c64f8b7607a0f4e660f7912d472bd5
   Yoga: 5b0304b3dbef2b52e078052138e23a19c7dacaef
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 4d061d947481d4cf0da2bb542d037e602af2bd00
+PODFILE CHECKSUM: ad56a5a54b64f87d25988569fac38931be2e8f8f
 
 COCOAPODS: 1.11.3

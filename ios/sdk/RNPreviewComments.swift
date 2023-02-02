@@ -12,6 +12,11 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
   required init?(coder aDecoder: NSCoder) { fatalError("nope") }
 
   @objc var containerId = ""
+  @objc var articleUrl = ""
+  @objc var articleTitle = ""
+  @objc var articleSubtitle = ""
+  @objc var articleThumbnailUrl = ""
+
   var settings: VFSettings?
   var articleMetadata: VFArticleMetadata?
 
@@ -19,17 +24,21 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
     super.layoutSubviews()
 
     if previewCommentsViewController == nil {
-      let colors = VFColors(colorPrimary: UIColor(red: 0.00, green: 0.45, blue: 0.91, alpha: 1.00), colorPrimaryLight: UIColor(red: 0.90, green: 0.95, blue: 1.00, alpha: 1.00), colorBackground: VFColors.colorBackgroundDefault, colorSeparator: VFColors.colorSeparatorDefault)
-      let fonts = VFFonts(fontLight: UIFont.boldSystemFont(ofSize: 1), fontRegular: UIFont.boldSystemFont(ofSize: 1), fontMedium: UIFont.boldSystemFont(ofSize: 1), fontSemibold: UIFont.boldSystemFont(ofSize: 1), fontBold: UIFont.boldSystemFont(ofSize: 1))
-      settings = VFSettings(colors: colors, fonts: fonts)
-      articleMetadata = VFArticleMetadata(
-        url: URL(string: "https://test.com")!, title: "Test", subtitle: "Subtitle",
-        thumbnailUrl: URL(string: "https://test.com")!)
-      
+      initializeSettings()
       embed()
     } else {
       previewCommentsViewController?.view.frame = bounds
     }
+  }
+  
+  func initializeSettings(){
+    let colors = VFColors(colorPrimary: UIColor(red: 0.00, green: 0.45, blue: 0.91, alpha: 1.00), colorPrimaryLight: UIColor(red: 0.90, green: 0.95, blue: 1.00, alpha: 1.00), colorBackground: VFColors.colorBackgroundDefault, colorSeparator: VFColors.colorSeparatorDefault)
+    let fonts = VFFonts(fontLight: UIFont.boldSystemFont(ofSize: 1), fontRegular: UIFont.boldSystemFont(ofSize: 1), fontMedium: UIFont.boldSystemFont(ofSize: 1), fontSemibold: UIFont.boldSystemFont(ofSize: 1), fontBold: UIFont.boldSystemFont(ofSize: 1))
+    settings = VFSettings(colors: colors, fonts: fonts)
+    
+    articleMetadata = VFArticleMetadata(
+      url: URL(string: articleUrl)!, title: articleTitle, subtitle: articleSubtitle,
+      thumbnailUrl: URL(string: articleThumbnailUrl)!)
   }
 
   private func embed() {

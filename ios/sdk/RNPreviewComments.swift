@@ -42,10 +42,6 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
   }
 
   private func embed() {
-    if previewCommentsViewController == nil {
-      ViafouraSDK.initialize(siteUUID: "00000000-0000-4000-8000-c8cddfd7b365", siteDomain: "viafoura-mobile-demo.vercel.app")
-    }
-    
     guard let parentVC = parentViewController, let settings = settings, let articleMetadata = articleMetadata else {
       return
     }

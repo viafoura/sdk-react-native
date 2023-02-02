@@ -12,6 +12,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		217C01480F376FD29512895A /* libPods-ViafouraDemo-ViafouraDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 132429C67C1B5E847384ADB8 /* libPods-ViafouraDemo-ViafouraDemoTests.a */; };
+		474C4F3D298BE9E400F3374F /* VFInitializerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474C4F3C298BE9E400F3374F /* VFInitializerService.swift */; };
 		47707D2E298B218400B28A2C /* RNPreviewComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47707D2B298B218300B28A2C /* RNPreviewComments.swift */; };
 		47707D2F298B218400B28A2C /* RNPreviewCommentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47707D2C298B218400B28A2C /* RNPreviewCommentsManager.swift */; };
 		47707D30298B218400B28A2C /* RNPreviewCommentsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47707D2D298B218400B28A2C /* RNPreviewCommentsManager.m */; };
@@ -19,6 +20,8 @@
 		47707D3A298B2E8D00B28A2C /* RTEEventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47707D39298B2E8D00B28A2C /* RTEEventEmitter.swift */; };
 		47F3B8E9298B4375005DDFBA /* RCTAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F3B8E8298B4375005DDFBA /* RCTAuthService.swift */; };
 		47F3B914298B4B46005DDFBA /* RCTAuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F3B913298B4B46005DDFBA /* RCTAuthService.m */; };
+		47F3B92F298BDAA3005DDFBA /* ViafouraSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F3B92A298BD919005DDFBA /* ViafouraSDK.framework */; };
+		47F3B930298BDAA3005DDFBA /* ViafouraSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 47F3B92A298BD919005DDFBA /* ViafouraSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		97FADD133AC4D341212B6DD6 /* libPods-ViafouraDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EFCBC97BDC74A448C553AF6E /* libPods-ViafouraDemo.a */; };
 /* End PBXBuildFile section */
@@ -31,15 +34,30 @@
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = sdk;
 		};
+		47F3B929298BD919005DDFBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 47F3B924298BD919005DDFBA /* ViafouraSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 47B009052817871500EF93FD;
+			remoteInfo = ViafouraSDK;
+		};
+		47F3B92B298BD919005DDFBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 47F3B924298BD919005DDFBA /* ViafouraSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 47B0090F2817871500EF93FD;
+			remoteInfo = ViafouraSDKTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		47F3B90D298B457B005DDFBA /* Embed Frameworks */ = {
+		47F3B931298BDAA3005DDFBA /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				47F3B930298BDAA3005DDFBA /* ViafouraSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,6 +77,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = sdk/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = sdk/main.m; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-sdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sdk.debug.xcconfig"; path = "Target Support Files/Pods-sdk/Pods-sdk.debug.xcconfig"; sourceTree = "<group>"; };
+		474C4F3C298BE9E400F3374F /* VFInitializerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VFInitializerService.swift; path = sdk/VFInitializerService.swift; sourceTree = "<group>"; };
 		47707D2A298B218200B28A2C /* ViafouraDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViafouraDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		47707D2B298B218300B28A2C /* RNPreviewComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RNPreviewComments.swift; path = sdk/RNPreviewComments.swift; sourceTree = "<group>"; };
 		47707D2C298B218400B28A2C /* RNPreviewCommentsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RNPreviewCommentsManager.swift; path = sdk/RNPreviewCommentsManager.swift; sourceTree = "<group>"; };
@@ -67,6 +86,7 @@
 		47707D39298B2E8D00B28A2C /* RTEEventEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RTEEventEmitter.swift; path = sdk/RTEEventEmitter.swift; sourceTree = "<group>"; };
 		47F3B8E8298B4375005DDFBA /* RCTAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RCTAuthService.swift; path = sdk/RCTAuthService.swift; sourceTree = "<group>"; };
 		47F3B913298B4B46005DDFBA /* RCTAuthService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTAuthService.m; path = sdk/RCTAuthService.m; sourceTree = "<group>"; };
+		47F3B924298BD919005DDFBA /* ViafouraSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ViafouraSDK.xcodeproj; path = "../../sdk-ios/Viafoura SDK/ViafouraSDK.xcodeproj"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-sdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sdk.release.xcconfig"; path = "Target Support Files/Pods-sdk/Pods-sdk.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-sdk-sdkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sdk-sdkTests.debug.xcconfig"; path = "Target Support Files/Pods-sdk-sdkTests/Pods-sdk-sdkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		72E9E49946448177E65D3823 /* Pods-ViafouraDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViafouraDemo.debug.xcconfig"; path = "Target Support Files/Pods-ViafouraDemo/Pods-ViafouraDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47F3B92F298BDAA3005DDFBA /* ViafouraSDK.framework in Frameworks */,
 				97FADD133AC4D341212B6DD6 /* libPods-ViafouraDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,6 +139,7 @@
 		13B07FAE1A68108700A75B9A /* ViafouraDemo */ = {
 			isa = PBXGroup;
 			children = (
+				47F3B934298BE988005DDFBA /* Initializer */,
 				47F3B8E7298B430B005DDFBA /* AuthService */,
 				47707D34298B2E2C00B28A2C /* EventEmitter */,
 				47707D29298B216E00B28A2C /* PreviewComments */,
@@ -170,6 +192,23 @@
 			name = AuthService;
 			sourceTree = "<group>";
 		};
+		47F3B925298BD919005DDFBA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				47F3B92A298BD919005DDFBA /* ViafouraSDK.framework */,
+				47F3B92C298BD919005DDFBA /* ViafouraSDKTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		47F3B934298BE988005DDFBA /* Initializer */ = {
+			isa = PBXGroup;
+			children = (
+				474C4F3C298BE9E400F3374F /* VFInitializerService.swift */,
+			);
+			name = Initializer;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +219,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				47F3B924298BD919005DDFBA /* ViafouraSDK.xcodeproj */,
 				13B07FAE1A68108700A75B9A /* ViafouraDemo */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* sdkTests */,
@@ -252,7 +292,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
-				47F3B90D298B457B005DDFBA /* Embed Frameworks */,
+				47F3B931298BDAA3005DDFBA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -291,6 +331,12 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 47F3B925298BD919005DDFBA /* Products */;
+					ProjectRef = 47F3B924298BD919005DDFBA /* ViafouraSDK.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* ViafouraDemo */,
@@ -298,6 +344,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		47F3B92A298BD919005DDFBA /* ViafouraSDK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ViafouraSDK.framework;
+			remoteRef = 47F3B929298BD919005DDFBA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		47F3B92C298BD919005DDFBA /* ViafouraSDKTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ViafouraSDKTests.xctest;
+			remoteRef = 47F3B92B298BD919005DDFBA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00E356EC1AD99517003FC87E /* Resources */ = {
@@ -489,6 +552,7 @@
 				47707D38298B2E6C00B28A2C /* RTEEventEmitter.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				47707D2E298B218400B28A2C /* RNPreviewComments.swift in Sources */,
+				474C4F3D298BE9E400F3374F /* VFInitializerService.swift in Sources */,
 				47F3B8E9298B4375005DDFBA /* RCTAuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

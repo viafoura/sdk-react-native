@@ -1,6 +1,6 @@
 #import "AppDelegate.h"
 #import <React/RCTBundleURLProvider.h>
-#import <ViafouraSDK/ViafouraSDK-Swift.h>
+#import <ViafouraDemo-Swift.h>
 
 @implementation AppDelegate
 
@@ -11,7 +11,9 @@
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
   
-  
+  VFInitializerService * vfInitializerService = [VFInitializerService shared];
+  [vfInitializerService initialize];
+
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 

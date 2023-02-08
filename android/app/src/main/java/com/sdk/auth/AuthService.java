@@ -1,4 +1,4 @@
-package com.sdk;
+package com.sdk.auth;
 
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.Promise;

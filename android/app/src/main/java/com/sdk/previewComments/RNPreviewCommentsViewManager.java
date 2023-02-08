@@ -1,7 +1,5 @@
-package com.sdk;
+package com.sdk.previewComments;
 
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.view.Choreographer;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +7,6 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import com.facebook.react.bridge.Arguments;
@@ -21,8 +18,6 @@ import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.facebook.react.uimanager.annotations.ReactPropGroup;
-import com.facebook.react.uimanager.events.RCTEventEmitter;
 import com.viafourasdk.src.fragments.base.VFFragment;
 import com.viafourasdk.src.fragments.previewcomments.VFPreviewCommentsFragment;
 import com.viafourasdk.src.interfaces.VFActionsInterface;
@@ -40,10 +35,9 @@ import com.viafourasdk.src.model.local.VFSortType;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.Map;
 
-public class RCTPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> implements VFLoginInterface, VFCustomUIInterface, VFActionsInterface, VFLayoutInterface {
+public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> implements VFLoginInterface, VFCustomUIInterface, VFActionsInterface, VFLayoutInterface {
 
     public static final String REACT_CLASS = "RNPreviewCommentsAndroid";
     public final int COMMAND_CREATE = 1;
@@ -55,7 +49,7 @@ public class RCTPreviewCommentsViewManager extends ViewGroupManager<FrameLayout>
     private String containerId;
     private String articleUrl, articleTitle, articleDesc, articleThumbnailUrl;
 
-    public RCTPreviewCommentsViewManager(ReactApplicationContext reactContext) {
+    public RNPreviewCommentsViewManager(ReactApplicationContext reactContext) {
         this.reactContext = reactContext;
     }
 

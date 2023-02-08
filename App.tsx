@@ -28,6 +28,7 @@ const App = () => {
   return (
     <View style={{ flex: 1 }}>
       <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flexGrow: 1 }}>
+        <WebView scrollEnabled={false} source={{ uri: 'https://viafoura-mobile-demo.vercel.app/posts/here-are-what-media-companies-are-doing-with-covid-19-overload' }} />
         <PreviewComments
         style= {{ height: this.state.commentsHeight }}
         containerId={"101113541"}
@@ -36,8 +37,6 @@ const App = () => {
         articleUrl={"https://viafoura-mobile-demo.vercel.app/posts/here-are-what-media-companies-are-doing-with-covid-19-overload"}
         articleThumbnailUrl={"https://www.datocms-assets.com/55856/1636753460-information-overload.jpg?crop=focalpoint&fit=crop&fm=webp&fp-x=0.86&fp-y=0.47&h=428&w=856"}
         onHeightChanged = {(event: any) => {
-          console.log("new height")
-          console.log(event);
           this.state.commentsHeight = event.newHeight;
         }}
         onAuthNeeded = {(event: any) => {

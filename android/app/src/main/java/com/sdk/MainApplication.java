@@ -8,6 +8,8 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactNativeHost;
 import com.facebook.soloader.SoLoader;
+import com.viafourasdk.src.ViafouraSDK;
+
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
@@ -22,7 +24,6 @@ public class MainApplication extends Application implements ReactApplication {
 
         @Override
         protected List<ReactPackage> getPackages() {
-          @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
           packages.add(new RCTPackage());
           return packages;
@@ -57,6 +58,8 @@ public class MainApplication extends Application implements ReactApplication {
       // If you opted-in for the New Architecture, we load the native entry point for this app.
       DefaultNewArchitectureEntryPoint.load();
     }
+
+    ViafouraSDK.initialize(getApplicationContext(), "00000000-0000-4000-8000-c8cddfd7b365", "viafoura-mobile-demo.vercel.app");
     ReactNativeFlipper.initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
   }
 }

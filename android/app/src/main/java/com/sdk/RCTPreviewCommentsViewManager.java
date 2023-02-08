@@ -1,5 +1,6 @@
 package com.sdk;
 
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.view.Choreographer;
 import android.view.View;
@@ -11,34 +12,48 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.common.MapBuilder;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
+import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.uimanager.annotations.ReactPropGroup;
+import com.facebook.react.uimanager.events.RCTEventEmitter;
+import com.viafourasdk.src.fragments.base.VFFragment;
 import com.viafourasdk.src.fragments.previewcomments.VFPreviewCommentsFragment;
 import com.viafourasdk.src.interfaces.VFActionsInterface;
+import com.viafourasdk.src.interfaces.VFCustomUIInterface;
+import com.viafourasdk.src.interfaces.VFLayoutInterface;
 import com.viafourasdk.src.interfaces.VFLoginInterface;
 import com.viafourasdk.src.model.local.VFActionData;
 import com.viafourasdk.src.model.local.VFActionType;
 import com.viafourasdk.src.model.local.VFArticleMetadata;
 import com.viafourasdk.src.model.local.VFColors;
+import com.viafourasdk.src.model.local.VFCustomViewType;
+import com.viafourasdk.src.model.local.VFDefaultColors;
 import com.viafourasdk.src.model.local.VFSettings;
 import com.viafourasdk.src.model.local.VFSortType;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Map;
 
-public class RCTPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> implements VFLoginInterface {
+public class RCTPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> implements VFLoginInterface, VFCustomUIInterface, VFActionsInterface, VFLayoutInterface {
 
-    public static final String REACT_CLASS = "RNPreviewComments";
+    public static final String REACT_CLASS = "RNPreviewCommentsAndroid";
     public final int COMMAND_CREATE = 1;
-    private int propWidth;
-    private int propHeight;
-
     ReactApplicationContext reactContext;
+
+    int reactNativeViewId;
+
+    private int containerHeight = 100;
+    private String containerId;
+    private String articleUrl, articleTitle, articleDesc, articleThumbnailUrl;
 
     public RCTPreviewCommentsViewManager(ReactApplicationContext reactContext) {
         this.reactContext = reactContext;
@@ -76,7 +91,7 @@ public class RCTPreviewCommentsViewManager extends ViewGroupManager<FrameLayout>
             @Nullable ReadableArray args
     ) {
         super.receiveCommand(root, commandId, args);
-        int reactNativeViewId = args.getInt(0);
+        reactNativeViewId = args.getInt(0);
         int commandIdInt = Integer.parseInt(commandId);
 
         switch (commandIdInt) {
@@ -87,15 +102,21 @@ public class RCTPreviewCommentsViewManager extends ViewGroupManager<FrameLayout>
         }
     }
 
-    @ReactPropGroup(names = {"width", "height"}, customType = "Style")
-    public void setStyle(FrameLayout view, int index, Integer value) {
-        if (index == 0) {
-            propWidth = value;
-        }
+    public void sendDataToJS(String eventName, WritableMap data){
+        reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, data);
+    }
 
-        if (index == 1) {
-            propHeight = value;
-        }
+    @Nullable
+    @Override
+    public Map<String, Object> getExportedCustomDirectEventTypeConstants() {
+        return super.getExportedCustomDirectEventTypeConstants();
+    }
+
+    @Nullable
+    @Override
+    public Map getExportedCustomBubblingEventTypeConstants() {
+        return MapBuilder.builder()
+                .build();
     }
 
     /**
@@ -106,26 +127,22 @@ public class RCTPreviewCommentsViewManager extends ViewGroupManager<FrameLayout>
         setupLayout(parentView);
 
         try {
-            VFArticleMetadata articleMetadata = new VFArticleMetadata(new URL(""), "", "", new URL(""));
-            VFColors colors = new VFColors(ContextCompat.getColor(reactContext, R.color.colorVfDark), ContextCompat.getColor(reactContext, R.color.colorVf), Color.WHITE);
+            VFArticleMetadata articleMetadata = new VFArticleMetadata(new URL(articleUrl), articleTitle, articleDesc, new URL(articleThumbnailUrl));
+            VFColors colors = new VFColors(VFDefaultColors.getInstance().colorPrimaryDefault, VFDefaultColors.getInstance().colorPrimaryLightDefault, VFDefaultColors.getInstance().colorBackgroundDefault);
             VFSettings settings = new VFSettings(colors);
             FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
-            final VFPreviewCommentsFragment previewCommentsFragment = VFPreviewCommentsFragment.newInstance(activity.getApplication(), "", articleMetadata, this, settings, 10, VFSortType.mostLiked);
-            previewCommentsFragment.setActionCallback(new VFActionsInterface() {
-                @Override
-                public void onNewAction(VFActionType actionType, VFActionData action) {
-                    if(actionType == VFActionType.writeNewCommentPressed){
-
-                    } else if(actionType == VFActionType.openProfilePressed){
-
-                    }
-                }
-            });
+            final VFPreviewCommentsFragment previewCommentsFragment = VFPreviewCommentsFragment.newInstance(activity.getApplication(), containerId, articleMetadata, this, settings, 10, VFSortType.mostLiked);
+            previewCommentsFragment.setActionCallback(this);
+            previewCommentsFragment.setLayoutCallback(this);
+            previewCommentsFragment.setCustomUICallback(this);
             activity.getSupportFragmentManager()
                     .beginTransaction()
                     .replace(reactNativeViewId, previewCommentsFragment, String.valueOf(reactNativeViewId))
                     .commit();
+
+            startLogin();
         } catch (MalformedURLException e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }
@@ -134,7 +151,6 @@ public class RCTPreviewCommentsViewManager extends ViewGroupManager<FrameLayout>
         Choreographer.getInstance().postFrameCallback(new Choreographer.FrameCallback() {
             @Override
             public void doFrame(long frameTimeNanos) {
-                manuallyLayoutChildren(view);
                 view.getViewTreeObserver().dispatchOnGlobalLayout();
                 Choreographer.getInstance().postFrameCallback(this);
             }
@@ -144,20 +160,59 @@ public class RCTPreviewCommentsViewManager extends ViewGroupManager<FrameLayout>
     /**
      * Layout all children properly
      */
-    public void manuallyLayoutChildren(View view) {
-        // propWidth and propHeight coming from react-native props
-        int width = propWidth;
-        int height = propHeight;
 
-        view.measure(
-                View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY),
-                View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY));
-
-        view.layout(0, 0, width, height);
-    }
 
     @Override
     public void startLogin() {
+        WritableMap map = Arguments.createMap();
+        map.putBoolean("requireLogin", true);
+        sendDataToJS("onAuthNeeded", map);
+    }
 
+    @Override
+    public void customizeView(VFCustomViewType customViewType, View view) {
+
+    }
+
+    @ReactProp(name = "containerId")
+    public void setContainerId(FrameLayout view, String containerId) {
+        this.containerId = containerId;
+    }
+
+    @ReactProp(name = "articleTitle")
+    public void setArticleTitle(FrameLayout view, String articleTitle) {
+        this.articleTitle = articleTitle;
+    }
+
+    @ReactProp(name = "articleSubtitle")
+    public void setArticleSubtitle(FrameLayout view, String articleSubtitle) {
+        this.articleDesc = articleSubtitle;
+    }
+
+    @ReactProp(name = "articleUrl")
+    public void setArticleUrl(FrameLayout view, String articleUrl) {
+        this.articleUrl = articleUrl;
+    }
+
+    @ReactProp(name = "articleThumbnailUrl")
+    public void setArticleThumbnailUrl(FrameLayout view, String articleThumbnailUrl) {
+        this.articleThumbnailUrl = articleThumbnailUrl;
+    }
+
+    @Override
+    public void onNewAction(VFActionType actionType, VFActionData action) {
+        if(actionType == VFActionType.writeNewCommentPressed){
+
+        } else if(actionType == VFActionType.openProfilePressed){
+
+        }
+    }
+
+    @Override
+    public void containerHeightUpdated(VFFragment fragment, int height) {
+        containerHeight = height;
+        WritableMap map = Arguments.createMap();
+        map.putInt("newHeight", height);
+        sendDataToJS("onHeightChanged", map);
     }
 }

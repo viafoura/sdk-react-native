@@ -1,4 +1,4 @@
-package com.sdk.previewComments;
+package com.sdk.newComment;
 
 import android.view.Choreographer;
 import android.view.View;
@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
-import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.WritableMap;
@@ -18,8 +17,8 @@ import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.sdk.Utils;
 import com.viafourasdk.src.fragments.base.VFFragment;
+import com.viafourasdk.src.fragments.newcomment.VFNewCommentFragment;
 import com.viafourasdk.src.fragments.previewcomments.VFPreviewCommentsFragment;
 import com.viafourasdk.src.interfaces.VFActionsInterface;
 import com.viafourasdk.src.interfaces.VFCustomUIInterface;
@@ -31,6 +30,7 @@ import com.viafourasdk.src.model.local.VFArticleMetadata;
 import com.viafourasdk.src.model.local.VFColors;
 import com.viafourasdk.src.model.local.VFCustomViewType;
 import com.viafourasdk.src.model.local.VFDefaultColors;
+import com.viafourasdk.src.model.local.VFNewCommentAction;
 import com.viafourasdk.src.model.local.VFSettings;
 import com.viafourasdk.src.model.local.VFSortType;
 
@@ -38,19 +38,16 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
 
-public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> implements VFLoginInterface, VFCustomUIInterface, VFActionsInterface, VFLayoutInterface {
-
-    public static final String REACT_CLASS = "RNPreviewCommentsAndroid";
+public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> implements VFLoginInterface, VFCustomUIInterface, VFActionsInterface, VFLayoutInterface {
+    public static final String REACT_CLASS = "RNNewCommentAndroid";
     public final int COMMAND_CREATE = 1;
     ReactApplicationContext reactContext;
 
     int reactNativeViewId;
 
-    private int containerHeight = 100;
     private String containerId;
     private String articleUrl, articleTitle, articleDesc, articleThumbnailUrl;
-
-    public RNPreviewCommentsViewManager(ReactApplicationContext reactContext) {
+    public RNNewCommentsViewManager(ReactApplicationContext reactContext) {
         this.reactContext = reactContext;
     }
 
@@ -59,26 +56,17 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
         return REACT_CLASS;
     }
 
-    /**
-     * Return a FrameLayout which will later hold the Fragment
-     */
     @Override
     public FrameLayout createViewInstance(ThemedReactContext reactContext) {
         return new FrameLayout(reactContext);
     }
 
-    /**
-     * Map the "create" command to an integer
-     */
     @Nullable
     @Override
     public Map<String, Integer> getCommandsMap() {
         return MapBuilder.of("create", COMMAND_CREATE);
     }
 
-    /**
-     * Handle "create" command (called from JS) and call createFragment method
-     */
     @Override
     public void receiveCommand(
             @NonNull FrameLayout root,
@@ -97,22 +85,6 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
         }
     }
 
-    @Nullable
-    @Override
-    public Map<String, Object> getExportedCustomDirectEventTypeConstants() {
-        return super.getExportedCustomDirectEventTypeConstants();
-    }
-
-    @Nullable
-    @Override
-    public Map getExportedCustomBubblingEventTypeConstants() {
-        return MapBuilder.builder()
-                .build();
-    }
-
-    /**
-     * Replace your React Native view with a custom fragment
-     */
     public void createFragment(FrameLayout root, int reactNativeViewId) {
         ViewGroup parentView = (ViewGroup) root.findViewById(reactNativeViewId);
         setupLayout(parentView);
@@ -122,13 +94,13 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
             VFColors colors = new VFColors(VFDefaultColors.getInstance().colorPrimaryDefault, VFDefaultColors.getInstance().colorPrimaryLightDefault, VFDefaultColors.getInstance().colorBackgroundDefault);
             VFSettings settings = new VFSettings(colors);
             FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
-            final VFPreviewCommentsFragment previewCommentsFragment = VFPreviewCommentsFragment.newInstance(activity.getApplication(), containerId, articleMetadata, this, settings, 10, VFSortType.mostLiked);
-            previewCommentsFragment.setActionCallback(this);
-            previewCommentsFragment.setLayoutCallback(this);
-            previewCommentsFragment.setCustomUICallback(this);
+            VFNewCommentAction action = new VFNewCommentAction(VFNewCommentAction.VFNewCommentActionType.create);
+            final VFNewCommentFragment newCommentFragment = VFNewCommentFragment.newInstance(activity.getApplication(), action, containerId, articleMetadata, this, settings);
+            newCommentFragment.setActionCallback(this);
+            newCommentFragment.setCustomUICallback(this);
             activity.getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(reactNativeViewId, previewCommentsFragment, String.valueOf(reactNativeViewId))
+                    .replace(reactNativeViewId, newCommentFragment, String.valueOf(reactNativeViewId))
                     .commit();
 
             startLogin();
@@ -136,33 +108,6 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-    }
-
-    public void setupLayout(View view) {
-        Choreographer.getInstance().postFrameCallback(new Choreographer.FrameCallback() {
-            @Override
-            public void doFrame(long frameTimeNanos) {
-                view.getViewTreeObserver().dispatchOnGlobalLayout();
-                Choreographer.getInstance().postFrameCallback(this);
-            }
-        });
-    }
-
-    /**
-     * Layout all children properly
-     */
-
-
-    @Override
-    public void startLogin() {
-        WritableMap map = Arguments.createMap();
-        map.putBoolean("requireLogin", true);
-        Utils.sendDataToJS(reactContext, "onAuthNeeded", map);
-    }
-
-    @Override
-    public void customizeView(VFCustomViewType customViewType, View view) {
-
     }
 
     @ReactProp(name = "containerId")
@@ -190,20 +135,35 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
         this.articleThumbnailUrl = articleThumbnailUrl;
     }
 
+    public void setupLayout(View view) {
+        Choreographer.getInstance().postFrameCallback(new Choreographer.FrameCallback() {
+            @Override
+            public void doFrame(long frameTimeNanos) {
+                view.getViewTreeObserver().dispatchOnGlobalLayout();
+                Choreographer.getInstance().postFrameCallback(this);
+            }
+        });
+    }
+
     @Override
     public void onNewAction(VFActionType actionType, VFActionData action) {
-        if(actionType == VFActionType.writeNewCommentPressed){
-
-        } else if(actionType == VFActionType.openProfilePressed){
+        if(actionType == VFActionType.closeNewCommentPressed){
 
         }
     }
 
     @Override
+    public void customizeView(VFCustomViewType customViewType, View view) {
+
+    }
+
+    @Override
     public void containerHeightUpdated(VFFragment fragment, int height) {
-        containerHeight = height;
-        WritableMap map = Arguments.createMap();
-        map.putInt("newHeight", height);
-        Utils.sendDataToJS(reactContext, "onHeightChanged", map);
+
+    }
+
+    @Override
+    public void startLogin() {
+
     }
 }

@@ -17,7 +17,7 @@ public class AuthService extends ReactContextBaseJavaModule {
 
     private com.viafourasdk.src.services.auth.AuthService authService = ViafouraSDK.authService;
 
-    AuthService(ReactApplicationContext context) {
+    public AuthService(ReactApplicationContext context) {
         super(context);
     }
 

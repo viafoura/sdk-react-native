@@ -25,7 +25,11 @@ const LoginScreen = ({navigation, route}) => {
       style={{padding: 12}}
       title="test"
       onPress={() => {
-        doLogin(email, password)
+        doLogin(email, password).then(value => {
+          navigation.goBack();
+        }).catch(error => {
+            alert(error);
+        })
       }}>
       </Button>
     </View>

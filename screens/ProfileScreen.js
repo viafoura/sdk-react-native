@@ -2,7 +2,7 @@ import RNProfileAndroidComponent from '../native/android/RNProfileAndroid.js';
 
 const ProfileScreen = ({navigation, route}) => {
   return <RNProfileAndroidComponent
-  style= {{ height: this.state.commentsHeight }}
+  style= {{ height: 2500 }}
   userUUID={route.params.userUUID}
   presentationType={route.params.presentationType}
   onCloseProfile = {(event: any) => {

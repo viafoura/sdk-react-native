@@ -1,8 +1,13 @@
+import React from 'react';
+import { Dimensions } from 'react-native';
+
 import RNNewCommentAndroidComponent from '../native/android/RNNewCommentAndroid.js';
+
+let ScreenHeight = Dimensions.get("window").height;
 
 const NewCommentScreen = ({navigation, route}) => {
   return <RNNewCommentAndroidComponent
-  style= {{ height: this.state.commentsHeight }}
+  style= {{ height: ScreenHeight }}
   containerId={route.params.containerId}
   articleTitle={route.params.articleTitle}
   articleSubtitle={route.params.articleDesc}

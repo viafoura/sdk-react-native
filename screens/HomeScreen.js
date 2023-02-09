@@ -1,3 +1,6 @@
+import React from 'react';
+import { ScrollView } from 'react-native';
+
 import RNPreviewCommentsiOSComponent from '../native/ios/RNPreviewCommentsiOS.js';
 import RNPreviewCommentsAndroidComponent from '../native/android/RNPreviewCommentsAndroid.js';
 
@@ -7,8 +10,9 @@ const PreviewComments = Platform.select({
 });
 
 const HomeScreen = ({navigation, route}) => {
-  return <PreviewComments
-  style= {{ height: 1000 }}
+  return <ScrollView>
+  <PreviewComments
+  style= {{ height: 5000 }}
   containerId={route.params.containerId}
   articleTitle={route.params.articleTitle}
   articleSubtitle={route.params.articleDesc}
@@ -40,6 +44,7 @@ const HomeScreen = ({navigation, route}) => {
     navigation.navigate('Login')
   }}>
   </PreviewComments>
+  </ScrollView>
 };
 
 

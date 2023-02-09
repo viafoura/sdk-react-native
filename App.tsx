@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, StatusBar, ScrollView, PixelRatio } from 'react-native';
+import { Button, View, Text, StatusBar, ScrollView, PixelRatio } from 'react-native';
 import {WebView} from 'react-native-webview';
 
 this.state = {

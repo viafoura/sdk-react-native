@@ -1,5 +1,6 @@
 package com.sdk.previewComments;
 
+import android.content.res.Resources;
 import android.view.Choreographer;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
+import com.facebook.react.uimanager.annotations.ReactPropGroup;
 import com.sdk.Utils;
 import com.viafourasdk.src.fragments.base.VFFragment;
 import com.viafourasdk.src.fragments.previewcomments.VFPreviewCommentsFragment;
@@ -45,8 +47,7 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
     ReactApplicationContext reactContext;
 
     int reactNativeViewId;
-
-    private int containerHeight = 100;
+    private int propHeight;
     private String containerId;
     private String articleUrl, articleTitle, articleDesc, articleThumbnailUrl;
 
@@ -97,6 +98,7 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
         }
     }
 
+
     @Nullable
     @Override
     public Map<String, Object> getExportedCustomDirectEventTypeConstants() {
@@ -117,6 +119,7 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
         ViewGroup parentView = (ViewGroup) root.findViewById(reactNativeViewId);
         setupLayout(parentView);
 
+        System.out.println("CREATE FRAGMENT");
         try {
             VFArticleMetadata articleMetadata = new VFArticleMetadata(new URL(articleUrl), articleTitle, articleDesc, new URL(articleThumbnailUrl));
             VFColors colors = new VFColors(VFDefaultColors.getInstance().colorPrimaryDefault, VFDefaultColors.getInstance().colorPrimaryLightDefault, VFDefaultColors.getInstance().colorBackgroundDefault);
@@ -130,11 +133,16 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
                     .beginTransaction()
                     .replace(reactNativeViewId, previewCommentsFragment, String.valueOf(reactNativeViewId))
                     .commit();
-
-            startLogin();
         } catch (MalformedURLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
+        }
+    }
+
+    @ReactPropGroup(names = {"width", "height"}, customType = "Style")
+    public void setStyle(FrameLayout view, int index, Integer value) {
+        if (index == 1) {
+            propHeight = value;
         }
     }
 
@@ -142,16 +150,23 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
         Choreographer.getInstance().postFrameCallback(new Choreographer.FrameCallback() {
             @Override
             public void doFrame(long frameTimeNanos) {
+                manuallyLayoutChildren(view);
                 view.getViewTreeObserver().dispatchOnGlobalLayout();
                 Choreographer.getInstance().postFrameCallback(this);
             }
         });
     }
 
-    /**
-     * Layout all children properly
-     */
+    public void manuallyLayoutChildren(View view) {
+        int width = Resources.getSystem().getDisplayMetrics().widthPixels;
+        int height = propHeight;
 
+        view.measure(
+                View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY));
+
+        view.layout(0, 0, width, height);
+    }
 
     @Override
     public void startLogin() {
@@ -193,17 +208,27 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
     @Override
     public void onNewAction(VFActionType actionType, VFActionData action) {
         if(actionType == VFActionType.writeNewCommentPressed){
-
+            WritableMap map = Arguments.createMap();
+            if(action.getNewCommentAction().content != null){
+                map.putString("content", action.getNewCommentAction().content.toString());
+            }
+            map.putString("actionType", action.getNewCommentAction().type.toString());
+            Utils.sendDataToJS(reactContext, "onNewComment", map);
         } else if(actionType == VFActionType.openProfilePressed){
-
+            WritableMap map = Arguments.createMap();
+            if(action.getOpenProfileAction().presentationType != null){
+                map.putString("presentationType", action.getOpenProfileAction().presentationType.toString());
+            }
+            map.putString("userUUID", action.getOpenProfileAction().userUUID.toString());
+            Utils.sendDataToJS(reactContext, "onOpenProfile", map);
         }
     }
 
     @Override
     public void containerHeightUpdated(VFFragment fragment, int height) {
-        containerHeight = height;
-        WritableMap map = Arguments.createMap();
-        map.putInt("newHeight", height);
-        Utils.sendDataToJS(reactContext, "onHeightChanged", map);
+        //containerHeight = height;
+        //WritableMap map = Arguments.createMap();
+        //map.putInt("newHeight", height);
+        //Utils.sendDataToJS(reactContext, "onHeightChanged", map);
     }
 }

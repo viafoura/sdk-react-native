@@ -23,3 +23,7 @@ export const doCookieLogin = async (token, type) => {
 export const doOpenIDLogin = async (token) => {
   await AuthService.openIdLogin(token)
 };
+
+export const doPasswordReset = async (email) => {
+  await AuthService.resetPassword(email)
+};

@@ -10,6 +10,8 @@ import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen.js';
 import NewCommentScreen from './screens/NewCommentScreen.js';
 import LoginScreen from './screens/LoginScreen.js';
+import SignUpScreen from './screens/SignUpScreen.js';
+import ForgotPasswordScreen from './screens/ForgotPasswordScreen.js';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -30,6 +32,8 @@ const App = () => {
         <Stack.Screen name="NewComment" component={NewCommentScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="SignUp" component={SignUpScreen} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

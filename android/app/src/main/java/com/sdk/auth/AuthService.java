@@ -36,7 +36,7 @@ public class AuthService extends ReactContextBaseJavaModule {
 
             @Override
             public void onError(NetworkError err) {
-                promise.reject(err.message, "");
+                promise.reject(err.message, err.message);
             }
         });
     }
@@ -91,6 +91,21 @@ public class AuthService extends ReactContextBaseJavaModule {
         authService.socialLogin(token, new com.viafourasdk.src.services.auth.AuthService.SocialLoginCallback() {
             @Override
             public void onSuccess(SocialLoginResponse loginResponse) {
+                promise.resolve("");
+            }
+
+            @Override
+            public void onError(NetworkError err) {
+                promise.reject(err.message, "");
+            }
+        });
+    }
+
+    @ReactMethod
+    public void resetPassword(String email, Promise promise) {
+        authService.passwordReset(email, new com.viafourasdk.src.services.auth.AuthService.PasswordResetCallback() {
+            @Override
+            public void onSuccess() {
                 promise.resolve("");
             }
 

@@ -33,6 +33,7 @@ const SignUpScreen = ({navigation, route}) => {
       onPress={() => {
         doSignup(name, email, password).then(value => {
           navigation.goBack();
+          navigation.goBack();
         }).catch(error => {
             alert(error);
         })

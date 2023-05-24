@@ -35,6 +35,7 @@ import com.viafourasdk.src.model.local.VFCustomViewType;
 import com.viafourasdk.src.model.local.VFDefaultColors;
 import com.viafourasdk.src.model.local.VFSettings;
 import com.viafourasdk.src.model.local.VFSortType;
+import com.viafourasdk.src.model.local.VFTheme;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -119,10 +120,9 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
         ViewGroup parentView = (ViewGroup) root.findViewById(reactNativeViewId);
         setupLayout(parentView);
 
-        System.out.println("CREATE FRAGMENT");
         try {
             VFArticleMetadata articleMetadata = new VFArticleMetadata(new URL(articleUrl), articleTitle, articleDesc, new URL(articleThumbnailUrl));
-            VFColors colors = new VFColors(VFDefaultColors.getInstance().colorPrimaryDefault, VFDefaultColors.getInstance().colorPrimaryLightDefault, VFDefaultColors.getInstance().colorBackgroundDefault);
+            VFColors colors = new VFColors(VFDefaultColors.getInstance().colorPrimaryDefault(null), VFDefaultColors.getInstance().colorPrimaryLightDefault(null));
             VFSettings settings = new VFSettings(colors);
             FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
             final VFPreviewCommentsFragment previewCommentsFragment = VFPreviewCommentsFragment.newInstance(activity.getApplication(), containerId, articleMetadata, this, settings, 10, VFSortType.mostLiked);
@@ -176,7 +176,7 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
     }
 
     @Override
-    public void customizeView(VFCustomViewType customViewType, View view) {
+    public void customizeView(VFTheme theme, VFCustomViewType customViewType, View view) {
 
     }
 

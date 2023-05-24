@@ -37,6 +37,7 @@ import com.viafourasdk.src.model.local.VFDefaultColors;
 import com.viafourasdk.src.model.local.VFProfilePresentationType;
 import com.viafourasdk.src.model.local.VFSettings;
 import com.viafourasdk.src.model.local.VFSortType;
+import com.viafourasdk.src.model.local.VFTheme;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -95,7 +96,7 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
         ViewGroup parentView = (ViewGroup) root.findViewById(reactNativeViewId);
         setupLayout(parentView);
 
-        VFColors colors = new VFColors(VFDefaultColors.getInstance().colorPrimaryDefault, VFDefaultColors.getInstance().colorPrimaryLightDefault, VFDefaultColors.getInstance().colorBackgroundDefault);
+        VFColors colors = new VFColors(VFDefaultColors.getInstance().colorPrimaryDefault(null), VFDefaultColors.getInstance().colorPrimaryLightDefault(null));
         VFSettings settings = new VFSettings(colors);
         FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
         VFProfilePresentationType profilePresentationType = null;
@@ -163,7 +164,7 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
     }
 
     @Override
-    public void customizeView(VFCustomViewType customViewType, View view) {
+    public void customizeView(VFTheme theme, VFCustomViewType customViewType, View view) {
 
     }
 

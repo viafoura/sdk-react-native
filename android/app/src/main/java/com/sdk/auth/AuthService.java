@@ -58,7 +58,7 @@ public class AuthService extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void openIdLogin(String token, Promise promise) {
-        authService.openIdLogin(token, token, new com.viafourasdk.src.services.auth.AuthService.OpenIdLoginCallback() {
+        authService.openIdLogin(token, new com.viafourasdk.src.services.auth.AuthService.OpenIdLoginCallback() {
             @Override
             public void onSuccess(OpenIdLoginResponse loginResponse) {
                 promise.resolve("");

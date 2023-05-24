@@ -7,5 +7,6 @@ RCT_EXPORT_VIEW_PROPERTY(articleTitle, NSString)
 RCT_EXPORT_VIEW_PROPERTY(articleSubtitle, NSString)
 RCT_EXPORT_VIEW_PROPERTY(articleUrl, NSString)
 RCT_EXPORT_VIEW_PROPERTY(articleThumbnailUrl, NSString)
+RCT_EXPORT_VIEW_PROPERTY(darkMode, BOOL)
 
 @end

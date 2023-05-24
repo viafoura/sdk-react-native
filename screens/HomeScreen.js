@@ -18,6 +18,7 @@ const HomeScreen = ({navigation, route}) => {
   articleSubtitle={route.params.articleDesc}
   articleUrl={route.params.articleUrl}
   articleThumbnailUrl={route.params.articleThumbnailUrl}
+  darkMode={false}
   onHeightChanged = {(event: any) => {
     this.state.commentsHeight = event.newHeight;
   }}

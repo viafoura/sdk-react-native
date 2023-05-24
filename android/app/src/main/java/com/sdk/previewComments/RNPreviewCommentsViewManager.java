@@ -50,6 +50,7 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
     int reactNativeViewId;
     private int propHeight;
     private String containerId;
+    private boolean darkMode;
     private String articleUrl, articleTitle, articleDesc, articleThumbnailUrl;
 
     public RNPreviewCommentsViewManager(ReactApplicationContext reactContext) {
@@ -133,6 +134,7 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
                     .beginTransaction()
                     .replace(reactNativeViewId, previewCommentsFragment, String.valueOf(reactNativeViewId))
                     .commit();
+            previewCommentsFragment.setTheme(darkMode ? VFTheme.dark : VFTheme.light);
         } catch (MalformedURLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -203,6 +205,11 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
     @ReactProp(name = "articleThumbnailUrl")
     public void setArticleThumbnailUrl(FrameLayout view, String articleThumbnailUrl) {
         this.articleThumbnailUrl = articleThumbnailUrl;
+    }
+
+    @ReactProp(name = "darkMode")
+    public void setDarkMode(FrameLayout view, Boolean darkMode) {
+        this.darkMode = darkMode;
     }
 
     @Override

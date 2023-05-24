@@ -55,6 +55,7 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
     private String newCommentActionType;
     private String content;
     private String containerId;
+    private boolean darkMode;
     private String articleUrl, articleTitle, articleDesc, articleThumbnailUrl;
     public RNNewCommentsViewManager(ReactApplicationContext reactContext) {
         this.reactContext = reactContext;
@@ -126,6 +127,7 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
                     .beginTransaction()
                     .replace(reactNativeViewId, newCommentFragment, String.valueOf(reactNativeViewId))
                     .commit();
+            newCommentFragment.setTheme(darkMode ? VFTheme.dark : VFTheme.light);
 
             startLogin();
         } catch (MalformedURLException e) {
@@ -174,6 +176,11 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
         if (index == 1) {
             propHeight = value;
         }
+    }
+
+    @ReactProp(name = "darkMode")
+    public void setDarkMode(FrameLayout view, Boolean darkMode) {
+        this.darkMode = darkMode;
     }
 
     public void setupLayout(View view) {

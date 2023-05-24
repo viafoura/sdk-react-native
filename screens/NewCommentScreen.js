@@ -12,6 +12,7 @@ const NewCommentScreen = ({navigation, route}) => {
   articleTitle={route.params.articleTitle}
   articleSubtitle={route.params.articleDesc}
   articleUrl={route.params.articleUrl}
+  darkMode={false}
   articleThumbnailUrl={route.params.articleThumbnailUrl}
   newCommentActionType={route.params.newCommentActionType}
   content={route.params.content}

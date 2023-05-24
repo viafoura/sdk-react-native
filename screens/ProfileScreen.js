@@ -5,6 +5,7 @@ const ProfileScreen = ({navigation, route}) => {
   style= {{ height: 2500 }}
   userUUID={route.params.userUUID}
   presentationType={route.params.presentationType}
+  darkMode={false}
   onCloseProfile = {(event: any) => {
     navigation.goBack();
   }}

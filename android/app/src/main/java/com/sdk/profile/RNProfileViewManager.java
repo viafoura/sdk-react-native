@@ -52,8 +52,9 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
     int reactNativeViewId;
 
     private int propHeight;
-    UUID userUUID;
-    String presentationType;
+    private boolean darkMode;
+    private UUID userUUID;
+    private String presentationType;
     public RNProfileViewManager(ReactApplicationContext reactContext) {
         this.reactContext = reactContext;
     }
@@ -113,6 +114,7 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
                 .beginTransaction()
                 .replace(reactNativeViewId, profileFragment, String.valueOf(reactNativeViewId))
                 .commit();
+        profileFragment.setTheme(darkMode ? VFTheme.dark : VFTheme.light);
 
         startLogin();
     }
@@ -125,6 +127,11 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
     @ReactProp(name = "presentationType")
     public void setPresentationType(FrameLayout view, String presentationType) {
         this.presentationType = presentationType;
+    }
+
+    @ReactProp(name = "darkMode")
+    public void setDarkMode(FrameLayout view, Boolean darkMode) {
+        this.darkMode = darkMode;
     }
 
     @ReactPropGroup(names = {"width", "height"}, customType = "Style")

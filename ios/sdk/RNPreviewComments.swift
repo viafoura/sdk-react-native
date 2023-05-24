@@ -32,7 +32,7 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
   }
   
   func initializeSettings(){
-    let colors = VFColors(colorPrimary: UIColor(red: 0.00, green: 0.45, blue: 0.91, alpha: 1.00), colorPrimaryLight: UIColor(red: 0.90, green: 0.95, blue: 1.00, alpha: 1.00), colorBackground: VFColors.colorBackgroundDefault, colorSeparator: VFColors.colorSeparatorDefault)
+    let colors = VFColors(colorPrimary: UIColor(red: 0.00, green: 0.45, blue: 0.91, alpha: 1.00), colorPrimaryLight: UIColor(red: 0.90, green: 0.95, blue: 1.00, alpha: 1.00))
     let fonts = VFFonts(fontLight: UIFont.boldSystemFont(ofSize: 1), fontRegular: UIFont.boldSystemFont(ofSize: 1), fontMedium: UIFont.boldSystemFont(ofSize: 1), fontSemibold: UIFont.boldSystemFont(ofSize: 1), fontBold: UIFont.boldSystemFont(ofSize: 1))
     settings = VFSettings(colors: colors, fonts: fonts)
     

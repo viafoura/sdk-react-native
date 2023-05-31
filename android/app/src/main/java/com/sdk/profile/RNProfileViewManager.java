@@ -51,7 +51,6 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
 
     int reactNativeViewId;
 
-    private int propHeight;
     private boolean darkMode;
     private UUID userUUID;
     private String presentationType;
@@ -134,12 +133,6 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
         this.darkMode = darkMode;
     }
 
-    @ReactPropGroup(names = {"width", "height"}, customType = "Style")
-    public void setStyle(FrameLayout view, int index, Integer value) {
-        if (index == 1) {
-            propHeight = value;
-        }
-    }
     public void setupLayout(View view) {
         Choreographer.getInstance().postFrameCallback(new Choreographer.FrameCallback() {
             @Override
@@ -153,7 +146,7 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
 
     public void manuallyLayoutChildren(View view) {
         int width = Resources.getSystem().getDisplayMetrics().widthPixels;
-        int height = propHeight;
+        int height = view.getHeight();
 
         view.measure(
                 View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY),

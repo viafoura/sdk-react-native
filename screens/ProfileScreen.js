@@ -2,7 +2,7 @@ import RNProfileAndroidComponent from '../native/android/RNProfileAndroid.js';
 
 const ProfileScreen = ({navigation, route}) => {
   return <RNProfileAndroidComponent
-  style= {{ height: 2500 }}
+  style= {{ height: "100%" }}
   userUUID={route.params.userUUID}
   presentationType={route.params.presentationType}
   darkMode={false}

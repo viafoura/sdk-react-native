@@ -233,9 +233,8 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
 
     @Override
     public void containerHeightUpdated(VFFragment fragment, int height) {
-        //containerHeight = height;
-        //WritableMap map = Arguments.createMap();
-        //map.putInt("newHeight", height);
-        //Utils.sendDataToJS(reactContext, "onHeightChanged", map);
+        WritableMap map = Arguments.createMap();
+        map.putInt("newHeight", height);
+        Utils.sendDataToJS(reactContext, "onHeightChanged", map);
     }
 }

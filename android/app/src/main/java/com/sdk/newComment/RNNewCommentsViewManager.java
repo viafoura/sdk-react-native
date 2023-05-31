@@ -50,8 +50,6 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
     ReactApplicationContext reactContext;
 
     int reactNativeViewId;
-
-    private int propHeight;
     private String newCommentActionType;
     private String content;
     private String containerId;
@@ -171,12 +169,6 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
         this.articleThumbnailUrl = articleThumbnailUrl;
     }
 
-    @ReactPropGroup(names = {"width", "height"}, customType = "Style")
-    public void setStyle(FrameLayout view, int index, Integer value) {
-        if (index == 1) {
-            propHeight = value;
-        }
-    }
 
     @ReactProp(name = "darkMode")
     public void setDarkMode(FrameLayout view, Boolean darkMode) {
@@ -197,7 +189,7 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
     public void manuallyLayoutChildren(View view) {
         // propWidth and propHeight coming from react-native props
         int width = Resources.getSystem().getDisplayMetrics().widthPixels;
-        int height = propHeight;
+        int height = view.getHeight();
 
         view.measure(
                 View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY),

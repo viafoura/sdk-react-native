@@ -1,5 +1,6 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, PixelRatio, Platform } from 'react-native';
+import { useState } from "react";
 
 import RNPreviewCommentsiOSComponent from '../native/ios/RNPreviewCommentsiOS.js';
 import RNPreviewCommentsAndroidComponent from '../native/android/RNPreviewCommentsAndroid.js';
@@ -10,9 +11,11 @@ const PreviewComments = Platform.select({
 });
 
 const HomeScreen = ({navigation, route}) => {
+  const [commentsHeight, setCommentsHeight] = useState(1000)
+
   return <ScrollView>
   <PreviewComments
-  style= {{ height: 5000 }}
+  style= {{ height: commentsHeight }}
   containerId={route.params.containerId}
   articleTitle={route.params.articleTitle}
   articleSubtitle={route.params.articleDesc}
@@ -20,7 +23,11 @@ const HomeScreen = ({navigation, route}) => {
   articleThumbnailUrl={route.params.articleThumbnailUrl}
   darkMode={false}
   onHeightChanged = {(event: any) => {
-    this.state.commentsHeight = event.newHeight;
+    if(Platform.OS === 'android'){
+      setCommentsHeight(10000);
+    } else {
+      setCommentsHeight(event.newHeight);
+    }
   }}
   onOpenProfile = {(event: any) => {
     var object = {

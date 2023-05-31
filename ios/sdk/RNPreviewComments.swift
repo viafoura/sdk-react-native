@@ -118,7 +118,7 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
                 break
             }
         }
-        
+
         guard let newCommentViewController = VFNewCommentViewController.new(newCommentActionType: actionType, containerId: containerId, articleMetadata: articleMetadata, loginDelegate: self, settings: settings) else{
             return
         }

@@ -11,9 +11,9 @@ const PreviewComments = Platform.select({
 });
 
 const HomeScreen = ({navigation, route}) => {
-  const [commentsHeight, setCommentsHeight] = useState(1000)
+  const [commentsHeight, setCommentsHeight] = useState(4000)
 
-  return <ScrollView>
+  return <ScrollView style={{height: commentsHeight }}>
   <PreviewComments
   style= {{ height: commentsHeight }}
   containerId={route.params.containerId}
@@ -23,11 +23,7 @@ const HomeScreen = ({navigation, route}) => {
   articleThumbnailUrl={route.params.articleThumbnailUrl}
   darkMode={false}
   onHeightChanged = {(event: any) => {
-    if(Platform.OS === 'android'){
-      setCommentsHeight(10000);
-    } else {
-      setCommentsHeight(event.newHeight);
-    }
+    setCommentsHeight(event.newHeight);
   }}
   onOpenProfile = {(event: any) => {
     var object = {

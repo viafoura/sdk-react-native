@@ -1,6 +1,8 @@
 package com.sdk.previewComments;
 
+import android.content.Context;
 import android.content.res.Resources;
+import android.util.DisplayMetrics;
 import android.view.Choreographer;
 import android.view.View;
 import android.view.ViewGroup;
@@ -159,9 +161,13 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
         });
     }
 
+    public static float convertDpToPixel(float dp, Context context){
+        return dp * ((float) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+    }
+
     public void manuallyLayoutChildren(View view) {
         int width = Resources.getSystem().getDisplayMetrics().widthPixels;
-        int height = propHeight;
+        int height = (int) convertDpToPixel(propHeight, reactContext);
 
         view.measure(
                 View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY),

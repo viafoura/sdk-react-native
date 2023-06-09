@@ -128,7 +128,7 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
             VFColors colors = new VFColors(VFDefaultColors.getInstance().colorPrimaryDefault(null), VFDefaultColors.getInstance().colorPrimaryLightDefault(null));
             VFSettings settings = new VFSettings(colors);
             FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
-            final VFPreviewCommentsFragment previewCommentsFragment = VFPreviewCommentsFragment.newInstance(activity.getApplication(), containerId, articleMetadata, this, settings, 10, VFSortType.mostLiked);
+            final VFPreviewCommentsFragment previewCommentsFragment = VFPreviewCommentsFragment.newInstance(activity.getApplication(), containerId, articleMetadata, this, settings, 10, VFSortType.newest);
             previewCommentsFragment.setActionCallback(this);
             previewCommentsFragment.setLayoutCallback(this);
             previewCommentsFragment.setCustomUICallback(this);

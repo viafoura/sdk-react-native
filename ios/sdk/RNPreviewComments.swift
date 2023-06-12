@@ -49,7 +49,7 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
 
         guard let vc = VFPreviewCommentsViewController.new(
             containerId: containerId, articleMetadata: articleMetadata, loginDelegate: self,
-            settings: settings) else {
+            settings: settings, defaultSort: .newest) else {
           return
         }
         

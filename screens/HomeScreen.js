@@ -17,6 +17,7 @@ const HomeScreen = ({navigation, route}) => {
   <PreviewComments
   style= {{ height: commentsHeight }}
   containerId={route.params.containerId}
+  authorId={route.params.authorId}
   articleTitle={route.params.articleTitle}
   articleSubtitle={route.params.articleDesc}
   articleUrl={route.params.articleUrl}

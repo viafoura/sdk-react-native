@@ -7,6 +7,7 @@ import android.view.Choreographer;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -41,6 +42,8 @@ import com.viafourasdk.src.model.local.VFTheme;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Map;
 
 public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> implements VFLoginInterface, VFCustomUIInterface, VFActionsInterface, VFLayoutInterface {
@@ -52,6 +55,7 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
     int reactNativeViewId;
     private int propHeight;
     private String containerId;
+    private String authorId;
     private boolean darkMode;
     private String articleUrl, articleTitle, articleDesc, articleThumbnailUrl;
 
@@ -137,6 +141,10 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
                     .replace(reactNativeViewId, previewCommentsFragment, String.valueOf(reactNativeViewId))
                     .commit();
             previewCommentsFragment.setTheme(darkMode ? VFTheme.dark : VFTheme.light);
+
+            if(authorId != null){
+                previewCommentsFragment.setAuthorIds(Collections.singletonList(authorId));
+            }
         } catch (MalformedURLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -186,6 +194,11 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
     @Override
     public void customizeView(VFTheme theme, VFCustomViewType customViewType, View view) {
 
+    }
+
+    @ReactProp(name = "authorId")
+    public void setAuthorId(FrameLayout view, String authorId) {
+        this.authorId = authorId;
     }
 
     @ReactProp(name = "containerId")

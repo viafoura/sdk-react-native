@@ -12,6 +12,7 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
     required init?(coder aDecoder: NSCoder) { fatalError("nope") }
 
     @objc var containerId = ""
+    @objc var authorId = ""
     @objc var articleUrl = ""
     @objc var articleTitle = ""
     @objc var articleSubtitle = ""
@@ -69,6 +70,7 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
         
         vc.setActionCallbacks(callbacks: callbacks)
         vc.setLayoutDelegate(layoutDelegate: self)
+        vc.setAuthorsIds(authors: [authorId])
       
         parentVC.addChild(vc)
         addSubview(vc.view)

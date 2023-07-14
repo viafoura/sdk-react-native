@@ -24,6 +24,7 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen name="Home" initialParams={{
           containerId: "101113541",
+          authorId: "7548800024996",
           articleTitle: "Moving Staff to Cover the Coronavirus",
           articleDesc: "Here Are What Media Companies Are Doing to Deal With COVID-19 Information Overload",
           articleUrl: "https://viafoura-mobile-demo.vercel.app/posts/here-are-what-media-companies-are-doing-with-covid-19-overload",

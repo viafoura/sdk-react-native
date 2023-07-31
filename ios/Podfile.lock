@@ -425,7 +425,7 @@ PODS:
     - React-Core
     - React-RCTImage
   - SocketRocket (0.6.0)
-  - ViafouraCore (0.0.14)
+  - ViafouraCore (0.0.16)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -492,7 +492,7 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNScreens (from `../node_modules/react-native-screens`)
-  - ViafouraCore
+  - ViafouraCore (~> 0.0.16)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -641,10 +641,10 @@ SPEC CHECKSUMS:
   ReactCommon: f697c0ac52e999aa818e43e2b6f277787c735e2d
   RNScreens: ea4cd3a853063cda19a4e3c28d2e52180c80f4eb
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
-  ViafouraCore: edc80c9eb7963ab6d0cbe1468bd19841641d107f
+  ViafouraCore: a7f11fb232fa131e38e915058b974d9203cbd180
   Yoga: 5b0304b3dbef2b52e078052138e23a19c7dacaef
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 67f850462d31364054f80ce6fe71ceeeb3deaf2d
+PODFILE CHECKSUM: 13e09254ebd67d1e85691d8f44403297c00a885d
 
 COCOAPODS: 1.12.0

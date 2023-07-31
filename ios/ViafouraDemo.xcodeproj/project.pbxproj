@@ -301,7 +301,7 @@
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			packageReferences = (
-				47E3FF802A60F7D600BEE844 /* XCRemoteSwiftPackageReference "sdk-ios.git" */,
+				47E3FF802A60F7D600BEE844 /* XCRemoteSwiftPackageReference "sdk-ios" */,
 			);
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
@@ -659,7 +659,6 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				EXCLUDED_ARCHS = arm64;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -732,7 +731,6 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				EXCLUDED_ARCHS = arm64;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -798,12 +796,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		47E3FF802A60F7D600BEE844 /* XCRemoteSwiftPackageReference "sdk-ios.git" */ = {
+		47E3FF802A60F7D600BEE844 /* XCRemoteSwiftPackageReference "sdk-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/viafoura/sdk-ios.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.14;
+				minimumVersion = 0.0.16;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

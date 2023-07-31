@@ -63,7 +63,7 @@ class RCTAuthService: NSObject {
   
   @objc(cookieLogin: resolve: reject:)
   func cookieLogin(_ cookie: String, resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
-    authService.cookieLogin(token: "token", type: "type", completion: { result in
+    authService.cookieLogin(token: cookie, completion: { result in
       switch(result){
       case .success(let user):
         resolve("Success")
@@ -77,7 +77,7 @@ class RCTAuthService: NSObject {
   
   @objc(signup: email: password: resolve: reject:)
   func signup(_ name: String, email: String, password: String, resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
-    authService.signup(name: "", email: "", password: "", completion: { result in
+    authService.signup(name: name, email: email, password: password, completion: { result in
       switch(result){
       case .success(let user):
         resolve("Success")

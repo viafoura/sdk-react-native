@@ -24,6 +24,7 @@ end
 target 'ViafouraDemo' do
   config = use_native_modules!
   
+  pod 'ViafouraCore', '0.0.16'
   # Flags change depending on the env values.
   flags = get_default_flags()
         
@@ -55,6 +56,13 @@ target 'ViafouraDemo' do
       # necessary for Mac Catalyst builds
       :mac_catalyst_enabled => false
     )
+
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.4'
+      end
+    end
+
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
   end
 end

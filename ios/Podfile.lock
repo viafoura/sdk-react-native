@@ -425,6 +425,7 @@ PODS:
     - React-Core
     - React-RCTImage
   - SocketRocket (0.6.0)
+  - ViafouraCore (0.0.16)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -491,6 +492,7 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - ViafouraCore (= 0.0.16)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -509,6 +511,7 @@ SPEC REPOS:
     - libevent
     - OpenSSL-Universal
     - SocketRocket
+    - ViafouraCore
     - YogaKit
 
 EXTERNAL SOURCES:
@@ -612,7 +615,7 @@ SPEC CHECKSUMS:
   RCTTypeSafety: 3063e5a1e5b1dc2cbeda5c8f8926c0ad1a6b0871
   React: 0a1a36e8e81cfaac244ed88b97f23ab56e5434f0
   React-callinvoker: 679a09fbfe1a8bbf0c8588b588bf3ef85e7e4922
-  React-Codegen: 6fbcd4da431939f8eb043ec01b6c9df6269aca04
+  React-Codegen: 78f8966839f22b54d3303a6aca2679bce5723c3f
   React-Core: 679e5ff1eb0e3122463976d0b2049bebcb7b33d6
   React-CoreModules: 06cbf15185e6daf9fb3aec02c963f4807bd794b3
   React-cxxreact: 645dc75c9deba4c15698b1b5902236d6a766461f
@@ -621,8 +624,8 @@ SPEC CHECKSUMS:
   React-jsiexecutor: c7e028406112db456ac3cf5720d266bc7bc20938
   React-jsinspector: ea8101acf525ec08b2d87ddf0637d45f8e3b4148
   React-logger: 97987f46779d8dd24656474ad0c43a5b459f31d6
-  react-native-safe-area-context: 366f55da044348b534b54cedbfa8df2e79394131
-  react-native-webview: e3b659a6d614bb37fb12a2de82c91a378c59d84b
+  react-native-safe-area-context: 39c2d8be3328df5d437ac1700f4f3a4f75716acc
+  react-native-webview: 9f111dfbcfc826084d6c507f569e5e03342ee1c1
   React-perflogger: c7ccda3d1d1da837f7ff4e54e816022a6803ee87
   React-RCTActionSheet: 01c125aebbad462a24228f68c584c7a921d6c28e
   React-RCTAnimation: 5277a9440acffc4a5b7baa6ae3880fe467277ae6
@@ -638,9 +641,10 @@ SPEC CHECKSUMS:
   ReactCommon: f697c0ac52e999aa818e43e2b6f277787c735e2d
   RNScreens: ea4cd3a853063cda19a4e3c28d2e52180c80f4eb
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
+  ViafouraCore: a7f11fb232fa131e38e915058b974d9203cbd180
   Yoga: 5b0304b3dbef2b52e078052138e23a19c7dacaef
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 93603ae465242a47b654dccaccaa2270866b9a07
+PODFILE CHECKSUM: 4d085e32c13c924aa705d509b8116527eb66f44b
 
 COCOAPODS: 1.12.0

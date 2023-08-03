@@ -203,6 +203,10 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
         if(actionType == VFActionType.closeNewCommentPressed){
             WritableMap map = Arguments.createMap();
             Utils.sendDataToJS(reactContext, "onCloseNewComment", map);
+        } else if(actionType == VFActionType.commentPosted){
+
+        } else if(actionType == VFActionType.replyPosted){
+
         }
     }
 

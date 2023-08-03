@@ -116,6 +116,10 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
 
         let callbacks: VFActionsCallbacks = { type in
             switch type {
+            case .commentPosted(let contentUUID):
+              break
+            case .replyPosted(let contentUUID):
+              break
             default:
                 break
             }

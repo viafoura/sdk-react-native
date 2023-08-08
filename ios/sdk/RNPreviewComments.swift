@@ -21,6 +21,8 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
 
     var settings: VFSettings?
     var articleMetadata: VFArticleMetadata?
+  
+    let fontBold = UIFont.boldSystemFont(ofSize: 17)
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -35,7 +37,7 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
   
     func initializeSettings(){
         let colors = VFColors(colorPrimary: UIColor(red: 0.00, green: 0.45, blue: 0.91, alpha: 1.00), colorPrimaryLight: UIColor(red: 0.90, green: 0.95, blue: 1.00, alpha: 1.00))
-        let fonts = VFFonts(fontLight: UIFont.boldSystemFont(ofSize: 1), fontRegular: UIFont.boldSystemFont(ofSize: 1), fontMedium: UIFont.boldSystemFont(ofSize: 1), fontSemibold: UIFont.boldSystemFont(ofSize: 1), fontBold: UIFont.boldSystemFont(ofSize: 1))
+        let fonts = VFFonts(fontBold: fontBold)
         settings = VFSettings(colors: colors, fonts: fonts)
         
         articleMetadata = VFArticleMetadata(
@@ -117,6 +119,7 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
         let callbacks: VFActionsCallbacks = { type in
             switch type {
             case .commentPosted(let contentUUID):
+              RTEEventEmitter.shared?.emitEvent(withName: "onNewComment", body: nil)
               break
             case .replyPosted(let contentUUID):
               break

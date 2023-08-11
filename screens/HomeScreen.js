@@ -24,7 +24,9 @@ const HomeScreen = ({navigation, route}) => {
   articleThumbnailUrl={route.params.articleThumbnailUrl}
   darkMode={false}
   onHeightChanged = {(event: any) => {
-    setCommentsHeight(event.newHeight);
+    if(event.containerId == route.params.containerId){
+      setCommentsHeight(event.newHeight);
+    }
   }}
   onOpenProfile = {(event: any) => {
     var object = {

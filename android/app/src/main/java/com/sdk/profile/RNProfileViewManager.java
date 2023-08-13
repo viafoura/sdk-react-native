@@ -169,7 +169,7 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
     }
 
     @Override
-    public void containerHeightUpdated(VFFragment fragment, int height) {
+    public void containerHeightUpdated(VFFragment fragment, String containerId, int height) {
 
     }
 

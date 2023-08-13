@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import com.facebook.react.bridge.Arguments;
@@ -44,12 +45,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> implements VFLoginInterface, VFCustomUIInterface, VFActionsInterface, VFLayoutInterface {
 
     public static final String REACT_CLASS = "RNPreviewCommentsAndroid";
     public final int COMMAND_CREATE = 1;
+    public final int COMMAND_DESTROY = 2;
     ReactApplicationContext reactContext;
 
     int reactNativeViewId;
@@ -251,7 +254,7 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
     }
 
     @Override
-    public void containerHeightUpdated(VFFragment fragment, int height) {
+    public void containerHeightUpdated(VFFragment fragment, String containerId, int height) {
         WritableMap map = Arguments.createMap();
         map.putInt("newHeight", height);
         map.putString("containerId", containerId);

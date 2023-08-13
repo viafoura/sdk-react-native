@@ -216,7 +216,7 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
     }
 
     @Override
-    public void containerHeightUpdated(VFFragment fragment, int height) {
+    public void containerHeightUpdated(VFFragment fragment, String containerId, int height) {
 
     }
 

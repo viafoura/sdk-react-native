@@ -25,8 +25,6 @@ const ArticleScreen = ({navigation, route}) => {
   darkMode={false}
   onHeightChanged = {(event: any) => {
     if(event.containerId == route.params.containerId){
-      console.log("on height changed");
-      console.log(event.newHeight);
       setCommentsHeight(event.newHeight);
     }
   }}

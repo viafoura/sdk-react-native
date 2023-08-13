@@ -10,7 +10,7 @@ const PreviewComments = Platform.select({
   android: RNPreviewCommentsAndroidComponent
 });
 
-const HomeScreen = ({navigation, route}) => {
+const ArticleScreen = ({navigation, route}) => {
   const [commentsHeight, setCommentsHeight] = useState(4000)
 
   return <ScrollView style={{height: commentsHeight }}>
@@ -25,6 +25,8 @@ const HomeScreen = ({navigation, route}) => {
   darkMode={false}
   onHeightChanged = {(event: any) => {
     if(event.containerId == route.params.containerId){
+      console.log("on height changed");
+      console.log(event.newHeight);
       setCommentsHeight(event.newHeight);
     }
   }}
@@ -55,4 +57,4 @@ const HomeScreen = ({navigation, route}) => {
 };
 
 
-export default HomeScreen;
+export default ArticleScreen;

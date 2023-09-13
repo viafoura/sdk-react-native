@@ -18,6 +18,8 @@
 		47707D30298B218400B28A2C /* RNPreviewCommentsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47707D2D298B218400B28A2C /* RNPreviewCommentsManager.m */; };
 		47707D38298B2E6C00B28A2C /* RTEEventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 47707D37298B2E6C00B28A2C /* RTEEventEmitter.m */; };
 		47707D3A298B2E8D00B28A2C /* RTEEventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47707D39298B2E8D00B28A2C /* RTEEventEmitter.swift */; };
+		47F1B1942AB0F36300E1D791 /* RCTCommentsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F1B1922AB0F36300E1D791 /* RCTCommentsService.swift */; };
+		47F1B1952AB0F36300E1D791 /* RCTCommentsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F1B1932AB0F36300E1D791 /* RCTCommentsService.m */; };
 		47F3B8E9298B4375005DDFBA /* RCTAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F3B8E8298B4375005DDFBA /* RCTAuthService.swift */; };
 		47F3B914298B4B46005DDFBA /* RCTAuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F3B913298B4B46005DDFBA /* RCTAuthService.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -67,6 +69,8 @@
 		47707D2D298B218400B28A2C /* RNPreviewCommentsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNPreviewCommentsManager.m; path = sdk/RNPreviewCommentsManager.m; sourceTree = "<group>"; };
 		47707D37298B2E6C00B28A2C /* RTEEventEmitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RTEEventEmitter.m; path = sdk/RTEEventEmitter.m; sourceTree = "<group>"; };
 		47707D39298B2E8D00B28A2C /* RTEEventEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RTEEventEmitter.swift; path = sdk/RTEEventEmitter.swift; sourceTree = "<group>"; };
+		47F1B1922AB0F36300E1D791 /* RCTCommentsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RCTCommentsService.swift; path = sdk/RCTCommentsService.swift; sourceTree = "<group>"; };
+		47F1B1932AB0F36300E1D791 /* RCTCommentsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCommentsService.m; path = sdk/RCTCommentsService.m; sourceTree = "<group>"; };
 		47F3B8E8298B4375005DDFBA /* RCTAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RCTAuthService.swift; path = sdk/RCTAuthService.swift; sourceTree = "<group>"; };
 		47F3B913298B4B46005DDFBA /* RCTAuthService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTAuthService.m; path = sdk/RCTAuthService.m; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-sdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sdk.release.xcconfig"; path = "Target Support Files/Pods-sdk/Pods-sdk.release.xcconfig"; sourceTree = "<group>"; };
@@ -120,6 +124,7 @@
 		13B07FAE1A68108700A75B9A /* ViafouraDemo */ = {
 			isa = PBXGroup;
 			children = (
+				47F1B1912AB0F31D00E1D791 /* CommentService */,
 				47F3B934298BE988005DDFBA /* Initializer */,
 				47F3B8E7298B430B005DDFBA /* AuthService */,
 				47707D34298B2E2C00B28A2C /* EventEmitter */,
@@ -162,6 +167,15 @@
 				47707D39298B2E8D00B28A2C /* RTEEventEmitter.swift */,
 			);
 			name = EventEmitter;
+			sourceTree = "<group>";
+		};
+		47F1B1912AB0F31D00E1D791 /* CommentService */ = {
+			isa = PBXGroup;
+			children = (
+				47F1B1932AB0F36300E1D791 /* RCTCommentsService.m */,
+				47F1B1922AB0F36300E1D791 /* RCTCommentsService.swift */,
+			);
+			name = CommentService;
 			sourceTree = "<group>";
 		};
 		47F3B8E7298B430B005DDFBA /* AuthService */ = {
@@ -300,8 +314,6 @@
 				Base,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
-			packageReferences = (
-			);
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -495,7 +507,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				47707D2F298B218400B28A2C /* RNPreviewCommentsManager.swift in Sources */,
+				47F1B1942AB0F36300E1D791 /* RCTCommentsService.swift in Sources */,
 				47707D3A298B2E8D00B28A2C /* RTEEventEmitter.swift in Sources */,
+				47F1B1952AB0F36300E1D791 /* RCTCommentsService.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				47F3B914298B4B46005DDFBA /* RCTAuthService.m in Sources */,
 				47707D30298B218400B28A2C /* RNPreviewCommentsManager.m in Sources */,

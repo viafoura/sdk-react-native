@@ -68,7 +68,7 @@ const LoginScreen = ({ navigation, route }) => {
         <Button
           style={styles.button}
           title="Log-in"
-          onPress={() => {
+          onPress={async () => {
             doLogin(email, password)
               .then((value) => {
                 navigation.goBack();

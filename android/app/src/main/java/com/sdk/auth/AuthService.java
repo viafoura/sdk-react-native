@@ -15,7 +15,7 @@ import com.viafourasdk.src.model.network.error.NetworkError;
 
 public class AuthService extends ReactContextBaseJavaModule {
 
-    private com.viafourasdk.src.services.auth.AuthService authService = ViafouraSDK.authService;
+    private com.viafourasdk.src.services.auth.AuthService authService = ViafouraSDK.auth();
 
     public AuthService(ReactApplicationContext context) {
         super(context);

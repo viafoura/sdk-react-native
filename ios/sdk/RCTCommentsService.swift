@@ -6,7 +6,7 @@
 //
 
 import ViafouraSDK
-@objc(RCTAuthService)
+@objc(RCTCommentsService)
 class RCTCommentsService: NSObject {
   let commentsService = ViafouraSDK.comments()
   

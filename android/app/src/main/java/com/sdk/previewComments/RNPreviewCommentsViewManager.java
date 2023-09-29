@@ -34,6 +34,7 @@ import com.viafourasdk.src.interfaces.VFLoginInterface;
 import com.viafourasdk.src.model.local.VFActionData;
 import com.viafourasdk.src.model.local.VFActionType;
 import com.viafourasdk.src.model.local.VFArticleMetadata;
+import com.viafourasdk.src.model.local.VFAuthPromptType;
 import com.viafourasdk.src.model.local.VFColors;
 import com.viafourasdk.src.model.local.VFCustomViewType;
 import com.viafourasdk.src.model.local.VFDefaultColors;
@@ -148,7 +149,7 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
             if(authorId != null){
                 previewCommentsFragment.setAuthorIds(Collections.singletonList(authorId));
             }
-        } catch (MalformedURLException e) {
+        } catch (MalformedURLException | IllegalArgumentException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }

@@ -106,16 +106,18 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
             profilePresentationType = VFProfilePresentationType.feed;
         }
 
-        final VFProfileFragment profileFragment = VFProfileFragment.newInstance(activity.getApplication(), userUUID, profilePresentationType, this, settings);
-        profileFragment.setActionCallback(this);
-        profileFragment.setCustomUICallback(this);
-        activity.getSupportFragmentManager()
-                .beginTransaction()
-                .replace(reactNativeViewId, profileFragment, String.valueOf(reactNativeViewId))
-                .commit();
-        profileFragment.setTheme(darkMode ? VFTheme.dark : VFTheme.light);
-
-        startLogin();
+        try {
+            final VFProfileFragment profileFragment = VFProfileFragment.newInstance(activity.getApplication(), userUUID, profilePresentationType, this, settings);
+            profileFragment.setActionCallback(this);
+            profileFragment.setCustomUICallback(this);
+            activity.getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(reactNativeViewId, profileFragment, String.valueOf(reactNativeViewId))
+                    .commit();
+            profileFragment.setTheme(darkMode ? VFTheme.dark : VFTheme.light);
+        } catch (IllegalArgumentException e){
+            e.printStackTrace();
+        }
     }
 
     @ReactProp(name = "userUUID")

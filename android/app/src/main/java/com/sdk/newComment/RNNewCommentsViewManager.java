@@ -128,7 +128,7 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
             newCommentFragment.setTheme(darkMode ? VFTheme.dark : VFTheme.light);
 
             startLogin();
-        } catch (MalformedURLException e) {
+        } catch (MalformedURLException | IllegalArgumentException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }

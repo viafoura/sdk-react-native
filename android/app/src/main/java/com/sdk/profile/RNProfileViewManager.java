@@ -177,6 +177,8 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
 
     @Override
     public void startLogin() {
-
+        WritableMap map = Arguments.createMap();
+        map.putBoolean("requireLogin", true);
+        Utils.sendDataToJS(reactContext, "onAuthNeeded", map);
     }
 }

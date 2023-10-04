@@ -126,8 +126,6 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
                     .replace(reactNativeViewId, newCommentFragment, String.valueOf(reactNativeViewId))
                     .commit();
             newCommentFragment.setTheme(darkMode ? VFTheme.dark : VFTheme.light);
-
-            startLogin();
         } catch (MalformedURLException | IllegalArgumentException e) {
             e.printStackTrace();
             throw new RuntimeException(e);

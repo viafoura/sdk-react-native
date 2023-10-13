@@ -39,10 +39,14 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
         let colors = VFColors(colorPrimary: UIColor(red: 0.00, green: 0.45, blue: 0.91, alpha: 1.00), colorPrimaryLight: UIColor(red: 0.90, green: 0.95, blue: 1.00, alpha: 1.00))
         let fonts = VFFonts(fontBold: fontBold)
         settings = VFSettings(colors: colors, fonts: fonts)
-        
+      
+        guard let articleUrl = URL(string: articleUrl), let thumbnailUrl = URL(string: articleThumbnailUrl) else {
+          return
+        }
+
         articleMetadata = VFArticleMetadata(
-          url: URL(string: articleUrl)!, title: articleTitle, subtitle: articleSubtitle,
-          thumbnailUrl: URL(string: articleThumbnailUrl)!)
+          url: articleUrl, title: articleTitle, subtitle: articleSubtitle,
+          thumbnailUrl: thumbnailUrl)
     }
 
     private func embed() {

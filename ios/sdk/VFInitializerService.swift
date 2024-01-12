@@ -19,6 +19,7 @@ class VFInitializerService: NSObject {
   
   @objc
   func initialize(){
-    ViafouraSDK.initialize(siteUUID: "00000000-0000-4000-8000-c8cddfd7b365", siteDomain: "viafoura-mobile-demo.vercel.app")
+    ViafouraSDK.initialize(siteUUID: "00000000-0000-4000-8000-032a225cd465", siteDomain: "www.thestar.com")
+    ViafouraSDK.setLoggingEnabled(true)
   }
 }

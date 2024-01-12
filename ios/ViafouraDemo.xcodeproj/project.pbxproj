@@ -18,6 +18,9 @@
 		47707D30298B218400B28A2C /* RNPreviewCommentsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47707D2D298B218400B28A2C /* RNPreviewCommentsManager.m */; };
 		47707D38298B2E6C00B28A2C /* RTEEventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 47707D37298B2E6C00B28A2C /* RTEEventEmitter.m */; };
 		47707D3A298B2E8D00B28A2C /* RTEEventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47707D39298B2E8D00B28A2C /* RTEEventEmitter.swift */; };
+		47CC8C252B50E12B006B757F /* RNChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC8C242B50E12B006B757F /* RNChat.swift */; };
+		47CC8C272B50E160006B757F /* RNChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC8C262B50E160006B757F /* RNChatManager.swift */; };
+		47CC8C292B50E217006B757F /* RNChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CC8C282B50E217006B757F /* RNChatManager.m */; };
 		47F1B1942AB0F36300E1D791 /* RCTCommentsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F1B1922AB0F36300E1D791 /* RCTCommentsService.swift */; };
 		47F1B1952AB0F36300E1D791 /* RCTCommentsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F1B1932AB0F36300E1D791 /* RCTCommentsService.m */; };
 		47F3B8E9298B4375005DDFBA /* RCTAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F3B8E8298B4375005DDFBA /* RCTAuthService.swift */; };
@@ -37,7 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		47F3B931298BDAA3005DDFBA /* Embed Frameworks */ = {
+		4715A85E2AE2D8A6001A5DFF /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
@@ -62,6 +65,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = sdk/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = sdk/main.m; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-sdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sdk.debug.xcconfig"; path = "Target Support Files/Pods-sdk/Pods-sdk.debug.xcconfig"; sourceTree = "<group>"; };
+		4715A8502AE2D7CF001A5DFF /* ViafouraSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ViafouraSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		474C4F3C298BE9E400F3374F /* VFInitializerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VFInitializerService.swift; path = sdk/VFInitializerService.swift; sourceTree = "<group>"; };
 		47707D2A298B218200B28A2C /* ViafouraDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViafouraDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		47707D2B298B218300B28A2C /* RNPreviewComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RNPreviewComments.swift; path = sdk/RNPreviewComments.swift; sourceTree = "<group>"; };
@@ -69,6 +73,9 @@
 		47707D2D298B218400B28A2C /* RNPreviewCommentsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNPreviewCommentsManager.m; path = sdk/RNPreviewCommentsManager.m; sourceTree = "<group>"; };
 		47707D37298B2E6C00B28A2C /* RTEEventEmitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RTEEventEmitter.m; path = sdk/RTEEventEmitter.m; sourceTree = "<group>"; };
 		47707D39298B2E8D00B28A2C /* RTEEventEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RTEEventEmitter.swift; path = sdk/RTEEventEmitter.swift; sourceTree = "<group>"; };
+		47CC8C242B50E12B006B757F /* RNChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNChat.swift; sourceTree = "<group>"; };
+		47CC8C262B50E160006B757F /* RNChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNChatManager.swift; sourceTree = "<group>"; };
+		47CC8C282B50E217006B757F /* RNChatManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNChatManager.m; path = sdk/RNChatManager.m; sourceTree = "<group>"; };
 		47F1B1922AB0F36300E1D791 /* RCTCommentsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RCTCommentsService.swift; path = sdk/RCTCommentsService.swift; sourceTree = "<group>"; };
 		47F1B1932AB0F36300E1D791 /* RCTCommentsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTCommentsService.m; path = sdk/RCTCommentsService.m; sourceTree = "<group>"; };
 		47F3B8E8298B4375005DDFBA /* RCTAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RCTAuthService.swift; path = sdk/RCTAuthService.swift; sourceTree = "<group>"; };
@@ -128,6 +135,7 @@
 				47F3B934298BE988005DDFBA /* Initializer */,
 				47F3B8E7298B430B005DDFBA /* AuthService */,
 				47707D34298B2E2C00B28A2C /* EventEmitter */,
+				47CC8C232B50E11E006B757F /* Chat */,
 				47707D29298B216E00B28A2C /* PreviewComments */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
@@ -143,6 +151,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4715A8502AE2D7CF001A5DFF /* ViafouraSDK.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				EFCBC97BDC74A448C553AF6E /* libPods-ViafouraDemo.a */,
 				132429C67C1B5E847384ADB8 /* libPods-ViafouraDemo-ViafouraDemoTests.a */,
@@ -167,6 +176,16 @@
 				47707D39298B2E8D00B28A2C /* RTEEventEmitter.swift */,
 			);
 			name = EventEmitter;
+			sourceTree = "<group>";
+		};
+		47CC8C232B50E11E006B757F /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				47CC8C282B50E217006B757F /* RNChatManager.m */,
+				47CC8C242B50E12B006B757F /* RNChat.swift */,
+				47CC8C262B50E160006B757F /* RNChatManager.swift */,
+			);
+			name = Chat;
 			sourceTree = "<group>";
 		};
 		47F1B1912AB0F31D00E1D791 /* CommentService */ = {
@@ -277,7 +296,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
-				47F3B931298BDAA3005DDFBA /* Embed Frameworks */,
+				4715A85E2AE2D8A6001A5DFF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -508,14 +527,17 @@
 			files = (
 				47707D2F298B218400B28A2C /* RNPreviewCommentsManager.swift in Sources */,
 				47F1B1942AB0F36300E1D791 /* RCTCommentsService.swift in Sources */,
+				47CC8C252B50E12B006B757F /* RNChat.swift in Sources */,
 				47707D3A298B2E8D00B28A2C /* RTEEventEmitter.swift in Sources */,
 				47F1B1952AB0F36300E1D791 /* RCTCommentsService.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				47CC8C292B50E217006B757F /* RNChatManager.m in Sources */,
 				47F3B914298B4B46005DDFBA /* RCTAuthService.m in Sources */,
 				47707D30298B218400B28A2C /* RNPreviewCommentsManager.m in Sources */,
 				47707D38298B2E6C00B28A2C /* RTEEventEmitter.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				47707D2E298B218400B28A2C /* RNPreviewComments.swift in Sources */,
+				47CC8C272B50E160006B757F /* RNChatManager.swift in Sources */,
 				474C4F3D298BE9E400F3374F /* VFInitializerService.swift in Sources */,
 				47F3B8E9298B4375005DDFBA /* RCTAuthService.swift in Sources */,
 			);

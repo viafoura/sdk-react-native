@@ -8,6 +8,7 @@ this.state = {
 
 import ArticleListScreen from './screens/ArticleListScreen';
 import ArticleScreen from './screens/ArticleScreen';
+import ChatScreen from './screens/ChatScreen';
 import ProfileScreen from './screens/ProfileScreen.js';
 import NewCommentScreen from './screens/NewCommentScreen.js';
 import LoginScreen from './screens/LoginScreen.js';
@@ -41,6 +42,7 @@ const App = () => {
           articleThumbnailUrl: "https://www.datocms-assets.com/55856/1636753460-information-overload.jpg?crop=focalpoint&fit=crop&fm=webp&fp-x=0.86&fp-y=0.47&h=428&w=856"
         }
       ]}} component={ArticleListScreen} />
+              <Stack.Screen name="Chat" component={ChatScreen} />
         <Stack.Screen name="Article" component={ArticleScreen} />
         <Stack.Screen name="NewComment" component={NewCommentScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />

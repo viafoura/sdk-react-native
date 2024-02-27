@@ -1,7 +1,6 @@
 import React from "react";
 import { Platform } from "react-native";
-import { useState } from "react";
-import {useWindowDimensions, Dimensions} from 'react-native'
+import {useWindowDimensions} from 'react-native'
 
 import RNChatiOSComponent from '../native/ios/RNChatiOS.js';
 import RNChatAndroidComponent from '../native/android/RNChatAndroid.js';

@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   requireNativeComponent,
-  UIManager,
   NativeModules,
   NativeEventEmitter,
 } from 'react-native';

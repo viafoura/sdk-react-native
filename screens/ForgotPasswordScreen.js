@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyleSheet, Button, View, Text, TextInput } from 'react-native';
+import { StyleSheet, Button, View, TextInput } from 'react-native';
 
 import { doPasswordReset } from '../native/auth.js';
 
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     color: '#FFF',
     paddingHorizontal: 32,
     borderRadius: 4,
-    elevation: 3
+    elevation: 3,
   },
   textInput: {
     fontSize: 16,
@@ -34,12 +34,12 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginTop: 20,
     marginLeft: 20,
-    marginRight: 20
+    marginRight: 20,
   },
   bottomText: {
     marginTop: 20,
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 });
 
 const ForgotPasswordScreen = ({ navigation, route }) => {

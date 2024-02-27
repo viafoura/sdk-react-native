@@ -1,8 +1,6 @@
-import React, {useEffect, useRef} from 'react';
+import React from 'react';
 import {
-  PixelRatio,
   UIManager,
-  View,
   NativeModules,
   NativeEventEmitter,
   findNodeHandle,
@@ -78,12 +76,12 @@ export default class RNPreviewCommentsAndroidComponent extends React.Component {
   handleOpenProfile = text => this.props.onOpenProfile(text);
   handleNewComment = text => this.props.onNewComment(text);
 
-  render () {
+  render() {
     return (
       <RNPreviewCommentsAndroid
         ref={(nativeRef) => (this.nativeComponentRef = nativeRef)}
         {...this.props}
       />
-    )
+    );
   }
-};
+}

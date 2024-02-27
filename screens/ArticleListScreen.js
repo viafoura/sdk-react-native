@@ -1,6 +1,5 @@
 import React from 'react';
-import { ScrollView, Button, PixelRatio, Platform } from 'react-native';
-import { useState } from "react";
+import { ScrollView, Button } from 'react-native';
 
 const ArticleListScreen = ({navigation, route}) => {
   return <ScrollView>

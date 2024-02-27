@@ -1,8 +1,6 @@
-import React, {useEffect, useRef} from 'react';
+import React from 'react';
 import {
-  PixelRatio,
   UIManager,
-  View,
   NativeModules,
   NativeEventEmitter,
   findNodeHandle,
@@ -16,8 +14,7 @@ const { RTEEventEmitter } = NativeModules;
 // Connects the JS and Native event emitters over the RNBridge
 const RTVEventEmitter = new NativeEventEmitter(RTEEventEmitter);
 
-export const RNNewCommentAndroid =
-  requireNativeComponent('RNNewCommentAndroid');
+export const RNNewCommentAndroid = requireNativeComponent('RNNewCommentAndroid');
 
 export default class RNNewCommentComponentAndroid extends React.Component {
   nativeComponentRef;
@@ -72,12 +69,12 @@ export default class RNNewCommentComponentAndroid extends React.Component {
   handleAuthNeeded = text => this.props.onAuthNeeded(text);
   handleCloseNewComment = text => this.props.onCloseNewComment(text);
 
-  render () {
+  render() {
     return (
       <RNNewCommentAndroid
-        ref={(nativeRef) => (this.nativeComponentRef = nativeRef)}
+        ref={nativeRef => (this.nativeComponentRef = nativeRef)}
         {...this.props}
       />
     );
   }
-};
+}

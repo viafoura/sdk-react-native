@@ -47,6 +47,16 @@ export default class RNNewCommentComponentAndroid extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.subscriptions.forEach(sub => sub.remove());
+    const androidViewId = findNodeHandle(this.nativeComponentRef);
+    UIManager.dispatchViewManagerCommand(
+      androidViewId,
+      UIManager.RNPreviewCommentsAndroid.Commands.destroy.toString(),
+      [androidViewId],
+    );
+  }
+
   create = () => {
     const androidViewId = findNodeHandle(this.nativeComponentRef);
     UIManager.dispatchViewManagerCommand(
@@ -54,7 +64,7 @@ export default class RNNewCommentComponentAndroid extends React.Component {
       UIManager.RNNewCommentAndroid.Commands.create.toString(),
       [androidViewId],
     );
-  }
+  };
 
   isValidCallback = prop => prop && isFunction(prop);
 
@@ -62,14 +72,12 @@ export default class RNNewCommentComponentAndroid extends React.Component {
   handleAuthNeeded = text => this.props.onAuthNeeded(text);
   handleCloseNewComment = text => this.props.onCloseNewComment(text);
 
-  componentWillUnmount = () => this.subscriptions.forEach(sub => sub.remove());
-
   render () {
     return (
       <RNNewCommentAndroid
         ref={(nativeRef) => (this.nativeComponentRef = nativeRef)}
         {...this.props}
       />
-    )
+    );
   }
 };

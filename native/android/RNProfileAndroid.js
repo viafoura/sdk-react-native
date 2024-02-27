@@ -47,6 +47,16 @@ export default class RNProfileComponentAndroid extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.subscriptions.forEach(sub => sub.remove());
+    const androidViewId = findNodeHandle(this.nativeComponentRef);
+    UIManager.dispatchViewManagerCommand(
+      androidViewId,
+      UIManager.RNPreviewCommentsAndroid.Commands.destroy.toString(),
+      [androidViewId],
+    );
+  };
+
   create = () => {
     const androidViewId = findNodeHandle(this.nativeComponentRef);
     UIManager.dispatchViewManagerCommand(
@@ -54,15 +64,13 @@ export default class RNProfileComponentAndroid extends React.Component {
       UIManager.RNProfileAndroid.Commands.create.toString(),
       [androidViewId],
     );
-  }
+  };
 
   isValidCallback = prop => prop && isFunction(prop);
 
   handleHeightChange = text => this.props.onHeightChanged(text);
   handleAuthNeeded = text => this.props.onAuthNeeded(text);
   handleCloseProfile = text => this.props.onCloseProfile(text);
-
-  componentWillUnmount = () => this.subscriptions.forEach(sub => sub.remove());
 
   render () {
     return (

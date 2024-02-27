@@ -86,7 +86,7 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
     @Nullable
     @Override
     public Map<String, Integer> getCommandsMap() {
-        return MapBuilder.of("create", COMMAND_CREATE);
+        return MapBuilder.of("create", COMMAND_CREATE, "destroy", COMMAND_DESTROY);
     }
 
     /**
@@ -106,6 +106,8 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
             case COMMAND_CREATE:
                 createFragment(root, reactNativeViewId);
                 break;
+            case COMMAND_DESTROY:
+                destroyFragment(root, reactNativeViewId);
             default: {}
         }
     }
@@ -124,9 +126,18 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
                 .build();
     }
 
-    /**
-     * Replace your React Native view with a custom fragment
-     */
+    public void destroyFragment(FrameLayout root, int reactNativeViewId) {
+        FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
+        Fragment fragment = activity.getSupportFragmentManager().findFragmentByTag(String.valueOf(reactNativeViewId));
+
+        if(fragment != null){
+            activity.getSupportFragmentManager()
+                    .beginTransaction()
+                    .remove(fragment)
+                    .commit();
+        }
+    }
+
     public void createFragment(FrameLayout root, int reactNativeViewId) {
         ViewGroup parentView = (ViewGroup) root.findViewById(reactNativeViewId);
         setupLayout(parentView);

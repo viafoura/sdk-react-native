@@ -41,6 +41,16 @@ export default class RNChatComponentAndroid extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.subscriptions.forEach(sub => sub.remove());
+    const androidViewId = findNodeHandle(this.nativeComponentRef);
+    UIManager.dispatchViewManagerCommand(
+      androidViewId,
+      UIManager.RNPreviewCommentsAndroid.Commands.destroy.toString(),
+      [androidViewId],
+    );
+  }
+
   create = () => {
     const androidViewId = findNodeHandle(this.nativeComponentRef);
     UIManager.dispatchViewManagerCommand(
@@ -48,14 +58,12 @@ export default class RNChatComponentAndroid extends React.Component {
       UIManager.RNNewCommentAndroid.Commands.create.toString(),
       [androidViewId],
     );
-  }
+  };
 
   isValidCallback = prop => prop && isFunction(prop);
 
   handleHeightChange = text => this.props.onHeightChanged(text);
   handleAuthNeeded = text => this.props.onAuthNeeded(text);
-
-  componentWillUnmount = () => this.subscriptions.forEach(sub => sub.remove());
 
   render () {
     return (

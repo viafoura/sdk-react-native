@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import com.facebook.react.bridge.Arguments;
@@ -81,7 +82,7 @@ public class RNChatViewManager extends ViewGroupManager<FrameLayout> implements 
     @Nullable
     @Override
     public Map<String, Integer> getCommandsMap() {
-        return MapBuilder.of("create", COMMAND_CREATE);
+        return MapBuilder.of("create", COMMAND_CREATE, "destroy", COMMAND_DESTROY);
     }
 
     /**
@@ -101,7 +102,21 @@ public class RNChatViewManager extends ViewGroupManager<FrameLayout> implements 
             case COMMAND_CREATE:
                 createFragment(root, reactNativeViewId);
                 break;
+            case COMMAND_DESTROY:
+                destroyFragment(root, reactNativeViewId);
             default: {}
+        }
+    }
+
+    public void destroyFragment(FrameLayout root, int reactNativeViewId) {
+        FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
+        Fragment fragment = activity.getSupportFragmentManager().findFragmentByTag(String.valueOf(reactNativeViewId));
+
+        if(fragment != null){
+            activity.getSupportFragmentManager()
+                    .beginTransaction()
+                    .remove(fragment)
+                    .commit();
         }
     }
 

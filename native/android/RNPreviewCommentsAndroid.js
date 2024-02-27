@@ -22,6 +22,16 @@ export default class RNPreviewCommentsAndroidComponent extends React.Component {
   nativeComponentRef;
   subscriptions = [];
 
+  componentWillUnmount() {
+    this.subscriptions.forEach(sub => sub.remove());
+    const androidViewId = findNodeHandle(this.nativeComponentRef);
+    UIManager.dispatchViewManagerCommand(
+      androidViewId,
+      UIManager.RNPreviewCommentsAndroid.Commands.destroy.toString(),
+      [androidViewId],
+    );
+  }
+
   componentDidMount() {
     setTimeout(() => {
       this.create();
@@ -59,7 +69,7 @@ export default class RNPreviewCommentsAndroidComponent extends React.Component {
       UIManager.RNPreviewCommentsAndroid.Commands.create.toString(),
       [androidViewId],
     );
-  }
+  };
 
   isValidCallback = prop => prop && isFunction(prop);
 
@@ -67,8 +77,6 @@ export default class RNPreviewCommentsAndroidComponent extends React.Component {
   handleAuthNeeded = text => this.props.onAuthNeeded(text);
   handleOpenProfile = text => this.props.onOpenProfile(text);
   handleNewComment = text => this.props.onNewComment(text);
-
-  componentWillUnmount = () => this.subscriptions.forEach(sub => sub.remove());
 
   render () {
     return (

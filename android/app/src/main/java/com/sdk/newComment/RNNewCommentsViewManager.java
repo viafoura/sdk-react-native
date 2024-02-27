@@ -8,6 +8,7 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import com.facebook.react.bridge.Arguments;
@@ -47,6 +48,7 @@ import java.util.UUID;
 public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> implements VFLoginInterface, VFCustomUIInterface, VFActionsInterface, VFLayoutInterface {
     public static final String REACT_CLASS = "RNNewCommentAndroid";
     public final int COMMAND_CREATE = 1;
+    public final int COMMAND_DESTROY = 2;
     ReactApplicationContext reactContext;
 
     int reactNativeViewId;
@@ -72,7 +74,7 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
     @Nullable
     @Override
     public Map<String, Integer> getCommandsMap() {
-        return MapBuilder.of("create", COMMAND_CREATE);
+        return MapBuilder.of("create", COMMAND_CREATE, "destroy", COMMAND_DESTROY);
     }
 
     @Override
@@ -89,7 +91,21 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
             case COMMAND_CREATE:
                 createFragment(root, reactNativeViewId);
                 break;
+            case COMMAND_DESTROY:
+                destroyFragment(root, reactNativeViewId);
             default: {}
+        }
+    }
+
+    public void destroyFragment(FrameLayout root, int reactNativeViewId) {
+        FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
+        Fragment fragment = activity.getSupportFragmentManager().findFragmentByTag(String.valueOf(reactNativeViewId));
+
+        if(fragment != null){
+            activity.getSupportFragmentManager()
+                    .beginTransaction()
+                    .remove(fragment)
+                    .commit();
         }
     }
 

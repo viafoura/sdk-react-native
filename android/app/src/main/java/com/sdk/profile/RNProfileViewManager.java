@@ -123,7 +123,7 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
         }
 
         try {
-            final VFProfileFragment profileFragment = VFProfileFragment.newInstance(activity.getApplication(), userUUID, profilePresentationType, this, settings);
+            final VFProfileFragment profileFragment = VFProfileFragment.newInstance(userUUID, profilePresentationType, this, settings);
             profileFragment.setActionCallback(this);
             profileFragment.setCustomUICallback(this);
             activity.getSupportFragmentManager()

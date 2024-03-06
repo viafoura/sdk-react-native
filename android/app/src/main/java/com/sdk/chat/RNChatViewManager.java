@@ -146,7 +146,7 @@ public class RNChatViewManager extends ViewGroupManager<FrameLayout> implements 
             VFColors colors = new VFColors(VFDefaultColors.getInstance().colorPrimaryDefault(null), VFDefaultColors.getInstance().colorPrimaryLightDefault(null));
             VFSettings settings = new VFSettings(colors);
             FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
-            final VFLiveChatFragment liveChatFragment = VFLiveChatFragment.newInstance(activity.getApplication(), containerId, articleMetadata, this, settings);
+            final VFLiveChatFragment liveChatFragment = VFLiveChatFragment.newInstance(containerId, articleMetadata, this, settings);
             liveChatFragment.setActionCallback(this);
             liveChatFragment.setCustomUICallback(this);
             activity.getSupportFragmentManager()

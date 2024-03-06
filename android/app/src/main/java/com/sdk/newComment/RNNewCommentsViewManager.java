@@ -134,7 +134,7 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
                 action.content = UUID.fromString(content);
             }
 
-            final VFNewCommentFragment newCommentFragment = VFNewCommentFragment.newInstance(activity.getApplication(), action, containerId, articleMetadata, this, settings);
+            final VFNewCommentFragment newCommentFragment = VFNewCommentFragment.newInstance(action, containerId, articleMetadata, this, settings);
             newCommentFragment.setActionCallback(this);
             newCommentFragment.setCustomUICallback(this);
             activity.getSupportFragmentManager()

@@ -7,6 +7,7 @@ import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 import com.sdk.auth.AuthService;
+import com.sdk.bell.RNBellViewManager;
 import com.sdk.chat.RNChatViewManager;
 import com.sdk.comments.CommentsService;
 import com.sdk.newComment.RNNewCommentsViewManager;
@@ -30,6 +31,7 @@ public class RNPackage implements ReactPackage {
     @Override
     public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactApplicationContext) {
         return Arrays.asList(
+                new RNBellViewManager(reactApplicationContext),
                 new RNPreviewCommentsViewManager(reactApplicationContext),
                 new RNChatViewManager(reactApplicationContext),
                 new RNProfileViewManager(reactApplicationContext),

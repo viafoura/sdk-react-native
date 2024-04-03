@@ -1,5 +1,14 @@
 import React from 'react';
-import { ScrollView, Button } from 'react-native';
+import { ScrollView, Button, Platform, View } from 'react-native';
+
+import RNBelliOS from '../native/ios/RNBelliOS.js';
+import RNBellAndroid from '../native/android/RNBellAndroid.js';
+
+const Bell = Platform.select({
+  ios: RNBelliOS,
+  android: RNBellAndroid,
+});
+
 
 const ArticleListScreen = ({navigation, route}) => {
   return <ScrollView>

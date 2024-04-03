@@ -18,6 +18,9 @@
 		47707D30298B218400B28A2C /* RNPreviewCommentsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47707D2D298B218400B28A2C /* RNPreviewCommentsManager.m */; };
 		47707D38298B2E6C00B28A2C /* RTEEventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 47707D37298B2E6C00B28A2C /* RTEEventEmitter.m */; };
 		47707D3A298B2E8D00B28A2C /* RTEEventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47707D39298B2E8D00B28A2C /* RTEEventEmitter.swift */; };
+		477A11092BB60B6800DE0128 /* RNBellManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 477A11082BB60B6800DE0128 /* RNBellManager.m */; };
+		477A110B2BB60BA100DE0128 /* RNBellManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477A110A2BB60BA100DE0128 /* RNBellManager.swift */; };
+		477A112D2BBDFFD700DE0128 /* RNBell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477A112C2BBDFFD700DE0128 /* RNBell.swift */; };
 		47CC8C252B50E12B006B757F /* RNChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC8C242B50E12B006B757F /* RNChat.swift */; };
 		47CC8C272B50E160006B757F /* RNChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CC8C262B50E160006B757F /* RNChatManager.swift */; };
 		47CC8C292B50E217006B757F /* RNChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 47CC8C282B50E217006B757F /* RNChatManager.m */; };
@@ -73,6 +76,9 @@
 		47707D2D298B218400B28A2C /* RNPreviewCommentsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNPreviewCommentsManager.m; path = sdk/RNPreviewCommentsManager.m; sourceTree = "<group>"; };
 		47707D37298B2E6C00B28A2C /* RTEEventEmitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RTEEventEmitter.m; path = sdk/RTEEventEmitter.m; sourceTree = "<group>"; };
 		47707D39298B2E8D00B28A2C /* RTEEventEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RTEEventEmitter.swift; path = sdk/RTEEventEmitter.swift; sourceTree = "<group>"; };
+		477A11082BB60B6800DE0128 /* RNBellManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNBellManager.m; sourceTree = "<group>"; };
+		477A110A2BB60BA100DE0128 /* RNBellManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNBellManager.swift; sourceTree = "<group>"; };
+		477A112C2BBDFFD700DE0128 /* RNBell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNBell.swift; sourceTree = "<group>"; };
 		47CC8C242B50E12B006B757F /* RNChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNChat.swift; sourceTree = "<group>"; };
 		47CC8C262B50E160006B757F /* RNChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNChatManager.swift; sourceTree = "<group>"; };
 		47CC8C282B50E217006B757F /* RNChatManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNChatManager.m; path = sdk/RNChatManager.m; sourceTree = "<group>"; };
@@ -131,6 +137,7 @@
 		13B07FAE1A68108700A75B9A /* ViafouraDemo */ = {
 			isa = PBXGroup;
 			children = (
+				477A11062BB60B1B00DE0128 /* Bell */,
 				47F1B1912AB0F31D00E1D791 /* CommentService */,
 				47F3B934298BE988005DDFBA /* Initializer */,
 				47F3B8E7298B430B005DDFBA /* AuthService */,
@@ -176,6 +183,16 @@
 				47707D39298B2E8D00B28A2C /* RTEEventEmitter.swift */,
 			);
 			name = EventEmitter;
+			sourceTree = "<group>";
+		};
+		477A11062BB60B1B00DE0128 /* Bell */ = {
+			isa = PBXGroup;
+			children = (
+				477A11082BB60B6800DE0128 /* RNBellManager.m */,
+				477A110A2BB60BA100DE0128 /* RNBellManager.swift */,
+				477A112C2BBDFFD700DE0128 /* RNBell.swift */,
+			);
+			name = Bell;
 			sourceTree = "<group>";
 		};
 		47CC8C232B50E11E006B757F /* Chat */ = {
@@ -529,11 +546,14 @@
 				47F1B1942AB0F36300E1D791 /* RCTCommentsService.swift in Sources */,
 				47CC8C252B50E12B006B757F /* RNChat.swift in Sources */,
 				47707D3A298B2E8D00B28A2C /* RTEEventEmitter.swift in Sources */,
+				477A11092BB60B6800DE0128 /* RNBellManager.m in Sources */,
 				47F1B1952AB0F36300E1D791 /* RCTCommentsService.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				47CC8C292B50E217006B757F /* RNChatManager.m in Sources */,
 				47F3B914298B4B46005DDFBA /* RCTAuthService.m in Sources */,
 				47707D30298B218400B28A2C /* RNPreviewCommentsManager.m in Sources */,
+				477A112D2BBDFFD700DE0128 /* RNBell.swift in Sources */,
+				477A110B2BB60BA100DE0128 /* RNBellManager.swift in Sources */,
 				47707D38298B2E6C00B28A2C /* RTEEventEmitter.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				47707D2E298B218400B28A2C /* RNPreviewComments.swift in Sources */,

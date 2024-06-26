@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyleSheet, Button, View, Text, TextInput } from 'react-native';
-import { doLogin } from '../native/auth.js';
+
+import { StyleSheet, Button, View, TextInput } from 'react-native';
+import { doSignup } from '../../native/auth';
+import { useNavigation } from '@react-navigation/native';
 
 const styles = StyleSheet.create({
   buttonContainer: {
@@ -19,6 +21,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 6,
+    backgroundColor: '#000000',
     color: '#FFF',
     paddingHorizontal: 32,
     borderRadius: 4,
@@ -40,62 +43,56 @@ const styles = StyleSheet.create({
   },
 });
 
-const LoginScreen = ({ navigation, route }) => {
-  const [email, onChangeEmail] = React.useState("");
-  const [password, onChangePassword] = React.useState("");
+const SignUpScreen = () => {
+  const navigation = useNavigation();
+  const [email, onChangeEmail] = React.useState('');
+  const [password, onChangePassword] = React.useState('');
+  const [name, onChangeName] = React.useState('');
 
   return (
     <View>
       <TextInput
-        placeholder="E-mail"
-        onChangeText={onChangeEmail}
+        placeholder="Name"
         style={styles.textInput}
+        placeholderTextColor="#000"
+        onChangeText={onChangeName}
+        value={name}
+        textAlign="center"
+      />
+      <TextInput
+        placeholder="E-mail"
+        style={styles.textInput}
+        onChangeText={onChangeEmail}
         placeholderTextColor="#000"
         value={email}
         textAlign="center"
       />
       <TextInput
         placeholder="Password"
+        style={styles.textInput}
         onChangeText={onChangePassword}
         placeholderTextColor="#000"
-        style={styles.textInput}
         value={password}
         textAlign="center"
       />
       <View style={styles.buttonContainer}>
         <Button
-          style={styles.button}
-          title="Log-in"
-          onPress={async () => {
-            doLogin(email, password)
+          style={{ padding: 12 }}
+          title="Sign up"
+          onPress={() => {
+            doSignup(name, email, password)
               .then((value) => {
+                navigation.goBack();
                 navigation.goBack();
               })
               .catch((error) => {
-                alert(error);
+                console.log(error);
               });
           }}
-        ></Button>
+        />
       </View>
-
-      <Text
-        style={styles.bottomText}
-        onPress={() => {
-          navigation.navigate("SignUp");
-        }}
-      >
-        Create an account
-      </Text>
-      <Text
-        style={styles.bottomText}
-        onPress={() => {
-          navigation.navigate("ForgotPassword");
-        }}
-      >
-        Forgot my password
-      </Text>
     </View>
   );
 };
 
-export default LoginScreen;
+export default SignUpScreen;

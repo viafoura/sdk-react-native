@@ -1,8 +1,7 @@
 import React from 'react';
-
 import { StyleSheet, Button, View, TextInput } from 'react-native';
-
-import { doPasswordReset } from '../native/auth.js';
+import { doPasswordReset } from '../../native/auth';
+import { useNavigation } from '@react-navigation/native';
 
 const styles = StyleSheet.create({
   buttonContainer: {
@@ -42,8 +41,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const ForgotPasswordScreen = ({ navigation, route }) => {
-  const [email, onChangeEmail] = React.useState("");
+const ForgotPasswordScreen = () => {
+  const [email, onChangeEmail] = React.useState('');
+  const navigation = useNavigation();
 
   return (
     <View>
@@ -65,10 +65,10 @@ const ForgotPasswordScreen = ({ navigation, route }) => {
                 navigation.goBack();
               })
               .catch((error) => {
-                alert(error);
+                console.log(error);
               });
           }}
-        ></Button>
+        />
       </View>
     </View>
   );

@@ -1,22 +1,16 @@
 import React from 'react';
-import { Button, View, Text, StatusBar, ScrollView, PixelRatio } from 'react-native';
-import {WebView} from 'react-native-webview';
 
-this.state = {
-    commentsHeight: 1000,
-};
+import ArticleListScreen from './src/components/screens/ArticleListScreen';
+import ArticleScreen from './src/components/screens/ArticleScreen';
+import ChatScreen from './src/components/screens/ChatScreen';
+import ProfileScreen from './src/components/screens/ProfileScreen';
+import NewCommentScreen from './src/components/screens/NewCommentScreen';
+import LoginScreen from './src/components/screens/LoginScreen';
+import SignUpScreen from './src/components/screens/SignUpScreen';
+import ForgotPasswordScreen from './src/components/screens/ForgotPasswordScreen';
 
-import ArticleListScreen from './screens/ArticleListScreen';
-import ArticleScreen from './screens/ArticleScreen';
-import ChatScreen from './screens/ChatScreen';
-import ProfileScreen from './screens/ProfileScreen.js';
-import NewCommentScreen from './screens/NewCommentScreen.js';
-import LoginScreen from './screens/LoginScreen.js';
-import SignUpScreen from './screens/SignUpScreen.js';
-import ForgotPasswordScreen from './screens/ForgotPasswordScreen.js';
-
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,25 +18,37 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      <Stack.Screen name="ArticleList" initialParams={{ articles: [
-        {
-          containerId: "101113541",
-          authorId: "7548800024996",
-          articleTitle: "Moving Staff to Cover the Coronavirus",
-          articleDesc: "Here Are What Media Companies Are Doing to Deal With COVID-19 Information Overload",
-          articleUrl: "https://viafoura-mobile-demo.vercel.app/posts/here-are-what-media-companies-are-doing-with-covid-19-overload",
-          articleThumbnailUrl: "https://www.datocms-assets.com/55856/1636753460-information-overload.jpg?crop=focalpoint&fit=crop&fm=webp&fp-x=0.86&fp-y=0.47&h=428&w=856"
-        },
-        {
-          containerId: "1254",
-          authorId: "7548800024996",
-          articleTitle: "Moving Staff to Cover the Coronavirus",
-          articleDesc: "Here Are What Media Companies Are Doing to Deal With COVID-19 Information Overload",
-          articleUrl: "https://viafoura-mobile-demo.vercel.app/posts/here-are-what-media-companies-are-doing-with-covid-19-overload",
-          articleThumbnailUrl: "https://www.datocms-assets.com/55856/1636753460-information-overload.jpg?crop=focalpoint&fit=crop&fm=webp&fp-x=0.86&fp-y=0.47&h=428&w=856"
-        }
-      ]}} component={ArticleListScreen} />
-              <Stack.Screen name="Chat" component={ChatScreen} />
+        <Stack.Screen
+          name="ArticleList"
+          initialParams={{
+            articles: [
+              {
+                containerId: '101113541',
+                authorId: '7548800024996',
+                articleTitle: 'Moving Staff to Cover the Coronavirus',
+                articleDesc:
+                  'Here Are What Media Companies Are Doing to Deal With COVID-19 Information Overload',
+                articleUrl:
+                  'https://viafoura-mobile-demo.vercel.app/posts/here-are-what-media-companies-are-doing-with-covid-19-overload',
+                articleThumbnailUrl:
+                  'https://www.datocms-assets.com/55856/1636753460-information-overload.jpg?crop=focalpoint&fit=crop&fm=webp&fp-x=0.86&fp-y=0.47&h=428&w=856',
+              },
+              {
+                containerId: '1254',
+                authorId: '7548800024996',
+                articleTitle: 'Moving Staff to Cover the Coronavirus',
+                articleDesc:
+                  'Here Are What Media Companies Are Doing to Deal With COVID-19 Information Overload',
+                articleUrl:
+                  'https://viafoura-mobile-demo.vercel.app/posts/here-are-what-media-companies-are-doing-with-covid-19-overload',
+                articleThumbnailUrl:
+                  'https://www.datocms-assets.com/55856/1636753460-information-overload.jpg?crop=focalpoint&fit=crop&fm=webp&fp-x=0.86&fp-y=0.47&h=428&w=856',
+              },
+            ],
+          }}
+          component={ArticleListScreen}
+        />
+        <Stack.Screen name="Chat" component={ChatScreen} />
         <Stack.Screen name="Article" component={ArticleScreen} />
         <Stack.Screen name="NewComment" component={NewCommentScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />

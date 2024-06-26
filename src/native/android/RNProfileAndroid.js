@@ -8,15 +8,15 @@ import {
 
 import isFunction from 'lodash.isfunction';
 
-import {requireNativeComponent} from 'react-native';
+import { requireNativeComponent } from 'react-native';
 
 const { RTEEventEmitter } = NativeModules;
 // Connects the JS and Native event emitters over the RNBridge
 const RTVEventEmitter = new NativeEventEmitter(RTEEventEmitter);
 
-export const RNChatAndroid = requireNativeComponent('RNChatAndroid');
+export const RNProfileAndroid = requireNativeComponent('RNProfileAndroid');
 
-export default class RNChatComponentAndroid extends React.Component {
+export default class RNProfileComponentAndroid extends React.Component {
   nativeComponentRef;
   subscriptions = [];
 
@@ -27,24 +27,30 @@ export default class RNChatComponentAndroid extends React.Component {
 
     if (this.isValidCallback(this.props.onHeightChanged)) {
       this.subscriptions.push(
-        RTVEventEmitter.addListener('onHeightChanged', this.handleHeightChange),
+        RTVEventEmitter.addListener('onHeightChanged', this.handleHeightChange)
       );
     }
 
     if (this.isValidCallback(this.props.onAuthNeeded)) {
       this.subscriptions.push(
-        RTVEventEmitter.addListener('onAuthNeeded', this.handleAuthNeeded),
+        RTVEventEmitter.addListener('onAuthNeeded', this.handleAuthNeeded)
+      );
+    }
+
+    if (this.isValidCallback(this.props.onCloseProfile)) {
+      this.subscriptions.push(
+        RTVEventEmitter.addListener('onCloseProfile', this.handleCloseProfile)
       );
     }
   }
 
   componentWillUnmount() {
-    this.subscriptions.forEach(sub => sub.remove());
+    this.subscriptions.forEach((sub) => sub.remove());
     const androidViewId = findNodeHandle(this.nativeComponentRef);
     UIManager.dispatchViewManagerCommand(
       androidViewId,
       UIManager.RNPreviewCommentsAndroid.Commands.destroy.toString(),
-      [androidViewId],
+      [androidViewId]
     );
   }
 
@@ -52,19 +58,20 @@ export default class RNChatComponentAndroid extends React.Component {
     const androidViewId = findNodeHandle(this.nativeComponentRef);
     UIManager.dispatchViewManagerCommand(
       androidViewId,
-      UIManager.RNNewCommentAndroid.Commands.create.toString(),
-      [androidViewId],
+      UIManager.RNProfileAndroid.Commands.create.toString(),
+      [androidViewId]
     );
   };
 
-  isValidCallback = prop => prop && isFunction(prop);
+  isValidCallback = (prop) => prop && isFunction(prop);
 
-  handleHeightChange = text => this.props.onHeightChanged(text);
-  handleAuthNeeded = text => this.props.onAuthNeeded(text);
+  handleHeightChange = (text) => this.props.onHeightChanged(text);
+  handleAuthNeeded = (text) => this.props.onAuthNeeded(text);
+  handleCloseProfile = (text) => this.props.onCloseProfile(text);
 
   render() {
     return (
-      <RNChatAndroid
+      <RNProfileAndroid
         ref={(nativeRef) => (this.nativeComponentRef = nativeRef)}
         {...this.props}
       />

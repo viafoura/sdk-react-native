@@ -8,25 +8,27 @@ import {
 
 import isFunction from 'lodash.isfunction';
 
-import {requireNativeComponent} from 'react-native';
+import { requireNativeComponent } from 'react-native';
 
 const { RTEEventEmitter } = NativeModules;
 // Connects the JS and Native event emitters over the RNBridge
 const RTVEventEmitter = new NativeEventEmitter(RTEEventEmitter);
 
-export const RNPreviewCommentsAndroid = requireNativeComponent('RNPreviewCommentsAndroid');
+export const RNPreviewCommentsAndroid = requireNativeComponent(
+  'RNPreviewCommentsAndroid'
+);
 
 export default class RNPreviewCommentsAndroidComponent extends React.Component {
   nativeComponentRef;
   subscriptions = [];
 
   componentWillUnmount() {
-    this.subscriptions.forEach(sub => sub.remove());
+    this.subscriptions.forEach((sub) => sub.remove());
     const androidViewId = findNodeHandle(this.nativeComponentRef);
     UIManager.dispatchViewManagerCommand(
       androidViewId,
       UIManager.RNPreviewCommentsAndroid.Commands.destroy.toString(),
-      [androidViewId],
+      [androidViewId]
     );
   }
 
@@ -37,25 +39,25 @@ export default class RNPreviewCommentsAndroidComponent extends React.Component {
 
     if (this.isValidCallback(this.props.onHeightChanged)) {
       this.subscriptions.push(
-        RTVEventEmitter.addListener('onHeightChanged', this.handleHeightChange),
+        RTVEventEmitter.addListener('onHeightChanged', this.handleHeightChange)
       );
     }
 
     if (this.isValidCallback(this.props.onAuthNeeded)) {
       this.subscriptions.push(
-        RTVEventEmitter.addListener('onAuthNeeded', this.handleAuthNeeded),
+        RTVEventEmitter.addListener('onAuthNeeded', this.handleAuthNeeded)
       );
     }
 
     if (this.isValidCallback(this.props.onOpenProfile)) {
       this.subscriptions.push(
-        RTVEventEmitter.addListener('onOpenProfile', this.handleOpenProfile),
+        RTVEventEmitter.addListener('onOpenProfile', this.handleOpenProfile)
       );
     }
 
     if (this.isValidCallback(this.props.onNewComment)) {
       this.subscriptions.push(
-        RTVEventEmitter.addListener('onNewComment', this.handleNewComment),
+        RTVEventEmitter.addListener('onNewComment', this.handleNewComment)
       );
     }
   }
@@ -65,16 +67,16 @@ export default class RNPreviewCommentsAndroidComponent extends React.Component {
     UIManager.dispatchViewManagerCommand(
       androidViewId,
       UIManager.RNPreviewCommentsAndroid.Commands.create.toString(),
-      [androidViewId],
+      [androidViewId]
     );
   };
 
-  isValidCallback = prop => prop && isFunction(prop);
+  isValidCallback = (prop) => prop && isFunction(prop);
 
-  handleHeightChange = text => this.props.onHeightChanged(text);
-  handleAuthNeeded = text => this.props.onAuthNeeded(text);
-  handleOpenProfile = text => this.props.onOpenProfile(text);
-  handleNewComment = text => this.props.onNewComment(text);
+  handleHeightChange = (text) => this.props.onHeightChanged(text);
+  handleAuthNeeded = (text) => this.props.onAuthNeeded(text);
+  handleOpenProfile = (text) => this.props.onOpenProfile(text);
+  handleNewComment = (text) => this.props.onNewComment(text);
 
   render() {
     return (

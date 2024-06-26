@@ -4,26 +4,30 @@ export const doLogout = async () => {
   await AuthService.logout();
 };
 
-export const doLogin = async (email, password) => {
+export const doLogin = async (email: string, password: string) => {
   await AuthService.login(email, password);
 };
 
-export const doSignup = async (name, email, password) => {
+export const doSignup = async (
+  name: string,
+  email: string,
+  password: string
+) => {
   await AuthService.signup(name, email, password);
 };
 
-export const doSocialLogin = async (token) => {
+export const doSocialLogin = async (token: string) => {
   await AuthService.socialLogin(token);
 };
 
-export const doCookieLogin = async (token, type) => {
+export const doCookieLogin = async (token: string, type: string) => {
   await AuthService.cookieLogin(token, type);
 };
 
-export const doOpenIDLogin = async (token) => {
+export const doOpenIDLogin = async (token: string) => {
   await AuthService.openIdLogin(token);
 };
 
-export const doPasswordReset = async (email) => {
+export const doPasswordReset = async (email: string) => {
   await AuthService.resetPassword(email);
 };

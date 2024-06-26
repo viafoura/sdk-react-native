@@ -11,6 +11,7 @@ import ForgotPasswordScreen from './src/components/screens/ForgotPasswordScreen'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Screens } from './src/navigation/screens';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,7 +20,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="ArticleList"
+          name={Screens.ArticleList}
           initialParams={{
             articles: [
               {
@@ -48,13 +49,16 @@ const App = () => {
           }}
           component={ArticleListScreen}
         />
-        <Stack.Screen name="Chat" component={ChatScreen} />
-        <Stack.Screen name="Article" component={ArticleScreen} />
-        <Stack.Screen name="NewComment" component={NewCommentScreen} />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="SignUp" component={SignUpScreen} />
-        <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+        <Stack.Screen name={Screens.Chat} component={ChatScreen} />
+        <Stack.Screen name={Screens.Article} component={ArticleScreen} />
+        <Stack.Screen name={Screens.NewComment} component={NewCommentScreen} />
+        <Stack.Screen name={Screens.Profile} component={ProfileScreen} />
+        <Stack.Screen name={Screens.Login} component={LoginScreen} />
+        <Stack.Screen name={Screens.Signup} component={SignUpScreen} />
+        <Stack.Screen
+          name={Screens.ForgotPassword}
+          component={ForgotPasswordScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

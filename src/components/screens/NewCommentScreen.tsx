@@ -2,6 +2,7 @@ import React from 'react';
 
 import RNNewCommentAndroidComponent from '../../native/android/RNNewCommentAndroid.js';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { Screens } from '../../navigation/screens';
 
 const NewCommentScreen = () => {
   const route = useRoute();
@@ -21,7 +22,7 @@ const NewCommentScreen = () => {
         navigation.goBack();
       }}
       onAuthNeeded={() => {
-        navigation.navigate('Login');
+        navigation.navigate(Screens.Login);
       }}
     />
   );

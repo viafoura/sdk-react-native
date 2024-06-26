@@ -4,13 +4,17 @@ import { useWindowDimensions } from 'react-native';
 
 import RNChatiOSComponent from '../../native/ios/RNChatiOS.js';
 import RNChatAndroidComponent from '../../native/android/RNChatAndroid.js';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { Screens } from '../../navigation/screens';
 
 const Chat = Platform.select({
   ios: RNChatiOSComponent,
   android: RNChatAndroidComponent,
 });
 
-const ArticleScreen = ({ navigation, route }) => {
+const ArticleScreen = () => {
+  const navigation = useNavigation();
+  const route = useRoute();
   let height = useWindowDimensions().height - 100; // Hook can be called only inside functional component, tthis is dynamic
 
   return (
@@ -23,15 +27,15 @@ const ArticleScreen = ({ navigation, route }) => {
       articleUrl={route.params.articleUrl}
       articleThumbnailUrl={route.params.articleThumbnailUrl}
       darkMode={false}
-      onOpenProfile={(event) => {
+      onOpenProfile={(event: any) => {
         var object = {
           userUUID: event.userUUID,
           presentationType: event.presentationType ?? 'profile',
         };
-        navigation.navigate('Profile', object);
+        navigation.navigate(Screens.Profile, object);
       }}
-      onAuthNeeded={(event) => {
-        navigation.navigate('Login');
+      onAuthNeeded={() => {
+        navigation.navigate(Screens.Login);
       }}
     />
   );

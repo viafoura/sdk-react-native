@@ -81,7 +81,7 @@ const SignUpScreen = () => {
           title="Sign up"
           onPress={() => {
             doSignup(name, email, password)
-              .then((value) => {
+              .then(() => {
                 navigation.goBack();
                 navigation.goBack();
               })

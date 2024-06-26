@@ -5,6 +5,7 @@ import { useState } from 'react';
 import RNPreviewCommentsiOSComponent from '../../native/ios/RNPreviewCommentsiOS.js';
 import RNPreviewCommentsAndroidComponent from '../../native/android/RNPreviewCommentsAndroid.js';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { Screens } from '../../navigation/screens';
 
 const PreviewComments = Platform.select({
   ios: RNPreviewCommentsiOSComponent,
@@ -28,20 +29,18 @@ const ArticleScreen = () => {
         articleThumbnailUrl={route.params.articleThumbnailUrl}
         darkMode={false}
         onHeightChanged={(event) => {
-          console.log(event.containerId);
-          console.log(route.params.containerId);
           if (event.containerId === route.params.containerId) {
             setCommentsHeight(event.newHeight);
           }
         }}
-        onOpenProfile={(event) => {
+        onOpenProfile={(event: any) => {
           var object = {
             userUUID: event.userUUID,
             presentationType: event.presentationType ?? 'profile',
           };
-          navigation.navigate('Profile', object);
+          navigation.navigate(Screens.Profile, object);
         }}
-        onNewComment={(event) => {
+        onNewComment={(event: any) => {
           var object = {
             containerId: route.params.containerId,
             articleTitle: route.params.articleTitle,
@@ -51,10 +50,10 @@ const ArticleScreen = () => {
             newCommentActionType: event.actionType,
             content: event.content,
           };
-          navigation.navigate('NewComment', object);
+          navigation.navigate(Screens.NewComment, object);
         }}
-        onAuthNeeded={(event) => {
-          navigation.navigate('Login');
+        onAuthNeeded={() => {
+          navigation.navigate(Screens.Login);
         }}
       />
     </ScrollView>

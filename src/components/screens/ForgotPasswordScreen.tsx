@@ -61,7 +61,7 @@ const ForgotPasswordScreen = () => {
           title="Forgot password"
           onPress={() => {
             doPasswordReset(email)
-              .then((value) => {
+              .then(() => {
                 navigation.goBack();
               })
               .catch((error) => {

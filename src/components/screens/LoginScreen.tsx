@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Button, View, Text, TextInput } from 'react-native';
 import { doLogin } from '../../native/auth';
 import { useNavigation } from '@react-navigation/native';
+import { Screens } from '../../navigation/screens';
 
 const styles = StyleSheet.create({
   buttonContainer: {
@@ -70,7 +71,7 @@ const LoginScreen = () => {
           title="Log-in"
           onPress={async () => {
             doLogin(email, password)
-              .then((value) => {
+              .then(() => {
                 navigation.goBack();
               })
               .catch((error) => {
@@ -83,7 +84,7 @@ const LoginScreen = () => {
       <Text
         style={styles.bottomText}
         onPress={() => {
-          navigation.navigate('SignUp');
+          navigation.navigate(Screens.Signup);
         }}
       >
         Create an account
@@ -91,7 +92,7 @@ const LoginScreen = () => {
       <Text
         style={styles.bottomText}
         onPress={() => {
-          navigation.navigate('ForgotPassword');
+          navigation.navigate(Screens.ForgotPassword);
         }}
       >
         Forgot my password

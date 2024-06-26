@@ -72,8 +72,8 @@ public class AuthService extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void cookieLogin(String token, String type, Promise promise) {
-        authService.cookieLogin(token, type, new com.viafourasdk.src.services.auth.AuthService.CookieLoginCallback() {
+    public void cookieLogin(String token, Promise promise) {
+        authService.cookieLogin(token, new com.viafourasdk.src.services.auth.AuthService.CookieLoginCallback() {
             @Override
             public void onSuccess(CookieLoginResponse loginResponse) {
                 promise.resolve("");

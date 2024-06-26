@@ -20,8 +20,8 @@ export const doSocialLogin = async (token: string) => {
   await AuthService.socialLogin(token);
 };
 
-export const doCookieLogin = async (token: string, type: string) => {
-  await AuthService.cookieLogin(token, type);
+export const doCookieLogin = async (token: string) => {
+  await AuthService.cookieLogin(token);
 };
 
 export const doOpenIDLogin = async (token: string) => {

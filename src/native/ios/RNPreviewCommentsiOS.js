@@ -22,6 +22,12 @@ export default class RNPreviewCommentsiOSComponent extends React.Component {
       );
     }
 
+    if (this.isValidCallback(this.props.onArticlePressed)) {
+      this.subscriptions.push(
+        RTVEventEmitter.addListener('onArticlePressed', this.handleArticlePressed)
+      );
+    }
+
     if (this.isValidCallback(this.props.onAuthNeeded)) {
       this.subscriptions.push(
         RTVEventEmitter.addListener('onAuthNeeded', this.handleAuthNeeded)
@@ -33,6 +39,7 @@ export default class RNPreviewCommentsiOSComponent extends React.Component {
 
   handleHeightChange = (text) => this.props.onHeightChanged(text);
   handleAuthNeeded = (text) => this.props.onAuthNeeded(text);
+  handleArticlePressed = (text) => this.props.onArticlePressed(text);
 
   componentWillUnmount = () =>
     this.subscriptions.forEach((sub) => sub.remove());

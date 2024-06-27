@@ -10,7 +10,7 @@ import Foundation
 class RTEEventEmitter : RCTEventEmitter {
     static var shared: RTEEventEmitter?
     
-    private var supportedEventNames: Set<String> = ["onHeightChanged", "onAuthNeeded"]
+    private var supportedEventNames: Set<String> = ["onHeightChanged", "onAuthNeeded", "onArticlePressed"]
     private var hasAttachedListener = false
 
     override init() {

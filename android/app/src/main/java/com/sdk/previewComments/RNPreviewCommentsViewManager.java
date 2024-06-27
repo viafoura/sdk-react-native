@@ -262,6 +262,11 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
             }
             map.putString("userUUID", action.getOpenProfileAction().userUUID.toString());
             Utils.sendDataToJS(reactContext, "onOpenProfile", map);
+        } else if(actionType == VFActionType.trendingArticlePressed){
+            WritableMap map = Arguments.createMap();
+            map.putString("articleUrl", action.getTrendingPressedAction().articleMetadata.getUrl().toString());
+            map.putString("containerId", action.getTrendingPressedAction().containerId);
+            Utils.sendDataToJS(reactContext, "onArticlePressed", map);
         }
     }
 

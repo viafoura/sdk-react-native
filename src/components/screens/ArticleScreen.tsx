@@ -40,6 +40,10 @@ const ArticleScreen = () => {
           };
           navigation.navigate(Screens.Profile, object);
         }}
+        onArticlePressed={(event: any) => {
+          // Get article data from 'event'
+          navigation.push(Screens.Article, route.params);
+        }}
         onNewComment={(event: any) => {
           var object = {
             containerId: route.params.containerId,

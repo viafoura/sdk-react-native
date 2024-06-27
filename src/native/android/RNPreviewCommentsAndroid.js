@@ -60,6 +60,12 @@ export default class RNPreviewCommentsAndroidComponent extends React.Component {
         RTVEventEmitter.addListener('onNewComment', this.handleNewComment)
       );
     }
+
+    if (this.isValidCallback(this.props.onArticlePressed)) {
+      this.subscriptions.push(
+        RTVEventEmitter.addListener('onArticlePressed', this.handleArticlePressed)
+      );
+    }
   }
 
   create = () => {
@@ -77,6 +83,7 @@ export default class RNPreviewCommentsAndroidComponent extends React.Component {
   handleAuthNeeded = (text) => this.props.onAuthNeeded(text);
   handleOpenProfile = (text) => this.props.onOpenProfile(text);
   handleNewComment = (text) => this.props.onNewComment(text);
+  handleArticlePressed = (text) => this.props.onArticlePressed(text);
 
   render() {
     return (

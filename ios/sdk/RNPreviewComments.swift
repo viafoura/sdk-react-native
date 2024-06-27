@@ -73,6 +73,7 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
             case .writeNewCommentPressed(let actionType):
                 self?.presentNewCommentViewController(actionType: actionType)
             case .trendingArticlePressed(let metadata, let containerId):
+              RTEEventEmitter.shared?.emitEvent(withName: "onArticlePressed", body: ["containerId": containerId, "articleUrl": metadata.url.absoluteString])
                 break
             case .seeMoreCommentsPressed:
                 break

@@ -105,6 +105,9 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
 
         let callbacks: VFActionsCallbacks = { [weak self] type in
             switch type {
+            case .trendingArticlePressed(let metadata, let containerId):
+              RTEEventEmitter.shared?.emitEvent(withName: "onArticlePressed", body: ["containerId": containerId, "articleUrl": metadata.url.absoluteString])
+                break
             case .notificationPressed(let presentationType):
                 switch presentationType {
                 case .profile(let userUUID):

@@ -57,7 +57,6 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
     ReactApplicationContext reactContext;
 
     int reactNativeViewId;
-    private int propHeight;
     private String containerId;
     private String authorId;
     private boolean darkMode;
@@ -166,13 +165,6 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
         }
     }
 
-    @ReactPropGroup(names = {"width", "height"}, customType = "Style")
-    public void setStyle(FrameLayout view, int index, Integer value) {
-        if (index == 1) {
-            propHeight = value;
-        }
-    }
-
     public void setupLayout(View view) {
         Choreographer.getInstance().postFrameCallback(new Choreographer.FrameCallback() {
             @Override
@@ -188,15 +180,13 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
         return dp * ((float) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
     }
 
+
     public void manuallyLayoutChildren(View view) {
-        int width = Resources.getSystem().getDisplayMetrics().widthPixels;
-        int height = (int) convertDpToPixel(propHeight, reactContext);
-
         view.measure(
-                View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY),
-                View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY));
+                View.MeasureSpec.makeMeasureSpec(view.getWidth(), View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(view.getHeight(), View.MeasureSpec.EXACTLY));
 
-        view.layout(0, 0, width, height);
+        view.layout(view.getLeft(), view.getTop(), view.getRight(), view.getBottom());
     }
 
     @Override

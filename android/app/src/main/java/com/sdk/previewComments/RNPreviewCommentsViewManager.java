@@ -176,11 +176,6 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
         });
     }
 
-    public static float convertDpToPixel(float dp, Context context){
-        return dp * ((float) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
-    }
-
-
     public void manuallyLayoutChildren(View view) {
         view.measure(
                 View.MeasureSpec.makeMeasureSpec(view.getWidth(), View.MeasureSpec.EXACTLY),

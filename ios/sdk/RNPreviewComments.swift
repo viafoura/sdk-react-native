@@ -180,7 +180,7 @@ extension RNPreviewComments: VFAdDelegate {
         return 5
     }
 
-    func generateAd(viewController: VFUIViewController, adPosition: Int) -> VFAdView {
+    func generateAd(viewController: VFUIViewController, adPosition: Int) -> VFAdView? {
         let adView = VFAdView()
         return adView
     }

@@ -1191,7 +1191,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - Yoga
   - SocketRocket (0.7.0)
-  - ViafouraCore (1.1.7)
+  - ViafouraCore (1.1.10)
   - Yoga (0.0.0)
 
 DEPENDENCIES:
@@ -1253,7 +1253,7 @@ DEPENDENCIES:
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNScreens (from `../node_modules/react-native-screens`)
-  - ViafouraCore (= 1.1.7)
+  - ViafouraCore (= 1.1.10)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -1436,9 +1436,9 @@ SPEC CHECKSUMS:
   ReactCommon: ecad995f26e0d1e24061f60f4e5d74782f003f12
   RNScreens: 5aeecbb09aa7285379b6e9f3c8a3c859bb16401c
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
-  ViafouraCore: 9eb2a230c0106ab0698d769a189a943f9a49321d
+  ViafouraCore: 8e814b664fb647afdce9039d2f1b500fac7e6a3e
   Yoga: ae3c32c514802d30f687a04a6a35b348506d411f
 
-PODFILE CHECKSUM: 312e905ecd1e56443aa16ff1e5b827bfcc3c92e9
+PODFILE CHECKSUM: eaf1f0bc210ad8d56cadd37c58baffcc6ba7e960
 
 COCOAPODS: 1.14.3

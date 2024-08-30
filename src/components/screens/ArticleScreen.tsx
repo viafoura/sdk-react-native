@@ -42,7 +42,7 @@ const ArticleScreen = () => {
         }}
         onArticlePressed={(event: any) => {
           // Get article data from 'event'
-          navigation.navigate(Screens.Article, route.params);
+          navigation.push(Screens.Article, route.params);
         }}
         onNewComment={(event: any) => {
           var object = {

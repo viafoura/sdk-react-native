@@ -102,10 +102,18 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
         guard let parentViewController = parentViewController, let settings = settings else {
             return
         }
+      
+        let profileViewController = VFProfileViewController.new(
+          userUUID: userUUID,
+          presentationType: presentationType,
+          loginDelegate: self,
+          settings: settings
+        )
 
         let callbacks: VFActionsCallbacks = { [weak self] type in
             switch type {
             case .trendingArticlePressed(let metadata, let containerId):
+              profileViewController.dismiss(animated: true)
               RTEEventEmitter.shared?.emitEvent(withName: "onArticlePressed", body: ["containerId": containerId, "articleUrl": metadata.url.absoluteString])
                 break
             case .notificationPressed(let presentationType):
@@ -120,13 +128,6 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
                 break
             }
         }
-
-        let profileViewController = VFProfileViewController.new(
-          userUUID: userUUID,
-          presentationType: presentationType,
-          loginDelegate: self,
-          settings: settings
-        )
 
         profileViewController.setActionCallbacks(callbacks: callbacks)
         profileViewController.setTheme(theme: darkMode ? .dark : .light)

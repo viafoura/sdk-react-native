@@ -56,7 +56,6 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
     public final int COMMAND_DESTROY = 2;
     ReactApplicationContext reactContext;
 
-    int reactNativeViewId;
     private String containerId;
     private String authorId;
     private boolean darkMode;
@@ -98,7 +97,7 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
             @Nullable ReadableArray args
     ) {
         super.receiveCommand(root, commandId, args);
-        reactNativeViewId = args.getInt(0);
+        int reactNativeViewId = args.getInt(0);
         int commandIdInt = Integer.parseInt(commandId);
 
         switch (commandIdInt) {
@@ -150,10 +149,13 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
             previewCommentsFragment.setActionCallback(this);
             previewCommentsFragment.setLayoutCallback(this);
             previewCommentsFragment.setCustomUICallback(this);
-            activity.getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(reactNativeViewId, previewCommentsFragment, String.valueOf(reactNativeViewId))
-                    .commit();
+            
+            if(activity != null && activity.findViewById(reactNativeViewId) != null){
+                activity.getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(reactNativeViewId, previewCommentsFragment, String.valueOf(reactNativeViewId))
+                        .commit();
+            }
             previewCommentsFragment.setTheme(darkMode ? VFTheme.dark : VFTheme.light);
 
             if(authorId != null){

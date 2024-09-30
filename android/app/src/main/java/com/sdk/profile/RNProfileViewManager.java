@@ -116,10 +116,12 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
         VFSettings settings = new VFSettings(colors);
         FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
         VFProfilePresentationType profilePresentationType = null;
-        if(presentationType.equals("profile")){
-            profilePresentationType = VFProfilePresentationType.profile;
-        } else if(presentationType.equals("feed")){
-            profilePresentationType = VFProfilePresentationType.feed;
+        if(presentationType != null){
+            if(presentationType.equals("profile")){
+                profilePresentationType = VFProfilePresentationType.profile;
+            } else if(presentationType.equals("feed")){
+                profilePresentationType = VFProfilePresentationType.feed;
+            }
         }
 
         try {

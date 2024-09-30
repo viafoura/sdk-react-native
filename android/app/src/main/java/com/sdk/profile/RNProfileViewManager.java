@@ -126,10 +126,12 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
             final VFProfileFragment profileFragment = VFProfileFragment.newInstance(userUUID, profilePresentationType, this, settings);
             profileFragment.setActionCallback(this);
             profileFragment.setCustomUICallback(this);
-            activity.getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(reactNativeViewId, profileFragment, String.valueOf(reactNativeViewId))
-                    .commit();
+            if(activity != null && activity.findViewById(reactNativeViewId) != null) {
+                activity.getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(reactNativeViewId, profileFragment, String.valueOf(reactNativeViewId))
+                        .commit();
+            }
             profileFragment.setTheme(darkMode ? VFTheme.dark : VFTheme.light);
         } catch (IllegalArgumentException e){
             e.printStackTrace();

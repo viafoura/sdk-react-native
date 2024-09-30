@@ -137,10 +137,12 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
             final VFNewCommentFragment newCommentFragment = VFNewCommentFragment.newInstance(action, containerId, articleMetadata, this, settings);
             newCommentFragment.setActionCallback(this);
             newCommentFragment.setCustomUICallback(this);
-            activity.getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(reactNativeViewId, newCommentFragment, String.valueOf(reactNativeViewId))
-                    .commit();
+            if(activity != null && activity.findViewById(reactNativeViewId) != null) {
+                activity.getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(reactNativeViewId, newCommentFragment, String.valueOf(reactNativeViewId))
+                        .commit();
+            }
             newCommentFragment.setTheme(darkMode ? VFTheme.dark : VFTheme.light);
         } catch (MalformedURLException | IllegalArgumentException e) {
             e.printStackTrace();

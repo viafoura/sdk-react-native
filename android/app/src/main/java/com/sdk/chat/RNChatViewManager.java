@@ -149,10 +149,12 @@ public class RNChatViewManager extends ViewGroupManager<FrameLayout> implements 
             final VFLiveChatFragment liveChatFragment = VFLiveChatFragment.newInstance(containerId, articleMetadata, this, settings);
             liveChatFragment.setActionCallback(this);
             liveChatFragment.setCustomUICallback(this);
-            activity.getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(reactNativeViewId, liveChatFragment, String.valueOf(reactNativeViewId))
-                    .commit();
+            if(activity != null && activity.findViewById(reactNativeViewId) != null) {
+                activity.getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(reactNativeViewId, liveChatFragment, String.valueOf(reactNativeViewId))
+                        .commit();
+            }
             liveChatFragment.setTheme(darkMode ? VFTheme.dark : VFTheme.light);
 
         } catch (MalformedURLException | IllegalArgumentException e) {

@@ -935,6 +935,8 @@ PODS:
   - React-Mapbuffer (0.74.2):
     - glog
     - React-debug
+  - react-native-pager-view (5.4.25):
+    - React-Core
   - react-native-safe-area-context (4.10.5):
     - React-Core
   - react-native-webview (11.26.1):
@@ -1191,7 +1193,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - Yoga
   - SocketRocket (0.7.0)
-  - ViafouraCore (1.1.10)
+  - ViafouraCore (1.1.15)
   - Yoga (0.0.0)
 
 DEPENDENCIES:
@@ -1227,6 +1229,7 @@ DEPENDENCIES:
   - React-jsitracing (from `../node_modules/react-native/ReactCommon/hermes/executor/`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
+  - react-native-pager-view (from `../node_modules/react-native-pager-view`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
@@ -1253,7 +1256,7 @@ DEPENDENCIES:
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNScreens (from `../node_modules/react-native-screens`)
-  - ViafouraCore (= 1.1.10)
+  - ViafouraCore (= 1.1.15)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -1323,6 +1326,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   React-Mapbuffer:
     :path: "../node_modules/react-native/ReactCommon"
+  react-native-pager-view:
+    :path: "../node_modules/react-native-pager-view"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-webview:
@@ -1409,6 +1414,7 @@ SPEC CHECKSUMS:
   React-jsitracing: 0fa7f78d8fdda794667cb2e6f19c874c1cf31d7e
   React-logger: 29fa3e048f5f67fe396bc08af7606426d9bd7b5d
   React-Mapbuffer: bf56147c9775491e53122a94c423ac201417e326
+  react-native-pager-view: da490aa1f902c9a5aeecf0909cc975ad0e92e53e
   react-native-safe-area-context: a240ad4b683349e48b1d51fed1611138d1bdad97
   react-native-webview: 9f111dfbcfc826084d6c507f569e5e03342ee1c1
   React-nativeconfig: 9f223cd321823afdecf59ed00861ab2d69ee0fc1
@@ -1436,9 +1442,9 @@ SPEC CHECKSUMS:
   ReactCommon: ecad995f26e0d1e24061f60f4e5d74782f003f12
   RNScreens: 5aeecbb09aa7285379b6e9f3c8a3c859bb16401c
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
-  ViafouraCore: 8e814b664fb647afdce9039d2f1b500fac7e6a3e
+  ViafouraCore: de4530865a44e913f6f4f76080f570c8d4a5a407
   Yoga: ae3c32c514802d30f687a04a6a35b348506d411f
 
-PODFILE CHECKSUM: eaf1f0bc210ad8d56cadd37c58baffcc6ba7e960
+PODFILE CHECKSUM: 9c90e4e6816897f8968a0d6206bd80190fe7a3c0
 
-COCOAPODS: 1.14.3
+COCOAPODS: 1.15.2

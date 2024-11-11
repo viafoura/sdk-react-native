@@ -25,6 +25,7 @@ import com.sdk.Utils;
 import com.viafourasdk.src.fragments.base.VFFragment;
 import com.viafourasdk.src.fragments.previewcomments.VFPreviewCommentsFragment;
 import com.viafourasdk.src.fragments.profile.VFProfileFragment;
+import com.viafourasdk.src.fragments.profile.VFProfileFragmentBuilder;
 import com.viafourasdk.src.interfaces.VFActionsInterface;
 import com.viafourasdk.src.interfaces.VFCustomUIInterface;
 import com.viafourasdk.src.interfaces.VFLayoutInterface;
@@ -125,7 +126,7 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
         }
 
         try {
-            final VFProfileFragment profileFragment = VFProfileFragment.newInstance(userUUID, profilePresentationType, this, settings);
+            final VFProfileFragment profileFragment = new VFProfileFragmentBuilder(userUUID, profilePresentationType, this, settings).build();
             profileFragment.setActionCallback(this);
             profileFragment.setCustomUICallback(this);
             if(activity != null && activity.findViewById(reactNativeViewId) != null) {

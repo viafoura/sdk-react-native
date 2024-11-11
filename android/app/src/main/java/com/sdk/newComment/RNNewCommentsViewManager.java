@@ -24,6 +24,7 @@ import com.facebook.react.uimanager.annotations.ReactPropGroup;
 import com.sdk.Utils;
 import com.viafourasdk.src.fragments.base.VFFragment;
 import com.viafourasdk.src.fragments.newcomment.VFNewCommentFragment;
+import com.viafourasdk.src.fragments.newcomment.VFNewCommentFragmentBuilder;
 import com.viafourasdk.src.fragments.previewcomments.VFPreviewCommentsFragment;
 import com.viafourasdk.src.interfaces.VFActionsInterface;
 import com.viafourasdk.src.interfaces.VFCustomUIInterface;
@@ -134,7 +135,7 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
                 action.content = UUID.fromString(content);
             }
 
-            final VFNewCommentFragment newCommentFragment = VFNewCommentFragment.newInstance(action, containerId, articleMetadata, this, settings);
+            final VFNewCommentFragment newCommentFragment = new VFNewCommentFragmentBuilder(action, containerId, articleMetadata, this, settings).build();
             newCommentFragment.setActionCallback(this);
             newCommentFragment.setCustomUICallback(this);
             if(activity != null && activity.findViewById(reactNativeViewId) != null) {

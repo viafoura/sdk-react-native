@@ -27,6 +27,7 @@ import com.facebook.react.uimanager.annotations.ReactPropGroup;
 import com.sdk.Utils;
 import com.viafourasdk.src.fragments.base.VFFragment;
 import com.viafourasdk.src.fragments.previewcomments.VFPreviewCommentsFragment;
+import com.viafourasdk.src.fragments.previewcomments.VFPreviewCommentsFragmentBuilder;
 import com.viafourasdk.src.interfaces.VFActionsInterface;
 import com.viafourasdk.src.interfaces.VFCustomUIInterface;
 import com.viafourasdk.src.interfaces.VFLayoutInterface;
@@ -145,7 +146,8 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
             VFColors colors = new VFColors(VFDefaultColors.getInstance().colorPrimaryDefault(null), VFDefaultColors.getInstance().colorPrimaryLightDefault(null));
             VFSettings settings = new VFSettings(colors);
             FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
-            final VFPreviewCommentsFragment previewCommentsFragment = VFPreviewCommentsFragment.newInstance(containerId, articleMetadata, this, settings, 10, VFSortType.newest);
+            final VFPreviewCommentsFragment previewCommentsFragment = new VFPreviewCommentsFragmentBuilder(containerId, articleMetadata, this, settings)
+                    .build();
             previewCommentsFragment.setActionCallback(this);
             previewCommentsFragment.setLayoutCallback(this);
             previewCommentsFragment.setCustomUICallback(this);

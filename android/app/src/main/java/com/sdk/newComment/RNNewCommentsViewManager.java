@@ -56,6 +56,7 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
     private String newCommentActionType;
     private String content;
     private String containerId;
+    private String syndicationKey;
     private boolean darkMode;
     private String articleUrl, articleTitle, articleDesc, articleThumbnailUrl;
     public RNNewCommentsViewManager(ReactApplicationContext reactContext) {
@@ -135,7 +136,9 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
                 action.content = UUID.fromString(content);
             }
 
-            final VFNewCommentFragment newCommentFragment = new VFNewCommentFragmentBuilder(action, containerId, articleMetadata, this, settings).build();
+            final VFNewCommentFragment newCommentFragment = new VFNewCommentFragmentBuilder(action, containerId, articleMetadata, this, settings)
+                    .syndicationKey(syndicationKey)
+                    .build();
             newCommentFragment.setActionCallback(this);
             newCommentFragment.setCustomUICallback(this);
             if(activity != null && activity.findViewById(reactNativeViewId) != null) {
@@ -164,6 +167,11 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
     @ReactProp(name = "containerId")
     public void setContainerId(FrameLayout view, String containerId) {
         this.containerId = containerId;
+    }
+
+    @ReactProp(name = "syndicationKey")
+    public void setSyndicationKey(FrameLayout view, String containerId) {
+        this.syndicationKey = syndicationKey;
     }
 
     @ReactProp(name = "articleTitle")

@@ -60,6 +60,7 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
     private String containerId;
     private String authorId;
     private boolean darkMode;
+    private String syndicationKey;
     private String articleUrl, articleTitle, articleDesc, articleThumbnailUrl;
 
     public RNPreviewCommentsViewManager(ReactApplicationContext reactContext) {
@@ -146,8 +147,11 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
             VFColors colors = new VFColors(VFDefaultColors.getInstance().colorPrimaryDefault(null), VFDefaultColors.getInstance().colorPrimaryLightDefault(null));
             VFSettings settings = new VFSettings(colors);
             FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
-            final VFPreviewCommentsFragment previewCommentsFragment = new VFPreviewCommentsFragmentBuilder(containerId, articleMetadata, this, settings)
-                    .build();
+
+            VFPreviewCommentsFragmentBuilder fragmentBuilder = new VFPreviewCommentsFragmentBuilder(containerId, articleMetadata, this, settings)
+                    .syndicationKey(syndicationKey);
+
+            final VFPreviewCommentsFragment previewCommentsFragment = fragmentBuilder.build();
             previewCommentsFragment.setActionCallback(this);
             previewCommentsFragment.setLayoutCallback(this);
             previewCommentsFragment.setCustomUICallback(this);
@@ -208,6 +212,11 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
     @ReactProp(name = "containerId")
     public void setContainerId(FrameLayout view, String containerId) {
         this.containerId = containerId;
+    }
+
+    @ReactProp(name = "syndicationKey")
+    public void setSyndicationKey(FrameLayout view, String syndicationKey) {
+        this.syndicationKey = syndicationKey;
     }
 
     @ReactProp(name = "articleTitle")

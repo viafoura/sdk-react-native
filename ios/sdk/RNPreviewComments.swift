@@ -17,6 +17,7 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
     @objc var authorId = ""
     @objc var articleUrl = ""
     @objc var articleTitle = ""
+    @objc var syndicationKey = ""
     @objc var articleSubtitle = ""
     @objc var articleThumbnailUrl = ""
     @objc var darkMode = false
@@ -65,7 +66,8 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
           articleMetadata: articleMetadata,
           loginDelegate: self,
           settings: settings,
-          defaultSort: .newest
+          defaultSort: .newest,
+          syndicationKey: syndicationKey.isEmpty ? nil : syndicationKey
         )
 
         let callbacks: VFActionsCallbacks = { [weak self] type in
@@ -158,7 +160,8 @@ class RNPreviewComments: UIView, VFLoginDelegate, VFLayoutDelegate {
           containerId: containerId,
           articleMetadata: articleMetadata,
           loginDelegate: self,
-          settings: settings
+          settings: settings,
+          syndicationKey: syndicationKey.isEmpty ? nil : syndicationKey
         )
   
         newCommentViewController.setActionCallbacks(callbacks: callbacks)

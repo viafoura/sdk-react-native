@@ -17,6 +17,7 @@ const NewCommentScreen = () => {
       style={styles.container}
       containerId={route.params?.containerId}
       articleTitle={route.params?.articleTitle}
+      syndicationKey={route.params.syndicationKey}
       articleSubtitle={route.params?.articleDesc}
       articleUrl={route.params?.articleUrl}
       darkMode={true}

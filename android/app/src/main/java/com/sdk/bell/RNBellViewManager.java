@@ -10,7 +10,6 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactPropGroup;
-import com.viafourasdk.src.interfaces.VFLoginInterface;
 import com.viafourasdk.src.model.local.VFColors;
 import com.viafourasdk.src.model.local.VFDefaultColors;
 import com.viafourasdk.src.model.local.VFSettings;

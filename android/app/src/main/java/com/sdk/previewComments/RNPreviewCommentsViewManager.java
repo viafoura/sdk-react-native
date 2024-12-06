@@ -31,7 +31,6 @@ import com.viafourasdk.src.fragments.previewcomments.VFPreviewCommentsFragmentBu
 import com.viafourasdk.src.interfaces.VFActionsInterface;
 import com.viafourasdk.src.interfaces.VFCustomUIInterface;
 import com.viafourasdk.src.interfaces.VFLayoutInterface;
-import com.viafourasdk.src.interfaces.VFLoginInterface;
 import com.viafourasdk.src.model.local.VFActionData;
 import com.viafourasdk.src.model.local.VFActionType;
 import com.viafourasdk.src.model.local.VFArticleMetadata;
@@ -50,7 +49,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> implements VFLoginInterface, VFCustomUIInterface, VFActionsInterface, VFLayoutInterface {
+public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> implements VFCustomUIInterface, VFActionsInterface, VFLayoutInterface {
 
     public static final String REACT_CLASS = "RNPreviewCommentsAndroid";
     public final int COMMAND_CREATE = 1;
@@ -148,7 +147,7 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
             VFSettings settings = new VFSettings(colors);
             FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
 
-            VFPreviewCommentsFragmentBuilder fragmentBuilder = new VFPreviewCommentsFragmentBuilder(containerId, articleMetadata, this, settings)
+            VFPreviewCommentsFragmentBuilder fragmentBuilder = new VFPreviewCommentsFragmentBuilder(containerId, articleMetadata,  settings)
                     .syndicationKey(syndicationKey);
 
             final VFPreviewCommentsFragment previewCommentsFragment = fragmentBuilder.build();
@@ -190,13 +189,6 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
                 View.MeasureSpec.makeMeasureSpec(view.getHeight(), View.MeasureSpec.EXACTLY));
 
         view.layout(view.getLeft(), view.getTop(), view.getRight(), view.getBottom());
-    }
-
-    @Override
-    public void startLogin() {
-        WritableMap map = Arguments.createMap();
-        map.putBoolean("requireLogin", true);
-        Utils.sendDataToJS(reactContext, "onAuthNeeded", map);
     }
 
     @Override
@@ -265,6 +257,10 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
             map.putString("articleUrl", action.getTrendingPressedAction().articleMetadata.getUrl().toString());
             map.putString("containerId", action.getTrendingPressedAction().containerId);
             Utils.sendDataToJS(reactContext, "onArticlePressed", map);
+        } else if(actionType == VFActionType.authPressed){
+            WritableMap map = Arguments.createMap();
+            map.putBoolean("requireLogin", true);
+            Utils.sendDataToJS(reactContext, "onAuthNeeded", map);
         }
     }
 

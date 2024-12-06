@@ -29,7 +29,6 @@ import com.viafourasdk.src.fragments.previewcomments.VFPreviewCommentsFragment;
 import com.viafourasdk.src.interfaces.VFActionsInterface;
 import com.viafourasdk.src.interfaces.VFCustomUIInterface;
 import com.viafourasdk.src.interfaces.VFLayoutInterface;
-import com.viafourasdk.src.interfaces.VFLoginInterface;
 import com.viafourasdk.src.model.local.VFActionData;
 import com.viafourasdk.src.model.local.VFActionType;
 import com.viafourasdk.src.model.local.VFArticleMetadata;
@@ -45,7 +44,7 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.Map;
 
-public class RNChatViewManager extends ViewGroupManager<FrameLayout> implements VFLoginInterface, VFCustomUIInterface, VFActionsInterface {
+public class RNChatViewManager extends ViewGroupManager<FrameLayout> implements VFCustomUIInterface, VFActionsInterface {
 
     public static final String REACT_CLASS = "RNChatAndroid";
     public final int COMMAND_CREATE = 1;
@@ -146,7 +145,7 @@ public class RNChatViewManager extends ViewGroupManager<FrameLayout> implements 
             VFColors colors = new VFColors(VFDefaultColors.getInstance().colorPrimaryDefault(null), VFDefaultColors.getInstance().colorPrimaryLightDefault(null));
             VFSettings settings = new VFSettings(colors);
             FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
-            final VFLiveChatFragment liveChatFragment = VFLiveChatFragment.newInstance(containerId, articleMetadata, this, settings);
+            final VFLiveChatFragment liveChatFragment = VFLiveChatFragment.newInstance(containerId, articleMetadata,  settings);
             liveChatFragment.setActionCallback(this);
             liveChatFragment.setCustomUICallback(this);
             if(activity != null && activity.findViewById(reactNativeViewId) != null) {
@@ -194,13 +193,6 @@ public class RNChatViewManager extends ViewGroupManager<FrameLayout> implements 
                 View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY));
 
         view.layout(0, 0, width, height);
-    }
-
-    @Override
-    public void startLogin() {
-        WritableMap map = Arguments.createMap();
-        map.putBoolean("requireLogin", true);
-        Utils.sendDataToJS(reactContext, "onAuthNeeded", map);
     }
 
     @Override
@@ -252,6 +244,10 @@ public class RNChatViewManager extends ViewGroupManager<FrameLayout> implements 
             }
             map.putString("userUUID", action.getOpenProfileAction().userUUID.toString());
             Utils.sendDataToJS(reactContext, "onOpenProfile", map);
+        } else if(actionType == VFActionType.authPressed){
+            WritableMap map = Arguments.createMap();
+            map.putBoolean("requireLogin", true);
+            Utils.sendDataToJS(reactContext, "onAuthNeeded", map);
         }
     }
 }

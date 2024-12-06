@@ -29,7 +29,6 @@ import com.viafourasdk.src.fragments.profile.VFProfileFragmentBuilder;
 import com.viafourasdk.src.interfaces.VFActionsInterface;
 import com.viafourasdk.src.interfaces.VFCustomUIInterface;
 import com.viafourasdk.src.interfaces.VFLayoutInterface;
-import com.viafourasdk.src.interfaces.VFLoginInterface;
 import com.viafourasdk.src.model.local.VFActionData;
 import com.viafourasdk.src.model.local.VFActionType;
 import com.viafourasdk.src.model.local.VFArticleMetadata;
@@ -46,7 +45,7 @@ import java.net.URL;
 import java.util.Map;
 import java.util.UUID;
 
-public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implements VFLoginInterface, VFCustomUIInterface, VFActionsInterface, VFLayoutInterface {
+public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implements VFCustomUIInterface, VFActionsInterface, VFLayoutInterface {
     public static final String REACT_CLASS = "RNProfileAndroid";
     public final int COMMAND_CREATE = 1;
     public final int COMMAND_DESTROY = 2;
@@ -126,7 +125,7 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
         }
 
         try {
-            final VFProfileFragment profileFragment = new VFProfileFragmentBuilder(userUUID, profilePresentationType, this, settings).build();
+            final VFProfileFragment profileFragment = new VFProfileFragmentBuilder(userUUID, profilePresentationType, settings).build();
             profileFragment.setActionCallback(this);
             profileFragment.setCustomUICallback(this);
             if(activity != null && activity.findViewById(reactNativeViewId) != null) {
@@ -183,6 +182,10 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
         if(actionType == VFActionType.closeProfilePressed){
             WritableMap map = Arguments.createMap();
             Utils.sendDataToJS(reactContext, "onCloseProfile", map);
+        } else if(actionType == VFActionType.authPressed){
+            WritableMap map = Arguments.createMap();
+            map.putBoolean("requireLogin", true);
+            Utils.sendDataToJS(reactContext, "onAuthNeeded", map);
         }
     }
 
@@ -194,12 +197,5 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
     @Override
     public void containerHeightUpdated(VFFragment fragment, String containerId, int height) {
 
-    }
-
-    @Override
-    public void startLogin() {
-        WritableMap map = Arguments.createMap();
-        map.putBoolean("requireLogin", true);
-        Utils.sendDataToJS(reactContext, "onAuthNeeded", map);
     }
 }

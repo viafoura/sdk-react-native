@@ -14,7 +14,7 @@ class RCTCommentsService: NSObject {
   
   @objc(containerId: resolve: reject:)
   func commentCount(_ containerId: String, resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock){
-    commentsService.commentCount(containerId: containerId, completion: { result in
+    commentsService.commentCount(sectionUUID: nil, containerId: containerId, syndicationKey: nil, completion: { result in
       switch(result){
       case .success(let count):
         resolve(String(count))

@@ -65,7 +65,7 @@ class RNBell: UIView, VFLoginDelegate {
                 case .profile(let userUUID):
                     self?.presentProfileViewController(userUUID: userUUID, presentationType: .feed)
                     break
-                case .content(let containerUUID, let contentUUID, let containerId):
+                case .content(let containerUUID, let contentUUID, let containerId, let articleMetadata):
                     break
                 }
             default:

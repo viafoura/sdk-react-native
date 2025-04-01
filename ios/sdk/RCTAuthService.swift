@@ -77,7 +77,7 @@ class RCTAuthService: NSObject {
   
   @objc(signup: email: password: resolve: reject:)
   func signup(_ name: String, email: String, password: String, resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
-    authService.signup(name: name, email: email, password: password, completion: { result in
+    authService.signup(name: name, email: email, password: password, recaptchaToken: nil, completion: { result in
       switch(result){
       case .success(let user):
         resolve("Success")

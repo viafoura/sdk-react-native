@@ -13,11 +13,11 @@ import com.viafourasdk.src.model.network.authentication.openId.OpenIdLoginRespon
 import com.viafourasdk.src.model.network.authentication.signup.SignUpResponse;
 import com.viafourasdk.src.model.network.authentication.socialLogin.SocialLoginResponse;
 import com.viafourasdk.src.model.network.error.NetworkError;
-import com.viafourasdk.src.services.liveComments.LiveCommentsService;
+import com.viafourasdk.src.services.liveComments.VFLiveCommentsService;
 
 public class CommentsService extends ReactContextBaseJavaModule {
 
-    private LiveCommentsService liveCommentsService = ViafouraSDK.liveComments();
+    private VFLiveCommentsService liveCommentsService = ViafouraSDK.liveComments();
 
     public CommentsService(ReactApplicationContext context) {
         super(context);

@@ -12,10 +12,11 @@ import com.viafourasdk.src.model.network.authentication.openId.OpenIdLoginRespon
 import com.viafourasdk.src.model.network.authentication.signup.SignUpResponse;
 import com.viafourasdk.src.model.network.authentication.socialLogin.SocialLoginResponse;
 import com.viafourasdk.src.model.network.error.NetworkError;
+import com.viafourasdk.src.services.auth.VFAuthService;
 
 public class AuthService extends ReactContextBaseJavaModule {
 
-    private com.viafourasdk.src.services.auth.AuthService authService = ViafouraSDK.auth();
+    private VFAuthService authService = ViafouraSDK.auth();
 
     public AuthService(ReactApplicationContext context) {
         super(context);

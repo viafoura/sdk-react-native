@@ -30,7 +30,7 @@ public class CommentsService extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void commentCount(String containerId, Promise promise) {
-        liveCommentsService.getCommentCount(containerId, new LiveCommentsService.CommentCountCallback() {
+        liveCommentsService.getCommentCount(containerId, new VFLiveCommentsService.CommentCountCallback() {
             @Override
             public void onSuccess(Integer commentCount) {
                 promise.resolve(String.valueOf(commentCount));

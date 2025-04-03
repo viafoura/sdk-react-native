@@ -29,7 +29,7 @@ public class AuthService extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void signup(String name, String email, String password, Promise promise) {
-        authService.signup(name, email, password, new com.viafourasdk.src.services.auth.AuthService.SignUpCallback() {
+        authService.signup(name, email, password, new VFAuthService.SignUpCallback() {
             @Override
             public void onSuccess(SignUpResponse loginResponse) {
                 promise.resolve("");
@@ -44,7 +44,7 @@ public class AuthService extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void login(String email, String password, Promise promise) {
-        authService.login(email, password, new com.viafourasdk.src.services.auth.AuthService.LoginCallback() {
+        authService.login(email, password, new VFAuthService.LoginCallback() {
             @Override
             public void onSuccess(LoginResponse loginResponse) {
                 promise.resolve("Success");
@@ -59,7 +59,7 @@ public class AuthService extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void openIdLogin(String token, Promise promise) {
-        authService.openIdLogin(token, new com.viafourasdk.src.services.auth.AuthService.OpenIdLoginCallback() {
+        authService.openIdLogin(token, new VFAuthService.OpenIdLoginCallback() {
             @Override
             public void onSuccess(OpenIdLoginResponse loginResponse) {
                 promise.resolve("");
@@ -74,7 +74,7 @@ public class AuthService extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void cookieLogin(String token, Promise promise) {
-        authService.cookieLogin(token, new com.viafourasdk.src.services.auth.AuthService.CookieLoginCallback() {
+        authService.cookieLogin(token, new VFAuthService.CookieLoginCallback() {
             @Override
             public void onSuccess(CookieLoginResponse loginResponse) {
                 promise.resolve("");
@@ -89,7 +89,7 @@ public class AuthService extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void socialLogin(String token, Promise promise) {
-        authService.socialLogin(token, new com.viafourasdk.src.services.auth.AuthService.SocialLoginCallback() {
+        authService.socialLogin(token, new VFAuthService.SocialLoginCallback() {
             @Override
             public void onSuccess(SocialLoginResponse loginResponse) {
                 promise.resolve("");
@@ -104,7 +104,7 @@ public class AuthService extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void resetPassword(String email, Promise promise) {
-        authService.passwordReset(email, new com.viafourasdk.src.services.auth.AuthService.PasswordResetCallback() {
+        authService.passwordReset(email, new VFAuthService.PasswordResetCallback() {
             @Override
             public void onSuccess() {
                 promise.resolve("");

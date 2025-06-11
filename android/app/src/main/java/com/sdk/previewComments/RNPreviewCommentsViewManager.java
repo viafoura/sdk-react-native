@@ -2,6 +2,7 @@ package com.sdk.previewComments;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Choreographer;
 import android.view.View;
@@ -89,7 +90,7 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
     }
 
     /**
-     * Handle "create" command (called from JS) and call createFragment method
+     * Handle "create" and "destroy" commands (called from JS) and call the appropriate fragment method
      */
     @Override
     public void receiveCommand(
@@ -97,16 +98,15 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
             String commandId,
             @Nullable ReadableArray args
     ) {
-        super.receiveCommand(root, commandId, args);
-        int reactNativeViewId = args.getInt(0);
-        int commandIdInt = Integer.parseInt(commandId);
+        int reactNativeViewId = args != null ? args.getInt(0) : -1;
 
-        switch (commandIdInt) {
-            case COMMAND_CREATE:
+        switch (commandId) {
+            case "create":
                 createFragment(root, reactNativeViewId);
                 break;
-            case COMMAND_DESTROY:
+            case "destroy":
                 destroyFragment(root, reactNativeViewId);
+                break;
             default: {}
         }
     }
@@ -126,7 +126,13 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
     }
 
     public void destroyFragment(FrameLayout root, int reactNativeViewId) {
-        FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
+        FragmentActivity activity = null;
+        if (reactContext.getCurrentActivity() instanceof FragmentActivity) {
+            activity = (FragmentActivity) reactContext.getCurrentActivity();
+        }
+        if (activity == null) {
+            return;
+        }
         Fragment fragment = activity.getSupportFragmentManager().findFragmentByTag(String.valueOf(reactNativeViewId));
 
         if(fragment != null){
@@ -145,7 +151,13 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
             VFArticleMetadata articleMetadata = new VFArticleMetadata(new URL(articleUrl), articleTitle, articleDesc, new URL(articleThumbnailUrl));
             VFColors colors = new VFColors(VFDefaultColors.getInstance().colorPrimaryDefault(null), VFDefaultColors.getInstance().colorPrimaryLightDefault(null));
             VFSettings settings = new VFSettings(colors);
-            FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
+            FragmentActivity activity = null;
+            if (reactContext.getCurrentActivity() instanceof FragmentActivity) {
+                activity = (FragmentActivity) reactContext.getCurrentActivity();
+            }
+            if (activity == null) {
+                return;
+            }
 
             VFPreviewCommentsFragmentBuilder fragmentBuilder = new VFPreviewCommentsFragmentBuilder(containerId, articleMetadata,  settings)
                     .syndicationKey(syndicationKey);

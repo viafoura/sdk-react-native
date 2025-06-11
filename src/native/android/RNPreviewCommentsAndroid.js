@@ -25,17 +25,15 @@ export default class RNPreviewCommentsAndroidComponent extends React.Component {
   componentWillUnmount() {
     this.subscriptions.forEach((sub) => sub.remove());
     const androidViewId = findNodeHandle(this.nativeComponentRef);
-    UIManager.dispatchViewManagerCommand(
+    UIManager.dispatchViewManagerCommand(androidViewId, 'destroy', [
       androidViewId,
-      UIManager.RNPreviewCommentsAndroid.Commands.destroy.toString(),
-      [androidViewId]
-    );
+    ]);
   }
 
   componentDidMount() {
     setTimeout(() => {
       this.create();
-    }, 2000);
+    }, 100);
 
     if (this.isValidCallback(this.props.onHeightChanged)) {
       this.subscriptions.push(
@@ -63,18 +61,19 @@ export default class RNPreviewCommentsAndroidComponent extends React.Component {
 
     if (this.isValidCallback(this.props.onArticlePressed)) {
       this.subscriptions.push(
-        RTVEventEmitter.addListener('onArticlePressed', this.handleArticlePressed)
+        RTVEventEmitter.addListener(
+          'onArticlePressed',
+          this.handleArticlePressed
+        )
       );
     }
   }
 
   create = () => {
     const androidViewId = findNodeHandle(this.nativeComponentRef);
-    UIManager.dispatchViewManagerCommand(
+    UIManager.dispatchViewManagerCommand(androidViewId, 'create', [
       androidViewId,
-      UIManager.RNPreviewCommentsAndroid.Commands.create.toString(),
-      [androidViewId]
-    );
+    ]);
   };
 
   isValidCallback = (prop) => prop && isFunction(prop);

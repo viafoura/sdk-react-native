@@ -50,7 +50,15 @@ const App = () => {
           component={ArticleListScreen}
         />
         <Stack.Screen name={Screens.Chat} component={ChatScreen} />
-        <Stack.Screen name={Screens.Article} component={ArticleScreen} />
+        <Stack.Screen
+          name={Screens.Article}
+          component={ArticleScreen}
+          options={{
+            headerShown: true,
+            presentation: 'modal',
+            animation: 'slide_from_bottom',
+          }}
+        />
         <Stack.Screen name={Screens.NewComment} component={NewCommentScreen} />
         <Stack.Screen name={Screens.Profile} component={ProfileScreen} />
         <Stack.Screen name={Screens.Login} component={LoginScreen} />

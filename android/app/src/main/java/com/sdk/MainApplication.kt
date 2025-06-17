@@ -41,7 +41,7 @@ class MainApplication : Application(), ReactApplication {
 
 
         ViafouraSDK.isLoggingEnabled = true;
-        ViafouraSDK.initialize(applicationContext, "00000000-0000-4000-8000-c8cddfd7b365", "viafoura-mobile-demo.vercel.app");
+        ViafouraSDK.initialize(applicationContext, "00000000-0000-4000-8000-4adc7889f633", "www.lesoleil.com");
 
         if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
             // If you opted-in for the New Architecture, we load the native entry point for this app.

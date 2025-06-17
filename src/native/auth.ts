@@ -5,7 +5,8 @@ export const doLogout = async () => {
 };
 
 export const doLogin = async (email: string, password: string) => {
-  await AuthService.login(email, password);
+  const xx = await AuthService.login(email, password);
+  console.log({ xx });
 };
 
 export const doSignup = async (
@@ -21,6 +22,8 @@ export const doSocialLogin = async (token: string) => {
 };
 
 export const doCookieLogin = async (token: string) => {
+  console.log('doCookieLoginxx>>', { token });
+
   await AuthService.cookieLogin(token);
 };
 

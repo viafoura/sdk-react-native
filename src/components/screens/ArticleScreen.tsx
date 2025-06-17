@@ -21,16 +21,16 @@ const ArticleScreen = () => {
     <ScrollView style={{ height: commentsHeight }}>
       <PreviewComments
         style={{ height: commentsHeight }}
-        containerId={route.params.containerId}
-        authorId={route.params.authorId}
+        containerId={route.params._id}
+        // authorId={route.params.authorId}
         syndicationKey={route.params.syndicationKey}
-        articleTitle={route.params.articleTitle}
-        articleSubtitle={route.params.articleDesc}
-        articleUrl={route.params.articleUrl}
-        articleThumbnailUrl={route.params.articleThumbnailUrl}
+        articleTitle={route.params.title}
+        articleSubtitle={route.params.description}
+        articleUrl={route.params.path}
+        articleThumbnailUrl={route.params.thumbnail}
         darkMode={false}
         onHeightChanged={(event) => {
-          if (event.containerId === route.params.containerId) {
+          if (event._id === route.params._id) {
             setCommentsHeight(event.newHeight);
           }
         }}
@@ -47,11 +47,11 @@ const ArticleScreen = () => {
         }}
         onNewComment={(event: any) => {
           var object = {
-            containerId: route.params.containerId,
-            articleTitle: route.params.articleTitle,
-            articleDesc: route.params.articleDesc,
-            articleUrl: route.params.articleUrl,
-            articleThumbnailUrl: route.params.articleThumbnailUrl,
+            containerId: route.params._id,
+            articleTitle: route.params.title,
+            articleDesc: route.params.description,
+            articleUrl: route.params.path,
+            articleThumbnailUrl: route.params.thumbnail,
             newCommentActionType: event.actionType,
             content: event.content,
           };

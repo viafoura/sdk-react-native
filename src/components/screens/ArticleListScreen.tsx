@@ -38,6 +38,7 @@ const ArticleListScreen = () => {
 
 export const article = {
   _id: 'N7UUFKWKSRAKFCDRWPXYNIQENE',
+  authorId: '00000000-0000-4000-8000-0943f05c5deb',
   syndicationKey:
     'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJjYW5vbmljYWxfc2l0ZV91dWlkIjoiMDAwMDAwMDAtMDAwMC00MDAwLTgwMDAtNGFkYzc4ODlmNjMzIiwiY29udGFpbmVyX2lkIjoiTjdVVUZLV0tTUkFLRkNEUldQWFlOSVFFTkUiLCJpYXQiOjE3NTAwOTYzODN9.pSmFCO0EOkN06BmyBo77cziv-wXb3PFggse8dF0LRyr9JIHpzgWS7n1tNWH7jr3QyfaPPkXO3gxCkKXLYqWugFPQ1AjxduUMbULvxkZ2bCMClzRJcdiv5a39AfL-hDl9U3dzS7SFCb1ahXGOkBvxW4ZhoC4nrydzliTTvUQi3Ag',
   title: 'Une piste cyclable sur les cendres d’un projet d’autoroute',

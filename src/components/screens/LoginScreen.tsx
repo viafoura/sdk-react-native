@@ -73,7 +73,7 @@ const LoginScreen = () => {
             console.log('login button>>>');
 
             doCookieLogin(
-              'eyJhbGciOiJIUzUxMiJ9.eyJ1dWlkIjoiZDk4NGQ0NDMtZDJjMi00Y2NiLTkzNWUtZTRlMmFhYmVkNDJmIiwiZG4iOiJ0ZXN0QHNvZnRyLm5ldCIsInVuIjoidGVzdEBzb2Z0ci5uZXQiLCJkYXRlIjoiMTc1MDExOTU5NjI0OSIsImlhdCI6MTc1MDExOTU5NiwiZXhwIjoxNzUwMTIwNDk2LCJqdGkiOiJjNmNmM2IxNi1jZTQyLTRiZmEtYWE3MC1lY2Q1ZDVlMjIyZDEifQ.SWg87EKi_awtxV_HF0xqdzLOBkAvrU3XvTPOPk_utwPsPETaS8uWhRdtO33mdof6g9U86AwLM2_mgudnIaSugQ'
+              'eyJhbGciOiJIUzUxMiJ9.eyJ1dWlkIjoiZDk4NGQ0NDMtZDJjMi00Y2NiLTkzNWUtZTRlMmFhYmVkNDJmIiwiZG4iOiJ0ZXN0QHNvZnRyLm5ldCIsInVuIjoidGVzdEBzb2Z0ci5uZXQiLCJkYXRlIjoiMTc1MDE5MDM1NjYyOSIsImlhdCI6MTc1MDE5MDM1NiwiZXhwIjoxNzUwMTkxMjU2LCJqdGkiOiJlMGFkOWY4Yy0zMjIxLTRlYjUtOWUzZS05YTFiMzBmZTNhMGIifQ.lKc7PnkpRvYOBK1A-dLo65NnRf5CMLqBIXn_Wxa4QH3GIGbbXHyPDelN3sfZZBI0vH_0i9UO2RjV44--XeU2hQ'
             );
 
             // doLogin(email, password)

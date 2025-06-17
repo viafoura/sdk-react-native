@@ -22,7 +22,7 @@ const ArticleScreen = () => {
       <PreviewComments
         style={{ height: commentsHeight }}
         containerId={route.params._id}
-        // authorId={route.params.authorId}
+        authorId={route.params.authorId}
         syndicationKey={route.params.syndicationKey}
         articleTitle={route.params.title}
         articleSubtitle={route.params.description}

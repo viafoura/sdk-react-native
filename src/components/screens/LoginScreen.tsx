@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Button, View, Text, TextInput } from 'react-native';
-import { doCookieLogin } from '../../native/auth';
+import { doLogin } from '../../native/auth';
 import { useNavigation } from '@react-navigation/native';
 import { Screens } from '../../navigation/screens';
 
@@ -70,19 +70,13 @@ const LoginScreen = () => {
           style={styles.button}
           title="Log-in"
           onPress={async () => {
-            console.log('login button>>>');
-
-            doCookieLogin(
-              'eyJhbGciOiJIUzUxMiJ9.eyJ1dWlkIjoiZDk4NGQ0NDMtZDJjMi00Y2NiLTkzNWUtZTRlMmFhYmVkNDJmIiwiZG4iOiJ0ZXN0QHNvZnRyLm5ldCIsInVuIjoidGVzdEBzb2Z0ci5uZXQiLCJkYXRlIjoiMTc1MDE5MDM1NjYyOSIsImlhdCI6MTc1MDE5MDM1NiwiZXhwIjoxNzUwMTkxMjU2LCJqdGkiOiJlMGFkOWY4Yy0zMjIxLTRlYjUtOWUzZS05YTFiMzBmZTNhMGIifQ.lKc7PnkpRvYOBK1A-dLo65NnRf5CMLqBIXn_Wxa4QH3GIGbbXHyPDelN3sfZZBI0vH_0i9UO2RjV44--XeU2hQ'
-            );
-
-            // doLogin(email, password)
-            //   .then(() => {
-            //     navigation.goBack();
-            //   })
-            //   .catch((error) => {
-            //     console.log(error);
-            //   });
+            doLogin(email, password)
+              .then(() => {
+                navigation.goBack();
+              })
+              .catch((error) => {
+                console.log(error);
+              });
           }}
         />
       </View>

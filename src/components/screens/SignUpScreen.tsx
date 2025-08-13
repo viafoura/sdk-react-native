@@ -80,8 +80,6 @@ const SignUpScreen = () => {
           style={{ padding: 12 }}
           title="Sign up"
           onPress={() => {
-            console.log('signin button>>>', name, email, password);
-
             doSignup(name, email, password)
               .then(() => {
                 navigation.goBack();

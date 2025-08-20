@@ -84,13 +84,12 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
     ) {
         super.receiveCommand(root, commandId, args);
         reactNativeViewId = args.getInt(0);
-        int commandIdInt = Integer.parseInt(commandId);
 
-        switch (commandIdInt) {
-            case COMMAND_CREATE:
+        switch (commandId) {
+            case "create":
                 createFragment(root, reactNativeViewId);
                 break;
-            case COMMAND_DESTROY:
+            case "destroy":
                 destroyFragment(root, reactNativeViewId);
             default: {}
         }

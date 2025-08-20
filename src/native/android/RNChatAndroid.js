@@ -43,7 +43,7 @@ export default class RNChatComponentAndroid extends React.Component {
     const androidViewId = findNodeHandle(this.nativeComponentRef);
     UIManager.dispatchViewManagerCommand(
       androidViewId,
-      UIManager.RNPreviewCommentsAndroid.Commands.destroy.toString(),
+      'destroy',
       [androidViewId]
     );
   }
@@ -52,7 +52,7 @@ export default class RNChatComponentAndroid extends React.Component {
     const androidViewId = findNodeHandle(this.nativeComponentRef);
     UIManager.dispatchViewManagerCommand(
       androidViewId,
-      UIManager.RNNewCommentAndroid.Commands.create.toString(),
+      'create',
       [androidViewId]
     );
   };

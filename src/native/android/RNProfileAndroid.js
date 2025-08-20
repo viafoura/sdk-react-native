@@ -49,7 +49,7 @@ export default class RNProfileComponentAndroid extends React.Component {
     const androidViewId = findNodeHandle(this.nativeComponentRef);
     UIManager.dispatchViewManagerCommand(
       androidViewId,
-      UIManager.RNPreviewCommentsAndroid.Commands.destroy.toString(),
+      'destroy',
       [androidViewId]
     );
   }
@@ -58,7 +58,7 @@ export default class RNProfileComponentAndroid extends React.Component {
     const androidViewId = findNodeHandle(this.nativeComponentRef);
     UIManager.dispatchViewManagerCommand(
       androidViewId,
-      UIManager.RNProfileAndroid.Commands.create.toString(),
+      'create',
       [androidViewId]
     );
   };

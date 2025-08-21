@@ -5,25 +5,20 @@ import android.view.Choreographer;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.common.MapBuilder;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.facebook.react.uimanager.annotations.ReactPropGroup;
 import com.sdk.Utils;
 import com.viafourasdk.src.fragments.base.VFFragment;
-import com.viafourasdk.src.fragments.previewcomments.VFPreviewCommentsFragment;
 import com.viafourasdk.src.fragments.profile.VFProfileFragment;
 import com.viafourasdk.src.fragments.profile.VFProfileFragmentBuilder;
 import com.viafourasdk.src.interfaces.VFActionsInterface;
@@ -31,24 +26,18 @@ import com.viafourasdk.src.interfaces.VFCustomUIInterface;
 import com.viafourasdk.src.interfaces.VFLayoutInterface;
 import com.viafourasdk.src.model.local.VFActionData;
 import com.viafourasdk.src.model.local.VFActionType;
-import com.viafourasdk.src.model.local.VFArticleMetadata;
 import com.viafourasdk.src.model.local.VFColors;
 import com.viafourasdk.src.model.local.VFCustomViewType;
 import com.viafourasdk.src.model.local.VFDefaultColors;
 import com.viafourasdk.src.model.local.VFProfilePresentationType;
 import com.viafourasdk.src.model.local.VFSettings;
-import com.viafourasdk.src.model.local.VFSortType;
 import com.viafourasdk.src.model.local.VFTheme;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Map;
 import java.util.UUID;
 
 public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implements VFCustomUIInterface, VFActionsInterface, VFLayoutInterface {
     public static final String REACT_CLASS = "RNProfileAndroid";
     public final int COMMAND_CREATE = 1;
-    public final int COMMAND_DESTROY = 2;
     ReactApplicationContext reactContext;
 
     int reactNativeViewId;
@@ -73,7 +62,7 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
     @Nullable
     @Override
     public Map<String, Integer> getCommandsMap() {
-        return MapBuilder.of("create", COMMAND_CREATE, "destroy", COMMAND_DESTROY);
+        return MapBuilder.of("create", COMMAND_CREATE);
     }
 
     @Override
@@ -89,13 +78,18 @@ public class RNProfileViewManager extends ViewGroupManager<FrameLayout> implemen
             case "create":
                 createFragment(root, reactNativeViewId);
                 break;
-            case "destroy":
-                destroyFragment(root, reactNativeViewId);
             default: {}
         }
     }
 
-    public void destroyFragment(FrameLayout root, int reactNativeViewId) {
+    @Override
+    public void onDropViewInstance(@NonNull FrameLayout view) {
+        super.onDropViewInstance(view);
+
+        destroyFragment(reactNativeViewId);
+    }
+
+    public void destroyFragment(int reactNativeViewId) {
         FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
         Fragment fragment = activity.getSupportFragmentManager().findFragmentByTag(String.valueOf(reactNativeViewId));
 

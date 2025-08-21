@@ -22,14 +22,6 @@ export default class RNPreviewCommentsAndroidComponent extends React.Component {
   nativeComponentRef;
   subscriptions = [];
 
-  componentWillUnmount() {
-    this.subscriptions.forEach((sub) => sub.remove());
-    const androidViewId = findNodeHandle(this.nativeComponentRef);
-    UIManager.dispatchViewManagerCommand(androidViewId, 'destroy', [
-      androidViewId,
-    ]);
-  }
-
   componentDidMount() {
     setTimeout(() => {
       this.create();

@@ -49,16 +49,6 @@ export default class RNNewCommentComponentAndroid extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    this.subscriptions.forEach((sub) => sub.remove());
-    const androidViewId = findNodeHandle(this.nativeComponentRef);
-    UIManager.dispatchViewManagerCommand(
-      androidViewId,
-      'destroy',
-      [androidViewId]
-    );
-  }
-
   create = () => {
     const androidViewId = findNodeHandle(this.nativeComponentRef);
     UIManager.dispatchViewManagerCommand(

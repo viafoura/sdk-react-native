@@ -1,29 +1,22 @@
 package com.sdk.previewComments;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
 import android.view.Choreographer;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-
+import com.facebook.common.internal.ImmutableMap;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.common.MapBuilder;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.facebook.react.uimanager.annotations.ReactPropGroup;
 import com.sdk.Utils;
 import com.viafourasdk.src.fragments.base.VFFragment;
 import com.viafourasdk.src.fragments.previewcomments.VFPreviewCommentsFragment;
@@ -34,27 +27,22 @@ import com.viafourasdk.src.interfaces.VFLayoutInterface;
 import com.viafourasdk.src.model.local.VFActionData;
 import com.viafourasdk.src.model.local.VFActionType;
 import com.viafourasdk.src.model.local.VFArticleMetadata;
-import com.viafourasdk.src.model.local.VFAuthPromptType;
 import com.viafourasdk.src.model.local.VFColors;
 import com.viafourasdk.src.model.local.VFCustomViewType;
 import com.viafourasdk.src.model.local.VFDefaultColors;
 import com.viafourasdk.src.model.local.VFSettings;
-import com.viafourasdk.src.model.local.VFSortType;
 import com.viafourasdk.src.model.local.VFTheme;
-
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> implements VFCustomUIInterface, VFActionsInterface, VFLayoutInterface {
 
     public static final String REACT_CLASS = "RNPreviewCommentsAndroid";
     public final int COMMAND_CREATE = 1;
-    public final int COMMAND_DESTROY = 2;
     ReactApplicationContext reactContext;
+    public int reactNativeViewId = 0;
 
     private String containerId;
     private String authorId;
@@ -79,43 +67,32 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
         return new FrameLayout(reactContext);
     }
 
-    /**
-     * Map the "create" command to an integer
-     */
     @Nullable
     @Override
     public Map<String, Integer> getCommandsMap() {
-        return MapBuilder.of("create", COMMAND_CREATE, "destroy", COMMAND_DESTROY);
+        return ImmutableMap.of("create", COMMAND_CREATE);
     }
 
-    /**
-     * Handle "create" command (called from JS) and call createFragment method
-     */
     @Override
     public void receiveCommand(
             @NonNull FrameLayout root,
             String commandId,
             @Nullable ReadableArray args
     ) {
-        super.receiveCommand(root, commandId, args);
-        int reactNativeViewId = args.getInt(0);
-        int commandIdInt = Integer.parseInt(commandId);
-
-        switch (commandIdInt) {
-            case COMMAND_CREATE:
+        reactNativeViewId = args != null ? args.getInt(0) : -1;
+        switch (commandId) {
+            case "create":
                 createFragment(root, reactNativeViewId);
                 break;
-            case COMMAND_DESTROY:
-                destroyFragment(root, reactNativeViewId);
             default: {}
         }
     }
 
-
-    @Nullable
     @Override
-    public Map<String, Object> getExportedCustomDirectEventTypeConstants() {
-        return super.getExportedCustomDirectEventTypeConstants();
+    public void onDropViewInstance(@NonNull FrameLayout view) {
+        super.onDropViewInstance(view);
+
+        destroyFragment(reactNativeViewId);
     }
 
     @Nullable
@@ -125,8 +102,14 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
                 .build();
     }
 
-    public void destroyFragment(FrameLayout root, int reactNativeViewId) {
-        FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
+    public void destroyFragment(int reactNativeViewId) {
+        FragmentActivity activity = null;
+        if (reactContext.getCurrentActivity() instanceof FragmentActivity) {
+            activity = (FragmentActivity) reactContext.getCurrentActivity();
+        }
+        if (activity == null) {
+            return;
+        }
         Fragment fragment = activity.getSupportFragmentManager().findFragmentByTag(String.valueOf(reactNativeViewId));
 
         if(fragment != null){
@@ -145,7 +128,13 @@ public class RNPreviewCommentsViewManager extends ViewGroupManager<FrameLayout> 
             VFArticleMetadata articleMetadata = new VFArticleMetadata(new URL(articleUrl), articleTitle, articleDesc, new URL(articleThumbnailUrl));
             VFColors colors = new VFColors(VFDefaultColors.getInstance().colorPrimaryDefault(null), VFDefaultColors.getInstance().colorPrimaryLightDefault(null));
             VFSettings settings = new VFSettings(colors);
-            FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
+            FragmentActivity activity = null;
+            if (reactContext.getCurrentActivity() instanceof FragmentActivity) {
+                activity = (FragmentActivity) reactContext.getCurrentActivity();
+            }
+            if (activity == null) {
+                return;
+            }
 
             VFPreviewCommentsFragmentBuilder fragmentBuilder = new VFPreviewCommentsFragmentBuilder(containerId, articleMetadata,  settings)
                     .syndicationKey(syndicationKey);

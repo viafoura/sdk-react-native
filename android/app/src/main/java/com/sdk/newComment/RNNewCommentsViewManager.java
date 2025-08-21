@@ -5,27 +5,22 @@ import android.view.Choreographer;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.common.MapBuilder;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.facebook.react.uimanager.annotations.ReactPropGroup;
 import com.sdk.Utils;
 import com.viafourasdk.src.fragments.base.VFFragment;
 import com.viafourasdk.src.fragments.newcomment.VFNewCommentFragment;
 import com.viafourasdk.src.fragments.newcomment.VFNewCommentFragmentBuilder;
-import com.viafourasdk.src.fragments.previewcomments.VFPreviewCommentsFragment;
 import com.viafourasdk.src.interfaces.VFActionsInterface;
 import com.viafourasdk.src.interfaces.VFCustomUIInterface;
 import com.viafourasdk.src.interfaces.VFLayoutInterface;
@@ -37,9 +32,7 @@ import com.viafourasdk.src.model.local.VFCustomViewType;
 import com.viafourasdk.src.model.local.VFDefaultColors;
 import com.viafourasdk.src.model.local.VFNewCommentAction;
 import com.viafourasdk.src.model.local.VFSettings;
-import com.viafourasdk.src.model.local.VFSortType;
 import com.viafourasdk.src.model.local.VFTheme;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
@@ -50,8 +43,8 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
     public final int COMMAND_CREATE = 1;
     public final int COMMAND_DESTROY = 2;
     ReactApplicationContext reactContext;
+    public int reactNativeViewId = 0;
 
-    int reactNativeViewId;
     private String newCommentActionType;
     private String content;
     private String containerId;
@@ -75,7 +68,7 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
     @Nullable
     @Override
     public Map<String, Integer> getCommandsMap() {
-        return MapBuilder.of("create", COMMAND_CREATE, "destroy", COMMAND_DESTROY);
+        return MapBuilder.of("create", COMMAND_CREATE);
     }
 
     @Override
@@ -86,19 +79,23 @@ public class RNNewCommentsViewManager extends ViewGroupManager<FrameLayout> impl
     ) {
         super.receiveCommand(root, commandId, args);
         reactNativeViewId = args.getInt(0);
-        int commandIdInt = Integer.parseInt(commandId);
 
-        switch (commandIdInt) {
-            case COMMAND_CREATE:
+        switch (commandId) {
+            case "create":
                 createFragment(root, reactNativeViewId);
                 break;
-            case COMMAND_DESTROY:
-                destroyFragment(root, reactNativeViewId);
             default: {}
         }
     }
 
-    public void destroyFragment(FrameLayout root, int reactNativeViewId) {
+    @Override
+    public void onDropViewInstance(@NonNull FrameLayout view) {
+        super.onDropViewInstance(view);
+
+        destroyFragment(reactNativeViewId);
+    }
+
+    public void destroyFragment(int reactNativeViewId) {
         FragmentActivity activity = (FragmentActivity) reactContext.getCurrentActivity();
         Fragment fragment = activity.getSupportFragmentManager().findFragmentByTag(String.valueOf(reactNativeViewId));
 

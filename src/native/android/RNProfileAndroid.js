@@ -44,21 +44,11 @@ export default class RNProfileComponentAndroid extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    this.subscriptions.forEach((sub) => sub.remove());
-    const androidViewId = findNodeHandle(this.nativeComponentRef);
-    UIManager.dispatchViewManagerCommand(
-      androidViewId,
-      UIManager.RNPreviewCommentsAndroid.Commands.destroy.toString(),
-      [androidViewId]
-    );
-  }
-
   create = () => {
     const androidViewId = findNodeHandle(this.nativeComponentRef);
     UIManager.dispatchViewManagerCommand(
       androidViewId,
-      UIManager.RNProfileAndroid.Commands.create.toString(),
+      'create',
       [androidViewId]
     );
   };
